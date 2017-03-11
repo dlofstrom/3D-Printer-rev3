@@ -365,6 +365,26 @@ Package for TMC2100 stepper motor driver&lt;br&gt;
 <smd name="36" x="-1.75" y="3" dx="0.8" dy="0.25" layer="1" rot="R270"/>
 <smd name="PAD" x="0" y="0" dx="3.6" dy="4.1" layer="1"/>
 <circle x="-2.5" y="3" radius="0.21213125" width="0.127" layer="21"/>
+<pad name="TVIA1" x="-1.3" y="1.55" drill="0.4" shape="square"/>
+<pad name="TVIA4" x="1.3" y="1.55" drill="0.4" shape="square"/>
+<pad name="TVIA20" x="1.3" y="-1.55" drill="0.4" shape="square"/>
+<pad name="TVIA17" x="-1.3" y="-1.55" drill="0.4" shape="square"/>
+<pad name="TVIA9" x="-1.3" y="0" drill="0.4" shape="square"/>
+<pad name="TVIA5" x="-1.3" y="0.775" drill="0.4" shape="square"/>
+<pad name="TVIA8" x="1.3" y="0.775" drill="0.4" shape="square"/>
+<pad name="TVIA12" x="1.3" y="0" drill="0.4" shape="square"/>
+<pad name="TVIA16" x="1.3" y="-0.775" drill="0.4" shape="square"/>
+<pad name="TVIA13" x="-1.3" y="-0.775" drill="0.4" shape="square"/>
+<pad name="TVIA3" x="0.425" y="1.55" drill="0.4" shape="square"/>
+<pad name="TVIA19" x="0.425" y="-1.55" drill="0.4" shape="square"/>
+<pad name="TVIA7" x="0.425" y="0.775" drill="0.4" shape="square"/>
+<pad name="TVIA11" x="0.425" y="0" drill="0.4" shape="square"/>
+<pad name="TVIA15" x="0.425" y="-0.775" drill="0.4" shape="square"/>
+<pad name="TVIA2" x="-0.425" y="1.55" drill="0.4" shape="square"/>
+<pad name="TVIA18" x="-0.425" y="-1.55" drill="0.4" shape="square"/>
+<pad name="TVIA6" x="-0.425" y="0.775" drill="0.4" shape="square"/>
+<pad name="TVIA10" x="-0.425" y="0" drill="0.4" shape="square"/>
+<pad name="TVIA14" x="-0.425" y="-0.775" drill="0.4" shape="square"/>
 </package>
 <package name="C0603">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;</description>
@@ -426,6 +446,69 @@ Package for TMC2100 stepper motor driver&lt;br&gt;
 <rectangle x1="-4.064" y1="-0.254" x2="-3.556" y2="0.254" layer="51"/>
 <rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
 <rectangle x1="3.556" y1="-0.254" x2="4.064" y2="0.254" layer="51"/>
+</package>
+<package name="QFN48">
+<description>&lt;b&gt;QFN48&lt;/b&gt;&lt;br&gt;
+&lt;br&gt;
+For the Nordic NRF51822&lt;br&gt;
+&lt;br&gt;
+&lt;a href="http://infocenter.nordicsemi.com/pdf/nRF51822_PS_v3.1.pdf"&gt;Datasheet&lt;/a&gt;</description>
+<wire x1="-3" y1="3" x2="3" y2="3" width="0.127" layer="51"/>
+<wire x1="3" y1="3" x2="3" y2="-3" width="0.127" layer="51"/>
+<wire x1="3" y1="-3" x2="-3" y2="-3" width="0.127" layer="51"/>
+<wire x1="-3" y1="-3" x2="-3" y2="3" width="0.127" layer="51"/>
+<smd name="1" x="-3" y="2.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="2" x="-3" y="1.8" dx="0.8" dy="0.25" layer="1"/>
+<smd name="3" x="-3" y="1.4" dx="0.8" dy="0.25" layer="1"/>
+<smd name="4" x="-3" y="1" dx="0.8" dy="0.25" layer="1"/>
+<smd name="5" x="-3" y="0.6" dx="0.8" dy="0.25" layer="1"/>
+<smd name="6" x="-3" y="0.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="7" x="-3" y="-0.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="8" x="-3" y="-0.6" dx="0.8" dy="0.25" layer="1"/>
+<smd name="9" x="-3" y="-1" dx="0.8" dy="0.25" layer="1"/>
+<smd name="10" x="-3" y="-1.4" dx="0.8" dy="0.25" layer="1"/>
+<smd name="11" x="-3" y="-1.8" dx="0.8" dy="0.25" layer="1"/>
+<smd name="12" x="-3" y="-2.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="13" x="-2.2" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="14" x="-1.8" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="15" x="-1.4" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="16" x="-1" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="17" x="-0.6" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="18" x="-0.2" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="19" x="0.2" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="20" x="0.6" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="21" x="1" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="22" x="1.4" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="23" x="1.8" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="24" x="2.2" y="-3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="25" x="3" y="-2.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="26" x="3" y="-1.8" dx="0.8" dy="0.25" layer="1"/>
+<smd name="27" x="3" y="-1.4" dx="0.8" dy="0.25" layer="1"/>
+<smd name="28" x="3" y="-1" dx="0.8" dy="0.25" layer="1"/>
+<smd name="29" x="3" y="-0.6" dx="0.8" dy="0.25" layer="1"/>
+<smd name="30" x="3" y="-0.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="31" x="3" y="0.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="32" x="3" y="0.6" dx="0.8" dy="0.25" layer="1"/>
+<smd name="33" x="3" y="1" dx="0.8" dy="0.25" layer="1"/>
+<smd name="34" x="3" y="1.4" dx="0.8" dy="0.25" layer="1"/>
+<smd name="35" x="3" y="1.8" dx="0.8" dy="0.25" layer="1"/>
+<smd name="36" x="3" y="2.2" dx="0.8" dy="0.25" layer="1"/>
+<smd name="37" x="2.2" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="38" x="1.8" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="39" x="1.4" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="40" x="1" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="41" x="0.6" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="42" x="0.2" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="43" x="-0.2" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="44" x="-0.6" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="45" x="-1" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="46" x="-1.4" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="47" x="-1.8" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<smd name="48" x="-2.2" y="3" dx="0.8" dy="0.25" layer="1" rot="R90"/>
+<circle x="-3" y="3" radius="0.22360625" width="0.127" layer="21"/>
+<text x="-2" y="1" size="0.6096" layer="25" font="vector">&gt;NAME</text>
+<text x="-2" y="-2" size="0.6096" layer="27" font="vector">&gt;VALUE</text>
+<smd name="PAD" x="0" y="0" dx="4.6" dy="4.6" layer="1"/>
 </package>
 </packages>
 </library>
@@ -644,78 +727,113 @@ design rules under a new name.</description>
 <attribute name="OC_FARNELL" value="unknown" x="51.943" y="2.921" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="51.943" y="2.921" size="1.778" layer="27" display="off"/>
 </element>
+<element name="U$2" library="3dprinter" package="QFN48" value="NRF51822" x="28.194" y="34.036"/>
 </elements>
 <signals>
 <signal name="PI_3V31">
 <contactref element="PI_HEADER" pad="1"/>
 </signal>
 <signal name="PI_02_SDA1">
+<contactref element="PI_HEADER" pad="3"/>
 </signal>
 <signal name="PI_03_SCL1">
+<contactref element="PI_HEADER" pad="5"/>
 </signal>
 <signal name="PI_04">
+<contactref element="PI_HEADER" pad="7"/>
 </signal>
 <signal name="PI_GND1">
+<contactref element="PI_HEADER" pad="9"/>
 </signal>
 <signal name="PI_17">
+<contactref element="PI_HEADER" pad="11"/>
 </signal>
 <signal name="PI_27">
+<contactref element="PI_HEADER" pad="13"/>
 </signal>
 <signal name="PI_22">
+<contactref element="PI_HEADER" pad="15"/>
 </signal>
 <signal name="PI_3V32">
+<contactref element="PI_HEADER" pad="17"/>
 </signal>
 <signal name="PI_09_MISO">
+<contactref element="PI_HEADER" pad="21"/>
 </signal>
 <signal name="PI_11_SCK">
+<contactref element="PI_HEADER" pad="23"/>
 </signal>
 <signal name="PI_GND2">
+<contactref element="PI_HEADER" pad="25"/>
 </signal>
 <signal name="PI_ID_SD">
+<contactref element="PI_HEADER" pad="27"/>
 </signal>
 <signal name="PI_05">
+<contactref element="PI_HEADER" pad="29"/>
 </signal>
 <signal name="PI_06">
+<contactref element="PI_HEADER" pad="31"/>
 </signal>
 <signal name="PI_13">
+<contactref element="PI_HEADER" pad="33"/>
 </signal>
 <signal name="PI_19">
+<contactref element="PI_HEADER" pad="35"/>
 </signal>
 <signal name="PI_26">
+<contactref element="PI_HEADER" pad="37"/>
 </signal>
 <signal name="PI_5V1">
+<contactref element="PI_HEADER" pad="2"/>
 </signal>
 <signal name="PI_5V2">
+<contactref element="PI_HEADER" pad="4"/>
 </signal>
 <signal name="PI_GND4">
+<contactref element="PI_HEADER" pad="6"/>
 </signal>
 <signal name="PI_14_TXD0">
+<contactref element="PI_HEADER" pad="8"/>
 </signal>
 <signal name="PI_15_RXD0">
+<contactref element="PI_HEADER" pad="10"/>
 </signal>
 <signal name="PI_18">
+<contactref element="PI_HEADER" pad="12"/>
 </signal>
 <signal name="PI_GND5">
+<contactref element="PI_HEADER" pad="14"/>
 </signal>
 <signal name="PI_23">
+<contactref element="PI_HEADER" pad="16"/>
 </signal>
 <signal name="PI_24">
+<contactref element="PI_HEADER" pad="18"/>
 </signal>
 <signal name="PI_25">
+<contactref element="PI_HEADER" pad="22"/>
 </signal>
 <signal name="PI_08_CE0">
+<contactref element="PI_HEADER" pad="24"/>
 </signal>
 <signal name="PI_ID_SC">
+<contactref element="PI_HEADER" pad="28"/>
 </signal>
 <signal name="PI_GND7">
+<contactref element="PI_HEADER" pad="30"/>
 </signal>
 <signal name="PI_12">
+<contactref element="PI_HEADER" pad="32"/>
 </signal>
 <signal name="PI_GND8">
+<contactref element="PI_HEADER" pad="34"/>
 </signal>
 <signal name="PI_16">
+<contactref element="PI_HEADER" pad="36"/>
 </signal>
 <signal name="PI_20">
+<contactref element="PI_HEADER" pad="38"/>
 </signal>
 <signal name="+12V">
 <contactref element="IC1" pad="30"/>
@@ -772,6 +890,26 @@ design rules under a new name.</description>
 <wire x1="62.191" y1="8.001" x2="62.191" y2="9.398" width="0" layer="19" extent="16-16"/>
 <wire x1="50.585" y1="12.192" x2="53.515" y2="16.236" width="0" layer="19" extent="16-16"/>
 <wire x1="50.585" y1="10.668" x2="50.585" y2="12.192" width="0" layer="19" extent="16-16"/>
+<contactref element="IC1" pad="TVIA1"/>
+<contactref element="IC1" pad="TVIA2"/>
+<contactref element="IC1" pad="TVIA3"/>
+<contactref element="IC1" pad="TVIA4"/>
+<contactref element="IC1" pad="TVIA5"/>
+<contactref element="IC1" pad="TVIA6"/>
+<contactref element="IC1" pad="TVIA7"/>
+<contactref element="IC1" pad="TVIA8"/>
+<contactref element="IC1" pad="TVIA9"/>
+<contactref element="IC1" pad="TVIA10"/>
+<contactref element="IC1" pad="TVIA11"/>
+<contactref element="IC1" pad="TVIA12"/>
+<contactref element="IC1" pad="TVIA13"/>
+<contactref element="IC1" pad="TVIA14"/>
+<contactref element="IC1" pad="TVIA15"/>
+<contactref element="IC1" pad="TVIA16"/>
+<contactref element="IC1" pad="TVIA17"/>
+<contactref element="IC1" pad="TVIA18"/>
+<contactref element="IC1" pad="TVIA19"/>
+<contactref element="IC1" pad="TVIA20"/>
 </signal>
 <signal name="CPI_M1">
 <contactref element="IC1" pad="28"/>
@@ -914,6 +1052,21 @@ design rules under a new name.</description>
 <wire x1="56.134" y1="9.398" x2="56.134" y2="10.414" width="0.3048" layer="16"/>
 <wire x1="55.265" y1="11.283" x2="55.265" y2="12.486" width="0.3048" layer="16"/>
 <wire x1="56.134" y1="10.414" x2="55.265" y2="11.283" width="0.3048" layer="16"/>
+</signal>
+<signal name="PI_GND3">
+<contactref element="PI_HEADER" pad="39"/>
+</signal>
+<signal name="PI_10_MOSI">
+<contactref element="PI_HEADER" pad="19"/>
+</signal>
+<signal name="PI_GND6">
+<contactref element="PI_HEADER" pad="20"/>
+</signal>
+<signal name="PI_07_CE1">
+<contactref element="PI_HEADER" pad="26"/>
+</signal>
+<signal name="PI_21">
+<contactref element="PI_HEADER" pad="40"/>
 </signal>
 </signals>
 </board>
