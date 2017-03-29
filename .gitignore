@@ -4,3 +4,5 @@
 *.l#?
 eagle.epf
 *.lck
+
+.DS_Store
