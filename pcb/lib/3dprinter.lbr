@@ -3676,15 +3676,17 @@ For the Nordic NRF51822&lt;br&gt;
 <wire x1="2" y1="-0.25" x2="2" y2="0.25" width="0.127" layer="21"/>
 </package>
 <package name="MOSFET">
-<smd name="3" x="1.5" y="2.3" dx="3" dy="1.6" layer="1"/>
-<smd name="1" x="1.5" y="-2.3" dx="3" dy="1.6" layer="1"/>
-<smd name="TAB" x="-5.15" y="0" dx="6.7" dy="6.7" layer="1"/>
-<wire x1="-7.43" y1="2.9" x2="-1.54" y2="2.9" width="0.127" layer="51"/>
-<wire x1="-1.54" y1="2.9" x2="-1.54" y2="-2.9" width="0.127" layer="51"/>
-<wire x1="-1.54" y1="-2.9" x2="-7.43" y2="-2.9" width="0.127" layer="51"/>
-<wire x1="-7.43" y1="-2.9" x2="-7.43" y2="2.9" width="0.127" layer="51"/>
-<text x="-9" y="4" size="1.27" layer="25">&gt;NAME</text>
-<text x="-10" y="-5" size="1.27" layer="27">&gt;VALUE</text>
+<smd name="TAB" x="-3.23" y="0" dx="4.53" dy="4.56" layer="1"/>
+<wire x1="-4.89" y1="2.265" x2="-0.27" y2="2.265" width="0.127" layer="51"/>
+<wire x1="-0.27" y1="2.265" x2="-0.27" y2="-2.265" width="0.127" layer="51"/>
+<wire x1="-0.27" y1="-2.265" x2="-4.89" y2="-2.265" width="0.127" layer="51"/>
+<wire x1="-4.89" y1="-2.265" x2="-4.89" y2="2.265" width="0.127" layer="51"/>
+<text x="-6.46" y="2.73" size="1.27" layer="25">&gt;NAME</text>
+<text x="-6.19" y="-3.73" size="1.27" layer="27">&gt;VALUE</text>
+<smd name="3" x="0.5" y="0.635" dx="1" dy="0.75" layer="1"/>
+<smd name="4" x="0.5" y="1.905" dx="1" dy="0.75" layer="1"/>
+<smd name="2" x="0.5" y="-0.635" dx="1" dy="0.75" layer="1"/>
+<smd name="1" x="0.5" y="-1.905" dx="1" dy="0.75" layer="1"/>
 </package>
 </packages>
 <symbols>
@@ -5943,7 +5945,7 @@ Balun for NRF51822&lt;br&gt;
 <deviceset name="MOSFET">
 <description>&lt;b&gt;MOSFET&lt;/b&gt;&lt;br&gt;
 &lt;br&gt;
-&lt;a href="http://www.st.com/content/ccc/resource/technical/document/datasheet/00/62/f4/75/75/71/48/f0/CD00250993.pdf/files/CD00250993.pdf/jcr:content/translations/en.CD00250993.pdf"&gt;Datasheet&lt;/a&gt;</description>
+&lt;a href="http://www.onsemi.com/pub/Collateral/NTMFS5C604NL-D.PDF"&gt;Datasheet&lt;/a&gt;</description>
 <gates>
 <gate name="G$1" symbol="N-MOSFET" x="0" y="0"/>
 </gates>
@@ -5951,12 +5953,12 @@ Balun for NRF51822&lt;br&gt;
 <device name="" package="MOSFET">
 <connects>
 <connect gate="G$1" pin="D" pad="TAB"/>
-<connect gate="G$1" pin="G" pad="1"/>
-<connect gate="G$1" pin="S" pad="3"/>
+<connect gate="G$1" pin="G" pad="4"/>
+<connect gate="G$1" pin="S" pad="1 2 3"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="DIGIKEY" value="497-10877-1-ND" constant="no"/>
+<attribute name="DIGIKEY" value="NTMFS5C604NLT1GOSCT-ND" constant="no"/>
 </technology>
 </technologies>
 </device>
