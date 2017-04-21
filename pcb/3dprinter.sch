@@ -358,28 +358,28 @@ Package for TMC2100 stepper motor driver&lt;br&gt;
 <smd name="34" x="-0.75" y="3" dx="0.8" dy="0.25" layer="1" rot="R270"/>
 <smd name="35" x="-1.25" y="3" dx="0.8" dy="0.25" layer="1" rot="R270"/>
 <smd name="36" x="-1.75" y="3" dx="0.8" dy="0.25" layer="1" rot="R270"/>
-<smd name="PAD" x="0" y="0" dx="3.6" dy="4.1" layer="1"/>
+<smd name="PAD" x="0" y="0" dx="3.6" dy="4.1" layer="1" thermals="no"/>
 <circle x="-2.5" y="3" radius="0.21213125" width="0.127" layer="21"/>
-<pad name="TVIA1" x="-1.3" y="1.55" drill="0.4" shape="square"/>
-<pad name="TVIA4" x="1.3" y="1.55" drill="0.4" shape="square"/>
-<pad name="TVIA20" x="1.3" y="-1.55" drill="0.4" shape="square"/>
-<pad name="TVIA17" x="-1.3" y="-1.55" drill="0.4" shape="square"/>
-<pad name="TVIA9" x="-1.3" y="0" drill="0.4" shape="square"/>
-<pad name="TVIA5" x="-1.3" y="0.775" drill="0.4" shape="square"/>
-<pad name="TVIA8" x="1.3" y="0.775" drill="0.4" shape="square"/>
-<pad name="TVIA12" x="1.3" y="0" drill="0.4" shape="square"/>
-<pad name="TVIA16" x="1.3" y="-0.775" drill="0.4" shape="square"/>
-<pad name="TVIA13" x="-1.3" y="-0.775" drill="0.4" shape="square"/>
-<pad name="TVIA3" x="0.425" y="1.55" drill="0.4" shape="square"/>
-<pad name="TVIA19" x="0.425" y="-1.55" drill="0.4" shape="square"/>
-<pad name="TVIA7" x="0.425" y="0.775" drill="0.4" shape="square"/>
-<pad name="TVIA11" x="0.425" y="0" drill="0.4" shape="square"/>
-<pad name="TVIA15" x="0.425" y="-0.775" drill="0.4" shape="square"/>
-<pad name="TVIA2" x="-0.425" y="1.55" drill="0.4" shape="square"/>
-<pad name="TVIA18" x="-0.425" y="-1.55" drill="0.4" shape="square"/>
-<pad name="TVIA6" x="-0.425" y="0.775" drill="0.4" shape="square"/>
-<pad name="TVIA10" x="-0.425" y="0" drill="0.4" shape="square"/>
-<pad name="TVIA14" x="-0.425" y="-0.775" drill="0.4" shape="square"/>
+<pad name="TVIA1" x="-1.3" y="1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA4" x="1.3" y="1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA20" x="1.3" y="-1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA17" x="-1.3" y="-1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA9" x="-1.3" y="0" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA5" x="-1.3" y="0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA8" x="1.3" y="0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA12" x="1.3" y="0" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA16" x="1.3" y="-0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA13" x="-1.3" y="-0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA3" x="0.425" y="1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA19" x="0.425" y="-1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA7" x="0.425" y="0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA11" x="0.425" y="0" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA15" x="0.425" y="-0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA2" x="-0.425" y="1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA18" x="-0.425" y="-1.55" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA6" x="-0.425" y="0.775" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA10" x="-0.425" y="0" drill="0.4" shape="square" thermals="no"/>
+<pad name="TVIA14" x="-0.425" y="-0.775" drill="0.4" shape="square" thermals="no"/>
 </package>
 <package name="C0402">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;</description>
@@ -3680,7 +3680,7 @@ For the Nordic NRF51822&lt;br&gt;
 <smd name="3" x="0" y="0" dx="2.16" dy="1.07" layer="1" thermals="no"/>
 <smd name="4" x="0" y="1.7" dx="2.16" dy="1.07" layer="1"/>
 <smd name="5" x="0" y="3.4" dx="2.16" dy="1.07" layer="1"/>
-<smd name="TAB" x="-10.675" y="0" dx="6.99" dy="10.8" layer="1"/>
+<smd name="TAB" x="-10.675" y="0" dx="6.99" dy="10.8" layer="1" thermals="no"/>
 <wire x1="-13" y1="5.08" x2="-4.36" y2="5.08" width="0.127" layer="51"/>
 <wire x1="-4.36" y1="5.08" x2="-4.36" y2="-5.08" width="0.127" layer="51"/>
 <wire x1="-4.36" y1="-5.08" x2="-13" y2="-5.08" width="0.127" layer="51"/>
@@ -6770,9 +6770,9 @@ P0.06 AIN7 AREF1</text>
 <pinref part="PI_HEADER" gate="G$1" pin="8"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.00"/>
-<wire x1="160.02" y1="147.32" x2="147.32" y2="147.32" width="0.1524" layer="91"/>
-<label x="147.32" y="147.32" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.06"/>
+<wire x1="160.02" y1="132.08" x2="147.32" y2="132.08" width="0.1524" layer="91"/>
+<label x="147.32" y="132.08" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PI_15_RXD0" class="0">
@@ -6782,9 +6782,9 @@ P0.06 AIN7 AREF1</text>
 <pinref part="PI_HEADER" gate="G$1" pin="10"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.01"/>
-<wire x1="160.02" y1="144.78" x2="147.32" y2="144.78" width="0.1524" layer="91"/>
-<label x="147.32" y="144.78" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.07"/>
+<wire x1="160.02" y1="129.54" x2="147.32" y2="129.54" width="0.1524" layer="91"/>
+<label x="147.32" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PI_18" class="0">
@@ -7381,9 +7381,9 @@ P0.06 AIN7 AREF1</text>
 <label x="312.42" y="71.12" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.10"/>
-<wire x1="160.02" y1="121.92" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
-<label x="147.32" y="121.92" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.21"/>
+<wire x1="213.36" y1="124.46" x2="200.66" y2="124.46" width="0.1524" layer="91"/>
+<label x="203.2" y="124.46" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWY" class="0">
@@ -7397,9 +7397,9 @@ P0.06 AIN7 AREF1</text>
 <label x="312.42" y="93.98" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.09"/>
-<wire x1="160.02" y1="124.46" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
-<label x="147.32" y="124.46" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.22"/>
+<wire x1="213.36" y1="127" x2="200.66" y2="127" width="0.1524" layer="91"/>
+<label x="203.2" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWX" class="0">
@@ -7413,9 +7413,9 @@ P0.06 AIN7 AREF1</text>
 <label x="312.42" y="116.84" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.08"/>
-<wire x1="160.02" y1="127" x2="147.32" y2="127" width="0.1524" layer="91"/>
-<label x="147.32" y="127" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.10"/>
+<wire x1="160.02" y1="121.92" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
+<label x="147.32" y="121.92" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="FAN1" class="0">
@@ -7425,9 +7425,9 @@ P0.06 AIN7 AREF1</text>
 <label x="167.64" y="48.26" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.04"/>
-<wire x1="160.02" y1="137.16" x2="147.32" y2="137.16" width="0.1524" layer="91"/>
-<label x="147.32" y="137.16" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.08"/>
+<wire x1="160.02" y1="127" x2="147.32" y2="127" width="0.1524" layer="91"/>
+<label x="147.32" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="FAN2" class="0">
@@ -7460,9 +7460,9 @@ P0.06 AIN7 AREF1</text>
 <label x="104.14" y="50.8" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.06"/>
-<wire x1="160.02" y1="132.08" x2="147.32" y2="132.08" width="0.1524" layer="91"/>
-<label x="147.32" y="132.08" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.04"/>
+<wire x1="160.02" y1="137.16" x2="147.32" y2="137.16" width="0.1524" layer="91"/>
+<label x="147.32" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BEDG" class="0">
@@ -7483,9 +7483,9 @@ P0.06 AIN7 AREF1</text>
 <label x="43.18" y="50.8" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.07"/>
-<wire x1="160.02" y1="129.54" x2="147.32" y2="129.54" width="0.1524" layer="91"/>
-<label x="147.32" y="129.54" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.03"/>
+<wire x1="160.02" y1="139.7" x2="147.32" y2="139.7" width="0.1524" layer="91"/>
+<label x="147.32" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="NOZ-" class="0">
@@ -7544,112 +7544,28 @@ P0.06 AIN7 AREF1</text>
 </net>
 <net name="THNOZ" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.02"/>
-<wire x1="160.02" y1="142.24" x2="147.32" y2="142.24" width="0.1524" layer="91"/>
-<label x="147.32" y="142.24" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="R3_NOZ" gate="G$1" pin="1"/>
 <pinref part="TH_NOZ" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="76.2" x2="104.14" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="73.66" x2="106.68" y2="73.66" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.29"/>
+<wire x1="213.36" y1="144.78" x2="200.66" y2="144.78" width="0.1524" layer="91"/>
+<label x="203.2" y="144.78" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="THBED" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.03"/>
-<wire x1="160.02" y1="139.7" x2="147.32" y2="139.7" width="0.1524" layer="91"/>
-<label x="147.32" y="139.7" size="1.778" layer="95"/>
-</segment>
 <segment>
 <pinref part="R3_BED" gate="G$1" pin="1"/>
 <pinref part="TH_BED" gate="G$1" pin="2"/>
 <wire x1="43.18" y1="76.2" x2="43.18" y2="73.66" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="73.66" x2="45.72" y2="73.66" width="0.1524" layer="91"/>
 </segment>
-</net>
-<net name="STEP_M1" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.11"/>
-<wire x1="160.02" y1="119.38" x2="147.32" y2="119.38" width="0.1524" layer="91"/>
-<label x="147.32" y="119.38" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIR_M1" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.12"/>
-<wire x1="160.02" y1="116.84" x2="147.32" y2="116.84" width="0.1524" layer="91"/>
-<label x="147.32" y="116.84" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="EN_M1" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.13"/>
-<wire x1="160.02" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
-<label x="147.32" y="114.3" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="CFG1_M1" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.14"/>
-<wire x1="160.02" y1="111.76" x2="147.32" y2="111.76" width="0.1524" layer="91"/>
-<label x="147.32" y="111.76" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="CFG2_M1" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.15"/>
-<wire x1="200.66" y1="109.22" x2="213.36" y2="109.22" width="0.1524" layer="91"/>
-<label x="203.2" y="109.22" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="STEP_M2" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.16"/>
-<wire x1="200.66" y1="111.76" x2="213.36" y2="111.76" width="0.1524" layer="91"/>
-<label x="203.2" y="111.76" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIR_M2" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.17"/>
-<wire x1="213.36" y1="114.3" x2="200.66" y2="114.3" width="0.1524" layer="91"/>
-<label x="203.2" y="114.3" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="EN_M2" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.18"/>
-<wire x1="213.36" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
-<label x="203.2" y="116.84" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="CFG1_M2" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.19"/>
-<wire x1="213.36" y1="119.38" x2="200.66" y2="119.38" width="0.1524" layer="91"/>
-<label x="203.2" y="119.38" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="CFG2_M2" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.20"/>
-<wire x1="213.36" y1="121.92" x2="200.66" y2="121.92" width="0.1524" layer="91"/>
-<label x="203.2" y="121.92" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="STEP_M3" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.21"/>
-<wire x1="213.36" y1="124.46" x2="200.66" y2="124.46" width="0.1524" layer="91"/>
-<label x="203.2" y="124.46" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="DIR_M3" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.22"/>
-<wire x1="213.36" y1="127" x2="200.66" y2="127" width="0.1524" layer="91"/>
-<label x="203.2" y="127" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.09"/>
+<wire x1="160.02" y1="124.46" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
+<label x="147.32" y="124.46" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="EN_M3" class="0">
@@ -7659,32 +7575,45 @@ P0.06 AIN7 AREF1</text>
 <label x="203.2" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="CFG1_M3" class="0">
+<net name="CFG2_M3" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="P0.24"/>
 <wire x1="213.36" y1="132.08" x2="200.66" y2="132.08" width="0.1524" layer="91"/>
 <label x="203.2" y="132.08" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="CFG2_M3" class="0">
+<net name="PI_3V32" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.25"/>
-<wire x1="213.36" y1="134.62" x2="200.66" y2="134.62" width="0.1524" layer="91"/>
-<label x="203.2" y="134.62" size="1.778" layer="95"/>
+<pinref part="PI_HEADER" gate="G$1" pin="17"/>
+<wire x1="330.2" y1="205.74" x2="325.12" y2="205.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="CFG2_M4" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.02"/>
+<wire x1="160.02" y1="142.24" x2="147.32" y2="142.24" width="0.1524" layer="91"/>
+<label x="147.32" y="142.24" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CFG1_M4" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.01"/>
+<wire x1="160.02" y1="144.78" x2="147.32" y2="144.78" width="0.1524" layer="91"/>
+<label x="147.32" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="STEP_M4" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.26"/>
-<wire x1="213.36" y1="137.16" x2="200.66" y2="137.16" width="0.1524" layer="91"/>
-<label x="203.2" y="137.16" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.00"/>
+<wire x1="160.02" y1="147.32" x2="147.32" y2="147.32" width="0.1524" layer="91"/>
+<label x="147.32" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="DIR_M4" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.27"/>
-<wire x1="213.36" y1="139.7" x2="200.66" y2="139.7" width="0.1524" layer="91"/>
-<label x="203.2" y="139.7" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.30"/>
+<wire x1="213.36" y1="147.32" x2="200.66" y2="147.32" width="0.1524" layer="91"/>
+<label x="203.2" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="EN_M4" class="0">
@@ -7694,24 +7623,95 @@ P0.06 AIN7 AREF1</text>
 <label x="203.2" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="CFG1_M4" class="0">
+<net name="DIR_M3" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.29"/>
-<wire x1="213.36" y1="144.78" x2="200.66" y2="144.78" width="0.1524" layer="91"/>
-<label x="203.2" y="144.78" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.27"/>
+<wire x1="213.36" y1="139.7" x2="200.66" y2="139.7" width="0.1524" layer="91"/>
+<label x="203.2" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="CFG2_M4" class="0">
+<net name="STEP_M3" class="0">
 <segment>
-<pinref part="IC1" gate="G$1" pin="P0.30"/>
-<wire x1="213.36" y1="147.32" x2="200.66" y2="147.32" width="0.1524" layer="91"/>
-<label x="203.2" y="147.32" size="1.778" layer="95"/>
+<pinref part="IC1" gate="G$1" pin="P0.26"/>
+<wire x1="213.36" y1="137.16" x2="200.66" y2="137.16" width="0.1524" layer="91"/>
+<label x="203.2" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="PI_3V32" class="0">
+<net name="CFG1_M3" class="0">
 <segment>
-<pinref part="PI_HEADER" gate="G$1" pin="17"/>
-<wire x1="330.2" y1="205.74" x2="325.12" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="P0.25"/>
+<wire x1="213.36" y1="134.62" x2="200.66" y2="134.62" width="0.1524" layer="91"/>
+<label x="203.2" y="134.62" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CFG1_M2" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.12"/>
+<wire x1="160.02" y1="116.84" x2="147.32" y2="116.84" width="0.1524" layer="91"/>
+<label x="147.32" y="116.84" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CFG2_M2" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.11"/>
+<wire x1="160.02" y1="119.38" x2="147.32" y2="119.38" width="0.1524" layer="91"/>
+<label x="147.32" y="119.38" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="STEP_M2" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.13"/>
+<wire x1="160.02" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
+<label x="147.32" y="114.3" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="DIR_M2" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.14"/>
+<wire x1="160.02" y1="111.76" x2="147.32" y2="111.76" width="0.1524" layer="91"/>
+<label x="147.32" y="111.76" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="EN_M2" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.15"/>
+<wire x1="200.66" y1="109.22" x2="213.36" y2="109.22" width="0.1524" layer="91"/>
+<label x="203.2" y="109.22" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="DIR_M1" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.16"/>
+<wire x1="200.66" y1="111.76" x2="213.36" y2="111.76" width="0.1524" layer="91"/>
+<label x="203.2" y="111.76" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CFG1_M1" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.18"/>
+<wire x1="213.36" y1="116.84" x2="200.66" y2="116.84" width="0.1524" layer="91"/>
+<label x="203.2" y="116.84" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="STEP_M1" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.17"/>
+<wire x1="213.36" y1="114.3" x2="200.66" y2="114.3" width="0.1524" layer="91"/>
+<label x="203.2" y="114.3" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="EN_M1" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.20"/>
+<wire x1="213.36" y1="121.92" x2="200.66" y2="121.92" width="0.1524" layer="91"/>
+<label x="203.2" y="121.92" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CFG2_M1" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.19"/>
+<wire x1="213.36" y1="119.38" x2="200.66" y2="119.38" width="0.1524" layer="91"/>
+<label x="203.2" y="119.38" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
