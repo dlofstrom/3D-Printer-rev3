@@ -72,15 +72,14 @@ The pcb fits a Raspberry Pi model B</description>
 <circle x="3.5" y="52.5" radius="1.4" width="0.127" layer="20"/>
 <circle x="61.5" y="52.5" radius="1.4" width="0.127" layer="20"/>
 <circle x="61.5" y="3.5" radius="1.4" width="0.127" layer="20"/>
-<wire x1="61.5" y1="56" x2="3.5" y2="56" width="0.127" layer="20"/>
+<wire x1="66" y1="56" x2="3.5" y2="56" width="0.127" layer="20"/>
 <wire x1="0" y1="52.5" x2="0" y2="3.5" width="0.127" layer="20"/>
 <wire x1="0" y1="52.5" x2="3.5" y2="56" width="0.127" layer="20" curve="-90"/>
 <wire x1="81.5" y1="56" x2="85" y2="52.5" width="0.127" layer="51" curve="-90"/>
 <wire x1="85" y1="3.5" x2="81.5" y2="0" width="0.127" layer="51" curve="-90"/>
 <wire x1="3.5" y1="0" x2="0" y2="3.5" width="0.127" layer="20" curve="-90"/>
-<wire x1="65" y1="3.5" x2="65" y2="52.5" width="0.127" layer="20"/>
 <wire x1="65" y1="3.5" x2="61.5" y2="0" width="0.127" layer="20" curve="-90"/>
-<wire x1="61.5" y1="56" x2="65" y2="52.5" width="0.127" layer="20" curve="-90"/>
+<wire x1="66" y1="56" x2="69.5" y2="52.5" width="0.127" layer="20" curve="-90"/>
 <wire x1="70" y1="53.5" x2="87.1" y2="53.5" width="0.127" layer="51"/>
 <wire x1="87.1" y1="53.5" x2="87.1" y2="40.4" width="0.127" layer="51"/>
 <wire x1="87.1" y1="40.4" x2="70" y2="40.4" width="0.127" layer="51"/>
@@ -101,6 +100,11 @@ The pcb fits a Raspberry Pi model B</description>
 <circle x="3.5" y="3.5" radius="3.1" width="0.127" layer="39"/>
 <circle x="3.5" y="52.5" radius="3.1" width="0.127" layer="39"/>
 <circle x="61.5" y="52.5" radius="3.1" width="0.127" layer="39"/>
+<wire x1="69.5" y1="52.5" x2="69.5" y2="25.5" width="0.127" layer="20"/>
+<wire x1="65" y1="19" x2="65" y2="3.5" width="0.127" layer="20"/>
+<wire x1="65" y1="19" x2="66" y2="21" width="0.127" layer="20" curve="-53.130102"/>
+<wire x1="69.5" y1="25.5" x2="68.5" y2="23.5" width="0.127" layer="20" curve="-57.994617"/>
+<wire x1="68.5" y1="23.5" x2="66" y2="21" width="0.127" layer="20"/>
 </package>
 <package name="MA20-2">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
