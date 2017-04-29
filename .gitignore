@@ -5,4 +5,7 @@
 eagle.epf
 *.lck
 
+#Nordic SDK files
+code/sdk/*
+
 .DS_Store
