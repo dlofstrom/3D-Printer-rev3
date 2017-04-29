@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -3796,6 +3796,30 @@ For the Nordic NRF51822&lt;br&gt;
 <text x="-2.413" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-0.1001" y="0" size="0.02" layer="27">&gt;VALUE</text>
 </package>
+<package name="BUTTON">
+<smd name="1" x="-3.975" y="2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="3" x="-3.975" y="-2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="2" x="3.975" y="2.25" dx="1.55" dy="1.3" layer="1"/>
+<smd name="4" x="3.975" y="-2.25" dx="1.55" dy="1.3" layer="1"/>
+<wire x1="-3" y1="3" x2="3" y2="3" width="0.127" layer="51"/>
+<wire x1="3" y1="3" x2="3" y2="-3" width="0.127" layer="51"/>
+<wire x1="3" y1="-3" x2="-3" y2="-3" width="0.127" layer="51"/>
+<wire x1="-3" y1="-3" x2="-3" y2="3" width="0.127" layer="51"/>
+<circle x="0" y="0" radius="2.236065625" width="0.127" layer="51"/>
+<text x="-4" y="4" size="1.27" layer="25">&gt;NAME</text>
+<text x="-4" y="-5" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="RGBLED">
+<smd name="C" x="0" y="-0.75" dx="0.8" dy="0.8" layer="1"/>
+<smd name="A" x="0" y="0.75" dx="0.8" dy="0.8" layer="1"/>
+<wire x1="0.4" y1="0.8" x2="0.4" y2="-0.8" width="0.127" layer="51"/>
+<wire x1="0.4" y1="-0.8" x2="-0.4" y2="-0.8" width="0.127" layer="51"/>
+<wire x1="-0.4" y1="-0.8" x2="-0.4" y2="0.8" width="0.127" layer="51"/>
+<wire x1="-0.4" y1="0.8" x2="0.4" y2="0.8" width="0.127" layer="51"/>
+<text x="-2" y="-3" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2" y="2" size="1.27" layer="27">&gt;VALUE</text>
+<wire x1="-0.335" y1="-0.25" x2="0.35" y2="-0.25" width="0.127" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="OUTLINE">
@@ -4262,6 +4286,39 @@ Nordic NRF51822&lt;br&gt;
 <pin name="3" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
 <pin name="1" x="0" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
 <pin name="2" x="-5.08" y="0" visible="pad" length="short" direction="pas"/>
+</symbol>
+<symbol name="S">
+<wire x1="0" y1="-3.175" x2="0" y2="-1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.905" x2="-1.27" y2="1.905" width="0.254" layer="94"/>
+<wire x1="0" y1="1.905" x2="0" y2="3.175" width="0.254" layer="94"/>
+<text x="2.54" y="-3.81" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<pin name="1" x="0" y="-5.08" visible="pad" length="short" direction="pas" rot="R90"/>
+<pin name="2" x="0" y="5.08" visible="pad" length="short" direction="pas" rot="R270"/>
+</symbol>
+<symbol name="LED">
+<wire x1="1.27" y1="0" x2="0" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="-2.54" x2="-1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="0" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="-2.54" x2="-1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="1.27" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="-2.032" y1="-0.762" x2="-3.429" y2="-2.159" width="0.1524" layer="94"/>
+<wire x1="-1.905" y1="-1.905" x2="-3.302" y2="-3.302" width="0.1524" layer="94"/>
+<text x="3.556" y="-4.572" size="1.778" layer="95" rot="R90">&gt;NAME</text>
+<text x="5.715" y="-4.572" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
+<pin name="C" x="0" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="A" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+<polygon width="0.1524" layer="94">
+<vertex x="-3.429" y="-2.159"/>
+<vertex x="-3.048" y="-1.27"/>
+<vertex x="-2.54" y="-1.778"/>
+</polygon>
+<polygon width="0.1524" layer="94">
+<vertex x="-3.302" y="-3.302"/>
+<vertex x="-2.921" y="-2.413"/>
+<vertex x="-2.413" y="-2.921"/>
+</polygon>
 </symbol>
 </symbols>
 <devicesets>
@@ -6302,6 +6359,48 @@ Nordic NRF51822&lt;br&gt;
 </device>
 </devices>
 </deviceset>
+<deviceset name="BUTTON">
+<description>&lt;b&gt;Tactile button&lt;/b&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;a href="http://www.ckswitches.com/media/1471/pts645.pdf"&gt;Datasheet&lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="S" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="BUTTON">
+<connects>
+<connect gate="G$1" pin="1" pad="1 2"/>
+<connect gate="G$1" pin="2" pad="4" route="any"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="CKN9085CT-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="RGBLED">
+<description>&lt;b&gt;RGB LED&lt;/b&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;a href="http://optoelectronics.liteon.com/upload/download/DS22-2000-228/S_110_LTST-C191KGKT.pdf"&gt;Datasheet&lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="LED" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="RGBLED">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="160-1446-1-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="supply">
@@ -6643,6 +6742,13 @@ Nordic NRF51822&lt;br&gt;
 <part name="+3V19" library="supply" deviceset="+3V3" device=""/>
 <part name="COPå42" library="supply" deviceset="GND" device=""/>
 <part name="COPå43" library="supply" deviceset="GND" device=""/>
+<part name="SWA" library="3dprinter" deviceset="BUTTON" device=""/>
+<part name="R1_SWA" library="3dprinter" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="GND38" library="supply" deviceset="GND" device=""/>
+<part name="+3V20" library="supply" deviceset="+3V3" device=""/>
+<part name="LED" library="3dprinter" deviceset="RGBLED" device=""/>
+<part name="R1_LED" library="3dprinter" deviceset="R-US_" device="R0603" value="100R"/>
+<part name="GND39" library="supply" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6760,6 +6866,13 @@ P0.06 AIN7 AREF1</text>
 <instance part="R3_BED" gate="G$1" x="43.18" y="81.28" rot="R90"/>
 <instance part="+3V6" gate="G$1" x="104.14" y="91.44"/>
 <instance part="+3V7" gate="G$1" x="43.18" y="91.44"/>
+<instance part="SWA" gate="G$1" x="226.06" y="228.6"/>
+<instance part="R1_SWA" gate="G$1" x="226.06" y="243.84" rot="R90"/>
+<instance part="GND38" gate="1" x="226.06" y="218.44"/>
+<instance part="+3V20" gate="G$1" x="226.06" y="254"/>
+<instance part="LED" gate="G$1" x="205.74" y="228.6"/>
+<instance part="R1_LED" gate="G$1" x="205.74" y="238.76" rot="R270"/>
+<instance part="GND39" gate="1" x="205.74" y="218.44"/>
 </instances>
 <busses>
 </busses>
@@ -7223,6 +7336,16 @@ P0.06 AIN7 AREF1</text>
 <wire x1="106.68" y1="71.12" x2="104.14" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="71.12" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND38" gate="1" pin="GND"/>
+<pinref part="SWA" gate="G$1" pin="1"/>
+<wire x1="226.06" y1="220.98" x2="226.06" y2="223.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND39" gate="1" pin="GND"/>
+<pinref part="LED" gate="G$1" pin="C"/>
+<wire x1="205.74" y1="223.52" x2="205.74" y2="220.98" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -7271,6 +7394,11 @@ P0.06 AIN7 AREF1</text>
 <pinref part="R3_NOZ" gate="G$1" pin="2"/>
 <pinref part="+3V6" gate="G$1" pin="+3V3"/>
 <wire x1="104.14" y1="86.36" x2="104.14" y2="88.9" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R1_SWA" gate="G$1" pin="2"/>
+<wire x1="226.06" y1="248.92" x2="226.06" y2="251.46" width="0.1524" layer="91"/>
+<pinref part="+3V20" gate="G$1" pin="+3V3"/>
 </segment>
 </net>
 <net name="IC1_XC2" class="0">
@@ -7757,13 +7885,6 @@ P0.06 AIN7 AREF1</text>
 <label x="147.32" y="116.84" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="P0.09" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.09"/>
-<wire x1="160.02" y1="124.46" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
-<label x="147.32" y="124.46" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="STEP_M4" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="P0.28"/>
@@ -7806,13 +7927,6 @@ P0.06 AIN7 AREF1</text>
 <label x="147.32" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="P0.10" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="P0.10"/>
-<wire x1="160.02" y1="121.92" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
-<label x="147.32" y="121.92" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="P0.17" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="P0.17"/>
@@ -7825,6 +7939,42 @@ P0.06 AIN7 AREF1</text>
 <pinref part="IC1" gate="G$1" pin="P0.13"/>
 <wire x1="160.02" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
 <label x="147.32" y="114.3" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SWA" class="0">
+<segment>
+<pinref part="R1_SWA" gate="G$1" pin="1"/>
+<wire x1="226.06" y1="236.22" x2="226.06" y2="238.76" width="0.1524" layer="91"/>
+<wire x1="226.06" y1="236.22" x2="215.9" y2="236.22" width="0.1524" layer="91"/>
+<label x="215.9" y="236.22" size="1.778" layer="95"/>
+<pinref part="SWA" gate="G$1" pin="2"/>
+<wire x1="226.06" y1="236.22" x2="226.06" y2="233.68" width="0.1524" layer="91"/>
+<junction x="226.06" y="236.22"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.10"/>
+<wire x1="160.02" y1="121.92" x2="147.32" y2="121.92" width="0.1524" layer="91"/>
+<label x="147.32" y="121.92" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="LEDA" class="0">
+<segment>
+<pinref part="R1_LED" gate="G$1" pin="2"/>
+<pinref part="LED" gate="G$1" pin="A"/>
+<wire x1="205.74" y1="233.68" x2="205.74" y2="231.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="LED" class="0">
+<segment>
+<pinref part="R1_LED" gate="G$1" pin="1"/>
+<wire x1="205.74" y1="243.84" x2="205.74" y2="248.92" width="0.1524" layer="91"/>
+<label x="198.12" y="248.92" size="1.778" layer="95"/>
+<wire x1="205.74" y1="248.92" x2="198.12" y2="248.92" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="P0.09"/>
+<wire x1="160.02" y1="124.46" x2="147.32" y2="124.46" width="0.1524" layer="91"/>
+<label x="147.32" y="124.46" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
