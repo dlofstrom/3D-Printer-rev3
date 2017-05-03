@@ -18,7 +18,7 @@
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -58,6 +58,11 @@
 </layers>
 <board>
 <plain>
+<text x="60.96" y="21.844" size="1.27" layer="21" font="vector">+</text>
+<text x="18.288" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
+<text x="30.988" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
+<text x="43.688" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
+<text x="56.388" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
 </plain>
 <libraries>
 <library name="3dprinter">
@@ -110,128 +115,6 @@ The pcb fits a Raspberry Pi model B</description>
 </package>
 <package name="MA20-2">
 <description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
-<wire x1="-24.765" y1="2.54" x2="-23.495" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-23.495" y1="2.54" x2="-22.86" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-22.86" y1="1.905" x2="-22.225" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-22.225" y1="2.54" x2="-20.955" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-20.955" y1="2.54" x2="-20.32" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-24.765" y1="2.54" x2="-25.4" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-20.32" y1="1.905" x2="-19.685" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-19.685" y1="2.54" x2="-18.415" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-18.415" y1="2.54" x2="-17.78" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-17.145" y1="2.54" x2="-15.875" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-15.875" y1="2.54" x2="-15.24" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-15.24" y1="1.905" x2="-14.605" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-14.605" y1="2.54" x2="-13.335" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-13.335" y1="2.54" x2="-12.7" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-17.145" y1="2.54" x2="-17.78" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-12.7" y1="1.905" x2="-12.065" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-12.065" y1="2.54" x2="-10.795" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="2.54" x2="-10.16" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-22.86" y1="-1.905" x2="-23.495" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-20.32" y1="-1.905" x2="-20.955" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-20.955" y1="-2.54" x2="-22.225" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-22.225" y1="-2.54" x2="-22.86" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-25.4" y1="1.905" x2="-25.4" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-25.4" y1="-1.905" x2="-24.765" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-23.495" y1="-2.54" x2="-24.765" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-17.78" y1="-1.905" x2="-18.415" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-18.415" y1="-2.54" x2="-19.685" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-19.685" y1="-2.54" x2="-20.32" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-15.24" y1="-1.905" x2="-15.875" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-12.7" y1="-1.905" x2="-13.335" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-13.335" y1="-2.54" x2="-14.605" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-14.605" y1="-2.54" x2="-15.24" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-17.78" y1="-1.905" x2="-17.145" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-15.875" y1="-2.54" x2="-17.145" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-10.16" y1="-1.905" x2="-10.795" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-10.795" y1="-2.54" x2="-12.065" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-12.065" y1="-2.54" x2="-12.7" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-8.255" y1="2.54" x2="-7.62" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-9.525" y1="2.54" x2="-8.255" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-10.16" y1="1.905" x2="-9.525" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-9.525" y1="-2.54" x2="-10.16" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-8.255" y1="-2.54" x2="-9.525" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="-1.905" x2="-8.255" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-6.985" y1="2.54" x2="-5.715" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="2.54" x2="-5.08" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="1.905" x2="-4.445" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="2.54" x2="-3.175" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="2.54" x2="-2.54" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-6.985" y1="2.54" x2="-7.62" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="1.905" x2="-1.905" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="2.54" x2="-0.635" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="2.54" x2="0" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="2.54" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="2.54" x2="2.54" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="1.905" x2="3.175" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="2.54" x2="4.445" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="2.54" x2="5.08" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="0.635" y1="2.54" x2="0" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="1.905" x2="5.715" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="2.54" x2="6.985" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="2.54" x2="7.62" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-1.905" x2="-5.715" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-2.54" y1="-1.905" x2="-3.175" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-3.175" y1="-2.54" x2="-4.445" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-4.445" y1="-2.54" x2="-5.08" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="-7.62" y1="-1.905" x2="-6.985" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-5.715" y1="-2.54" x2="-6.985" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="0" y1="-1.905" x2="-0.635" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-0.635" y1="-2.54" x2="-1.905" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="-1.905" y1="-2.54" x2="-2.54" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="2.54" y1="-1.905" x2="1.905" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="5.08" y1="-1.905" x2="4.445" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="4.445" y1="-2.54" x2="3.175" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="3.175" y1="-2.54" x2="2.54" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="0" y1="-1.905" x2="0.635" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="1.905" y1="-2.54" x2="0.635" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="-1.905" x2="6.985" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="6.985" y1="-2.54" x2="5.715" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="5.715" y1="-2.54" x2="5.08" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="9.525" y1="2.54" x2="10.16" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="8.255" y1="2.54" x2="9.525" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="7.62" y1="1.905" x2="8.255" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="8.255" y1="-2.54" x2="7.62" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="9.525" y1="-2.54" x2="8.255" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="10.16" y1="-1.905" x2="9.525" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="2.54" x2="12.065" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="12.065" y1="2.54" x2="12.7" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="12.7" y1="1.905" x2="13.335" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="13.335" y1="2.54" x2="14.605" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="14.605" y1="2.54" x2="15.24" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="10.795" y1="2.54" x2="10.16" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="15.24" y1="1.905" x2="15.875" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="15.875" y1="2.54" x2="17.145" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="17.145" y1="2.54" x2="17.78" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="18.415" y1="2.54" x2="19.685" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="19.685" y1="2.54" x2="20.32" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="20.32" y1="1.905" x2="20.955" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="20.955" y1="2.54" x2="22.225" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="22.225" y1="2.54" x2="22.86" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="18.415" y1="2.54" x2="17.78" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="22.86" y1="1.905" x2="23.495" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="23.495" y1="2.54" x2="24.765" y2="2.54" width="0.1524" layer="21"/>
-<wire x1="12.7" y1="-1.905" x2="12.065" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="15.24" y1="-1.905" x2="14.605" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="14.605" y1="-2.54" x2="13.335" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="13.335" y1="-2.54" x2="12.7" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="10.16" y1="-1.905" x2="10.795" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="12.065" y1="-2.54" x2="10.795" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="17.78" y1="-1.905" x2="17.145" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="17.145" y1="-2.54" x2="15.875" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="15.875" y1="-2.54" x2="15.24" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="20.32" y1="-1.905" x2="19.685" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="22.86" y1="-1.905" x2="22.225" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="22.225" y1="-2.54" x2="20.955" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="20.955" y1="-2.54" x2="20.32" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="17.78" y1="-1.905" x2="18.415" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="19.685" y1="-2.54" x2="18.415" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="24.765" y1="-2.54" x2="23.495" y2="-2.54" width="0.1524" layer="21"/>
-<wire x1="23.495" y1="-2.54" x2="22.86" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="25.4" y1="1.905" x2="25.4" y2="-1.905" width="0.1524" layer="21"/>
-<wire x1="24.765" y1="2.54" x2="25.4" y2="1.905" width="0.1524" layer="21"/>
-<wire x1="25.4" y1="-1.905" x2="24.765" y2="-2.54" width="0.1524" layer="21"/>
 <pad name="1" x="-24.13" y="-1.27" drill="1.016" shape="octagon"/>
 <pad name="3" x="-21.59" y="-1.27" drill="1.016" shape="octagon"/>
 <pad name="5" x="-19.05" y="-1.27" drill="1.016" shape="octagon"/>
@@ -272,10 +155,8 @@ The pcb fits a Raspberry Pi model B</description>
 <pad name="36" x="19.05" y="1.27" drill="1.016" shape="octagon"/>
 <pad name="38" x="21.59" y="1.27" drill="1.016" shape="octagon"/>
 <pad name="40" x="24.13" y="1.27" drill="1.016" shape="octagon"/>
-<text x="-24.638" y="-4.191" size="1.27" layer="21" ratio="10">1</text>
 <text x="-25.4" y="2.921" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="12.7" y="-4.191" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="22.86" y="2.921" size="1.27" layer="21" ratio="10">40</text>
 <rectangle x1="-21.844" y1="-1.524" x2="-21.336" y2="-1.016" layer="51"/>
 <rectangle x1="-24.384" y1="-1.524" x2="-23.876" y2="-1.016" layer="51"/>
 <rectangle x1="-19.304" y1="-1.524" x2="-18.796" y2="-1.016" layer="51"/>
@@ -633,7 +514,7 @@ For the Nordic NRF51822&lt;br&gt;
 <wire x1="2.25" y1="1.3" x2="2.25" y2="-1.3" width="0.127" layer="51"/>
 <wire x1="2.25" y1="-1.3" x2="-2.25" y2="-1.3" width="0.127" layer="51"/>
 <wire x1="-2.25" y1="-1.3" x2="-2.25" y2="1.3" width="0.127" layer="51"/>
-<wire x1="0.7" y1="1.05" x2="0.7" y2="-1.05" width="0.6096" layer="21"/>
+<wire x1="0.7" y1="0.796" x2="0.7" y2="-0.796" width="0.4064" layer="21"/>
 <text x="-2" y="2" size="1.27" layer="25">&gt;NAME</text>
 <text x="-2" y="-3" size="1.27" layer="27">&gt;VALUE</text>
 </package>
@@ -646,8 +527,7 @@ For the Nordic NRF51822&lt;br&gt;
 <wire x1="-5.15" y1="-5.5" x2="-5.15" y2="5.5" width="0.127" layer="51"/>
 <text x="-5" y="7" size="1.27" layer="25">&gt;NAME</text>
 <text x="-5" y="-8" size="1.27" layer="27">&gt;VALUE</text>
-<wire x1="-5" y1="4" x2="-3" y2="4" width="0.6096" layer="21"/>
-<wire x1="-4" y1="5" x2="-4" y2="3" width="0.6096" layer="21"/>
+<text x="-3.175" y="3.81" size="1.27" layer="21" font="vector">+</text>
 </package>
 <package name="INDUCTOR">
 <smd name="2" x="5.45" y="0" dx="3.5" dy="5.4" layer="1"/>
@@ -697,6 +577,10 @@ For the Nordic NRF51822&lt;br&gt;
 <pad name="2" x="-2.54" y="0" drill="1.6" thermals="no"/>
 <pad name="3" x="2.54" y="0" drill="1.6" thermals="no"/>
 <pad name="4" x="7.62" y="0" drill="1.6" thermals="no"/>
+<wire x1="-10.16" y1="4.7" x2="10.16" y2="4.7" width="0.127" layer="51"/>
+<wire x1="10.16" y1="4.7" x2="10.16" y2="-4.7" width="0.127" layer="51"/>
+<wire x1="10.16" y1="-4.7" x2="-10.16" y2="-4.7" width="0.127" layer="51"/>
+<wire x1="-10.16" y1="-4.7" x2="-10.16" y2="4.7" width="0.127" layer="51"/>
 </package>
 <package name="SJ_2">
 <description>&lt;b&gt;Solder jumper&lt;/b&gt;</description>
@@ -934,259 +818,488 @@ Please make sure your boards conform to these design rules.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="OUTLINE" library="3dprinter" package="OUTLINE" value="OUTLINE" x="0" y="0"/>
-<element name="PI_HEADER" library="3dprinter" package="MA20-2" value="" x="32.5" y="52.5">
+<element name="OUTLINE" library="3dprinter" package="OUTLINE" value="OUTLINE" x="0" y="0" smashed="yes"/>
+<element name="PI_HEADER" library="3dprinter" package="MA20-2" value="" x="32.5" y="52.5" smashed="yes">
 <attribute name="MF" value="" x="32.5" y="52.5" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="32.5" y="52.5" size="1.778" layer="27" display="off"/>
 <attribute name="OC_FARNELL" value="unknown" x="32.5" y="52.5" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="32.5" y="52.5" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="45.2" y="48.309" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="IC_M1" library="3dprinter" package="QFN36" value="TMC2100" x="55.269" y="17.042" rot="MR270">
+<element name="IC_M1" library="3dprinter" package="QFN36" value="TMC2100" x="55.269" y="17.042" smashed="yes" rot="MR270">
 <attribute name="DIGIKEY" value="1460-1128-1-ND" x="55.269" y="17.042" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="57.269" y="18.542" size="0.6096" layer="28" font="vector" rot="MR270"/>
 </element>
-<element name="C1_M1" library="3dprinter" package="C0603" value="100n" x="50.189" y="12.724" rot="MR180"/>
-<element name="C2_M1" library="3dprinter" package="C0603" value="100n" x="59.436" y="13.589" rot="MR90"/>
-<element name="C3_M1" library="3dprinter" package="C0603" value="1u" x="50.189" y="14.248" rot="MR180"/>
-<element name="C4_M1" library="3dprinter" package="C0603" value="100n" x="50.189" y="11.2" rot="MR0"/>
-<element name="C5_M1" library="3dprinter" package="C0603" value="100n" x="51.84" y="9.549" rot="MR180"/>
-<element name="R2_M1" library="3dprinter" package="R0805" value="TBD" x="62.333" y="13.565" rot="MR90"/>
-<element name="R3_M1" library="3dprinter" package="R0805" value="TBD" x="49.3" y="18.312" rot="MR270"/>
-<element name="R1_M1" library="3dprinter" package="R0603" value="20k" x="56.031" y="10.946" rot="MR0"/>
-<element name="C6_M1" library="3dprinter" package="C0603" value="100n" x="60.603" y="19.709" rot="MR180"/>
-<element name="C7_M1" library="3dprinter" package="C0603" value="470n" x="55.015" y="6.882" rot="MR180"/>
-<element name="R4_M1" library="3dprinter" package="R0603" value="2R2 / 3R3" x="55.015" y="8.406" rot="MR180"/>
-<element name="C8_M1" library="3dprinter" package="C0603" value="4.7u" x="56.031" y="12.47" rot="MR180"/>
-<element name="MOTOR1" library="3dprinter" package="MA04-1" value="" x="50.8" y="3.81">
+<element name="C1_M1" library="3dprinter" package="C0603" value="100n" x="50.189" y="12.724" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="49.554" y="14.629" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C2_M1" library="3dprinter" package="C0603" value="100n" x="59.436" y="13.589" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="57.531" y="12.954" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="C3_M1" library="3dprinter" package="C0603" value="1u" x="50.189" y="14.248" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="49.554" y="16.153" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C4_M1" library="3dprinter" package="C0603" value="100n" x="50.189" y="11.2" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="50.824" y="9.295" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C5_M1" library="3dprinter" package="C0603" value="100n" x="51.84" y="9.549" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="51.205" y="11.454" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R2_M1" library="3dprinter" package="R0805" value="TBD" x="62.333" y="13.565" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="59.793" y="12.93" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="R3_M1" library="3dprinter" package="R0805" value="TBD" x="49.3" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="51.84" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_M1" library="3dprinter" package="R0603" value="20k" x="56.031" y="10.946" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="56.666" y="9.041" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C6_M1" library="3dprinter" package="C0603" value="100n" x="60.603" y="19.709" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="59.968" y="21.614" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C7_M1" library="3dprinter" package="C0603" value="470n" x="55.015" y="6.882" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="54.38" y="8.787" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R4_M1" library="3dprinter" package="R0603" value="2R2 / 3R3" x="55.015" y="8.406" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="54.38" y="10.311" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C8_M1" library="3dprinter" package="C0603" value="4.7u" x="56.031" y="12.47" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="55.396" y="14.375" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="X" library="3dprinter" package="MA04-1" value="" x="50.8" y="3.81" smashed="yes">
 <attribute name="MF" value="" x="50.8" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="50.8" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="47.371" y="9.144" size="2.54" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="50.8" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="50.8" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="51.435" y="5.461" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="IC1" library="3dprinter" package="QFN48" value="NRF51822" x="60.452" y="37.846" rot="MR180">
+<element name="IC1" library="3dprinter" package="QFN48" value="NRF51822" x="60.452" y="37.846" smashed="yes" rot="MR180">
 <attribute name="DIGIKEY" value="1490-1025-ND" x="60.452" y="37.846" size="1.778" layer="28" rot="MR180" display="off"/>
+<attribute name="VALUE" x="58.452" y="39.846" size="0.6096" layer="28" font="vector" rot="MR180"/>
 </element>
-<element name="C11" library="3dprinter" package="C0603" value="12p" x="64.262" y="31.242" rot="MR180"/>
-<element name="C9" library="3dprinter" package="C0603" value="12p" x="64.262" y="25.4" rot="MR180"/>
-<element name="C10" library="3dprinter" package="C0603" value="47n" x="68.072" y="40.132" rot="MR90"/>
-<element name="C12" library="3dprinter" package="C0603" value="100n" x="61.722" y="28.448" rot="MR270"/>
-<element name="C13" library="3dprinter" package="C0603" value="100n" x="54.73" y="41.568" rot="MR0"/>
-<element name="C14" library="3dprinter" package="C0603" value="100n" x="55.626" y="33.782" rot="MR270"/>
-<element name="C15" library="3dprinter" package="C0603" value="1n" x="65.024" y="33.782" rot="MR270"/>
-<element name="POT_M1" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="60.095" y="8.914" rot="MR90">
+<element name="C11" library="3dprinter" package="C0603" value="12p" x="64.262" y="31.242" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="63.627" y="33.147" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C9" library="3dprinter" package="C0603" value="12p" x="64.262" y="25.4" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="63.627" y="27.305" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C10" library="3dprinter" package="C0603" value="47n" x="68.072" y="40.132" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="66.167" y="39.497" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="C12" library="3dprinter" package="C0603" value="100n" x="61.722" y="28.448" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="63.627" y="29.083" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="C13" library="3dprinter" package="C0603" value="100n" x="54.73" y="41.568" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="55.365" y="39.663" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C14" library="3dprinter" package="C0603" value="100n" x="55.626" y="33.782" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="57.531" y="34.417" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="C15" library="3dprinter" package="C0603" value="1n" x="65.024" y="33.782" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="66.929" y="34.417" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="POT_M1" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="60.095" y="8.914" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="3314R-1-103ECT-ND" x="60.095" y="8.914" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="VALUE" x="62.695" y="5.414" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="IC_M2" library="3dprinter" package="QFN36" value="TMC2100" x="40.029" y="17.042" rot="MR270">
+<element name="IC_M2" library="3dprinter" package="QFN36" value="TMC2100" x="40.029" y="17.042" smashed="yes" rot="MR270">
 <attribute name="DIGIKEY" value="1460-1128-1-ND" x="40.029" y="17.042" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="42.029" y="18.542" size="0.6096" layer="28" font="vector" rot="MR270"/>
 </element>
-<element name="C1_M2" library="3dprinter" package="C0603" value="100n" x="34.949" y="12.724" rot="MR180"/>
-<element name="C2_M2" library="3dprinter" package="C0603" value="100n" x="44.196" y="13.589" rot="MR90"/>
-<element name="C3_M2" library="3dprinter" package="C0603" value="1u" x="34.949" y="14.248" rot="MR180"/>
-<element name="C4_M2" library="3dprinter" package="C0603" value="100n" x="34.949" y="11.2" rot="MR0"/>
-<element name="C5_M2" library="3dprinter" package="C0603" value="100n" x="36.6" y="9.549" rot="MR180"/>
-<element name="R2_M2" library="3dprinter" package="R0805" value="TBD" x="45.998" y="18.312" rot="MR270"/>
-<element name="R3_M2" library="3dprinter" package="R0805" value="TBD" x="34.06" y="18.312" rot="MR270"/>
-<element name="R1_M2" library="3dprinter" package="R0603" value="20k" x="40.791" y="10.946" rot="MR0"/>
-<element name="C6_M2" library="3dprinter" package="C0603" value="100n" x="43.331" y="20.979" rot="MR180"/>
-<element name="C7_M2" library="3dprinter" package="C0603" value="470n" x="39.775" y="6.882" rot="MR180"/>
-<element name="R4_M2" library="3dprinter" package="R0603" value="2R2 / 3R3" x="39.775" y="8.406" rot="MR180"/>
-<element name="C8_M2" library="3dprinter" package="C0603" value="4.7u" x="40.791" y="12.47" rot="MR180"/>
-<element name="POT_M2" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="44.855" y="8.914" rot="MR90">
+<element name="C1_M2" library="3dprinter" package="C0603" value="100n" x="34.949" y="12.724" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="34.314" y="14.629" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C2_M2" library="3dprinter" package="C0603" value="100n" x="44.196" y="13.589" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="42.291" y="12.954" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="C3_M2" library="3dprinter" package="C0603" value="1u" x="34.949" y="14.248" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="34.314" y="16.153" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C4_M2" library="3dprinter" package="C0603" value="100n" x="34.949" y="11.2" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="35.584" y="9.295" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C5_M2" library="3dprinter" package="C0603" value="100n" x="36.6" y="9.549" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="35.965" y="11.454" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R2_M2" library="3dprinter" package="R0805" value="TBD" x="45.998" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="48.538" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R3_M2" library="3dprinter" package="R0805" value="TBD" x="34.06" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="36.6" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_M2" library="3dprinter" package="R0603" value="20k" x="40.791" y="10.946" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="41.426" y="9.041" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C6_M2" library="3dprinter" package="C0603" value="100n" x="43.331" y="20.979" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="42.696" y="22.884" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C7_M2" library="3dprinter" package="C0603" value="470n" x="39.775" y="6.882" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="39.14" y="8.787" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R4_M2" library="3dprinter" package="R0603" value="2R2 / 3R3" x="39.775" y="8.406" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="39.14" y="10.311" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C8_M2" library="3dprinter" package="C0603" value="4.7u" x="40.791" y="12.47" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="40.156" y="14.375" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="POT_M2" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="44.855" y="8.914" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="3314R-1-103ECT-ND" x="44.855" y="8.914" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="VALUE" x="47.455" y="5.414" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="IC_M3" library="3dprinter" package="QFN36" value="TMC2100" x="24.789" y="17.042" rot="MR270">
+<element name="IC_M3" library="3dprinter" package="QFN36" value="TMC2100" x="24.789" y="17.042" smashed="yes" rot="MR270">
 <attribute name="DIGIKEY" value="1460-1128-1-ND" x="24.789" y="17.042" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="26.789" y="18.542" size="0.6096" layer="28" font="vector" rot="MR270"/>
 </element>
-<element name="C1_M3" library="3dprinter" package="C0603" value="100n" x="19.709" y="12.724" rot="MR180"/>
-<element name="C2_M3" library="3dprinter" package="C0603" value="100n" x="28.956" y="13.589" rot="MR90"/>
-<element name="C3_M3" library="3dprinter" package="C0603" value="1u" x="19.709" y="14.248" rot="MR180"/>
-<element name="C4_M3" library="3dprinter" package="C0603" value="100n" x="19.709" y="11.2" rot="MR0"/>
-<element name="C5_M3" library="3dprinter" package="C0603" value="100n" x="21.36" y="9.549" rot="MR180"/>
-<element name="R2_M3" library="3dprinter" package="R0805" value="TBD" x="30.758" y="18.312" rot="MR270"/>
-<element name="R3_M3" library="3dprinter" package="R0805" value="TBD" x="18.82" y="18.312" rot="MR270"/>
-<element name="R1_M3" library="3dprinter" package="R0603" value="20k" x="25.551" y="10.946" rot="MR0"/>
-<element name="C6_M3" library="3dprinter" package="C0603" value="100n" x="28.091" y="20.979" rot="MR180"/>
-<element name="C7_M3" library="3dprinter" package="C0603" value="470n" x="24.535" y="6.882" rot="MR180"/>
-<element name="R4_M3" library="3dprinter" package="R0603" value="2R2 / 3R3" x="24.535" y="8.406" rot="MR180"/>
-<element name="C8_M3" library="3dprinter" package="C0603" value="4.7u" x="25.551" y="12.47" rot="MR180"/>
-<element name="POT_M3" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="29.615" y="8.914" rot="MR90">
+<element name="C1_M3" library="3dprinter" package="C0603" value="100n" x="19.709" y="12.724" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="19.074" y="14.629" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C2_M3" library="3dprinter" package="C0603" value="100n" x="28.956" y="13.589" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="27.051" y="12.954" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="C3_M3" library="3dprinter" package="C0603" value="1u" x="19.709" y="14.248" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="19.074" y="16.153" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C4_M3" library="3dprinter" package="C0603" value="100n" x="19.709" y="11.2" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="20.344" y="9.295" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C5_M3" library="3dprinter" package="C0603" value="100n" x="21.36" y="9.549" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="20.725" y="11.454" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R2_M3" library="3dprinter" package="R0805" value="TBD" x="30.758" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="33.298" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R3_M3" library="3dprinter" package="R0805" value="TBD" x="18.82" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="21.36" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_M3" library="3dprinter" package="R0603" value="20k" x="25.551" y="10.946" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="26.186" y="9.041" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C6_M3" library="3dprinter" package="C0603" value="100n" x="28.091" y="20.979" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="27.456" y="22.884" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C7_M3" library="3dprinter" package="C0603" value="470n" x="24.535" y="6.882" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="23.9" y="8.787" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R4_M3" library="3dprinter" package="R0603" value="2R2 / 3R3" x="24.535" y="8.406" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="23.9" y="10.311" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C8_M3" library="3dprinter" package="C0603" value="4.7u" x="25.551" y="12.47" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="24.916" y="14.375" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="POT_M3" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="29.615" y="8.914" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="3314R-1-103ECT-ND" x="29.615" y="8.914" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="VALUE" x="32.215" y="5.414" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="IC_M4" library="3dprinter" package="QFN36" value="TMC2100" x="9.549" y="17.042" rot="MR270">
+<element name="IC_M4" library="3dprinter" package="QFN36" value="TMC2100" x="9.549" y="17.042" smashed="yes" rot="MR270">
 <attribute name="DIGIKEY" value="1460-1128-1-ND" x="9.549" y="17.042" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="11.549" y="18.542" size="0.6096" layer="28" font="vector" rot="MR270"/>
 </element>
-<element name="C1_M4" library="3dprinter" package="C0603" value="100n" x="4.469" y="12.724" rot="MR180"/>
-<element name="C2_M4" library="3dprinter" package="C0603" value="100n" x="13.716" y="13.589" rot="MR90"/>
-<element name="C3_M4" library="3dprinter" package="C0603" value="1u" x="4.469" y="14.248" rot="MR180"/>
-<element name="C4_M4" library="3dprinter" package="C0603" value="100n" x="4.469" y="11.2" rot="MR0"/>
-<element name="C5_M4" library="3dprinter" package="C0603" value="100n" x="6.12" y="9.549" rot="MR180"/>
-<element name="R2_M4" library="3dprinter" package="R0805" value="TBD" x="15.518" y="18.312" rot="MR270"/>
-<element name="R3_M4" library="3dprinter" package="R0805" value="TBD" x="3.58" y="18.312" rot="MR270"/>
-<element name="R1_M4" library="3dprinter" package="R0603" value="20k" x="10.311" y="10.946" rot="MR0"/>
-<element name="C6_M4" library="3dprinter" package="C0603" value="100n" x="13.105" y="20.979" rot="MR180"/>
-<element name="C7_M4" library="3dprinter" package="C0603" value="470n" x="9.295" y="6.882" rot="MR180"/>
-<element name="R4_M4" library="3dprinter" package="R0603" value="2R2 / 3R3" x="9.295" y="8.406" rot="MR180"/>
-<element name="C8_M4" library="3dprinter" package="C0603" value="4.7u" x="10.311" y="12.47" rot="MR180"/>
-<element name="POT_M4" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="14.375" y="8.914" rot="MR90">
+<element name="C1_M4" library="3dprinter" package="C0603" value="100n" x="4.469" y="12.724" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="3.834" y="14.629" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C2_M4" library="3dprinter" package="C0603" value="100n" x="13.716" y="13.589" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="11.811" y="12.954" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="C3_M4" library="3dprinter" package="C0603" value="1u" x="4.469" y="14.248" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="3.834" y="16.153" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C4_M4" library="3dprinter" package="C0603" value="100n" x="4.469" y="11.2" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="5.104" y="9.295" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C5_M4" library="3dprinter" package="C0603" value="100n" x="6.12" y="9.549" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="5.485" y="11.454" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R2_M4" library="3dprinter" package="R0805" value="TBD" x="15.518" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="18.058" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R3_M4" library="3dprinter" package="R0805" value="TBD" x="3.58" y="18.312" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="6.12" y="18.947" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_M4" library="3dprinter" package="R0603" value="20k" x="10.311" y="10.946" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="10.946" y="9.041" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C6_M4" library="3dprinter" package="C0603" value="100n" x="13.105" y="20.979" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="12.47" y="22.884" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C7_M4" library="3dprinter" package="C0603" value="470n" x="9.295" y="6.882" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="8.66" y="8.787" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R4_M4" library="3dprinter" package="R0603" value="2R2 / 3R3" x="9.295" y="8.406" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="8.66" y="10.311" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="C8_M4" library="3dprinter" package="C0603" value="4.7u" x="10.311" y="12.47" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="9.676" y="14.375" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="POT_M4" library="3dprinter" package="TRIMPOT" value="TRIMPOT" x="14.375" y="8.914" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="3314R-1-103ECT-ND" x="14.375" y="8.914" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="VALUE" x="16.975" y="5.414" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="MOTOR2" library="3dprinter" package="MA04-1" value="" x="38.1" y="3.81">
+<element name="Y" library="3dprinter" package="MA04-1" value="" x="38.1" y="3.81" smashed="yes">
 <attribute name="MF" value="" x="38.1" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="38.1" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="35.56" y="9.144" size="2.54" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="38.1" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="38.1" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="38.735" y="5.461" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="MOTOR3" library="3dprinter" package="MA04-1" value="" x="25.4" y="3.81">
+<element name="Z" library="3dprinter" package="MA04-1" value="" x="25.4" y="3.81" smashed="yes">
 <attribute name="MF" value="" x="25.4" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="25.4" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="22.098" y="9.144" size="2.54" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="25.4" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="25.4" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="26.035" y="5.461" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="MOTOR4" library="3dprinter" package="MA04-1" value="" x="12.7" y="3.81">
+<element name="E" library="3dprinter" package="MA04-1" value="" x="12.7" y="3.81" smashed="yes">
 <attribute name="MF" value="" x="12.7" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="" x="12.7" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="9.398" y="9.144" size="2.54" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="12.7" y="3.81" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="12.7" y="3.81" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="13.335" y="5.461" size="1.27" layer="27" ratio="10"/>
 </element>
-<element name="Y1" library="3dprinter" package="CRYSTAL" value="CRYSTAL" x="64.262" y="28.194" rot="MR90">
+<element name="Y1" library="3dprinter" package="CRYSTAL" value="CRYSTAL" x="64.262" y="28.194" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="1253-1718-1-ND" x="64.262" y="28.194" size="1.778" layer="28" rot="MR90" display="off"/>
+<attribute name="VALUE" x="61.722" y="26.924" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="BAL" library="3dprinter" package="BALUN" value="BALUNBALUN" x="65.506" y="36.724" rot="MR180">
+<element name="BAL" library="3dprinter" package="BALUN" value="BALUNBALUN" x="65.506" y="36.724" smashed="yes" rot="MR180">
 <attribute name="DIGIKEY" value="712-1581-1-ND" x="65.506" y="36.724" size="1.778" layer="28" rot="MR180" display="off"/>
+<attribute name="VALUE" x="64.506" y="38.724" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="ANT" library="3dprinter" package="ANTENNA" value="ANTENNA" x="67.572" y="30.802" rot="MR90">
+<element name="ANT" library="3dprinter" package="ANTENNA" value="ANTENNA" x="67.572" y="30.802" smashed="yes" rot="MR90">
 <attribute name="DIGIKEY" value="712-1010-1-ND" x="67.572" y="30.802" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
-<element name="C1" library="3dprinter" package="C0603" value="2.2n" x="67.31" y="36.576" rot="MR270"/>
-<element name="SWD" library="3dprinter" package="MA04-1" value="" x="66.794" y="49.568" rot="R90">
+<element name="C1" library="3dprinter" package="C0603" value="2.2n" x="67.31" y="36.576" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="69.215" y="37.211" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="SWD" library="3dprinter" package="MA04-1" value="" x="66.794" y="49.568" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="64.143" y="49.492" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="VALUE" x="65.143" y="50.203" size="1.27" layer="27" ratio="10" rot="R90"/>
 </element>
-<element name="Q1_BED" library="3dprinter" package="MOSFET" value="MOSFET" x="9.398" y="26.924" rot="MR0">
+<element name="Q1_BED" library="3dprinter" package="MOSFET" value="MOSFET" x="9.398" y="26.924" smashed="yes" rot="MR0">
 <attribute name="DIGIKEY" value="NTMFS5C604NLT1GOSCT-ND" x="9.398" y="26.924" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="VALUE" x="15.588" y="23.194" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="Q1_NOZ" library="3dprinter" package="MOSFET" value="MOSFET" x="19.05" y="26.924" rot="MR0">
+<element name="Q1_NOZ" library="3dprinter" package="MOSFET" value="MOSFET" x="19.05" y="26.924" smashed="yes" rot="MR0">
 <attribute name="DIGIKEY" value="NTMFS5C604NLT1GOSCT-ND" x="19.05" y="26.924" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="VALUE" x="25.24" y="23.194" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="Q1_FAN1" library="3dprinter" package="SOT23_FAN" value="MOSFETSOT23" x="37.846" y="28.194" rot="MR180">
+<element name="Q1_FAN1" library="3dprinter" package="SOT23_FAN" value="MOSFETSOT23" x="37.846" y="28.194" smashed="yes" rot="MR180">
 <attribute name="DIGIKEY" value="BSS316N H6327CT-ND " x="37.846" y="28.194" size="1.778" layer="28" rot="MR180" display="off"/>
+<attribute name="VALUE" x="34.846" y="26.194" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="Q1_FAN2" library="3dprinter" package="SOT23_FAN" value="MOSFETSOT23" x="30.734" y="28.194" rot="MR180">
+<element name="Q1_FAN2" library="3dprinter" package="SOT23_FAN" value="MOSFETSOT23" x="30.734" y="28.194" smashed="yes" rot="MR180">
 <attribute name="DIGIKEY" value="BSS316N H6327CT-ND " x="30.734" y="28.194" size="1.778" layer="28" rot="MR180" display="off"/>
+<attribute name="VALUE" x="27.734" y="26.194" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="FAN1" library="3dprinter" package="MA02-1" value="" x="35.052" y="25.146" rot="R180">
+<element name="FAN1" library="3dprinter" package="MA02-1" value="" x="35.052" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="39.243" y="27.432" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="38.862" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="FAN2" library="3dprinter" package="MA02-1" value="" x="27.94" y="25.146" rot="R180">
+<element name="FAN2" library="3dprinter" package="MA02-1" value="" x="27.94" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="32.131" y="27.432" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="31.75" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="SWX" library="3dprinter" package="MA02-1" value="" x="49.276" y="34.036" rot="R180">
+<element name="END_X" library="3dprinter" package="MA02-1" value="" x="49.276" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="53.467" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="53.086" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="SWY" library="3dprinter" package="MA02-1" value="" x="42.164" y="34.036" rot="R180">
+<element name="END_Y" library="3dprinter" package="MA02-1" value="" x="42.164" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="46.355" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="45.974" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="SWZ" library="3dprinter" package="MA02-1" value="" x="35.052" y="34.036" rot="R180">
+<element name="END_Z" library="3dprinter" package="MA02-1" value="" x="35.052" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="39.243" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="38.862" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="R1_SWX" library="3dprinter" package="R0603" value="10k" x="54.102" y="33.782" rot="MR270"/>
-<element name="R1_SWY" library="3dprinter" package="R0603" value="10k" x="46.99" y="34.036" rot="MR270"/>
-<element name="R1_SWZ" library="3dprinter" package="R0603" value="10k" x="39.878" y="34.036" rot="MR270"/>
-<element name="R2_FAN1" library="3dprinter" package="R0603" value="100k" x="40.386" y="28.194" rot="MR90"/>
-<element name="R1_FAN1" library="3dprinter" package="R0603" value="100R" x="43.18" y="29.21" rot="MR0"/>
-<element name="R2_FAN2" library="3dprinter" package="R0603" value="100k" x="33.274" y="28.194" rot="MR90"/>
-<element name="R1_FAN2" library="3dprinter" package="R0603" value="100R" x="43.18" y="30.734" rot="MR0"/>
-<element name="R2_NOZ" library="3dprinter" package="R0603" value="100k" x="16.764" y="26.416" rot="MR90"/>
-<element name="R1_NOZ" library="3dprinter" package="R0603" value="100R" x="20.32" y="31.496" rot="MR270"/>
-<element name="R2_BED" library="3dprinter" package="R0603" value="100k" x="8.382" y="31.242" rot="MR270"/>
-<element name="R1_BED" library="3dprinter" package="R0603" value="100R" x="10.16" y="31.242" rot="MR270"/>
-<element name="IC1_REG" library="3dprinter" package="REGULATOR" value="REGULATOR" x="32" y="43.5" rot="MR0">
+<element name="R1_SWX" library="3dprinter" package="R0603" value="10k" x="54.102" y="33.782" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="56.007" y="34.417" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_SWY" library="3dprinter" package="R0603" value="10k" x="46.99" y="34.036" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="48.895" y="34.671" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_SWZ" library="3dprinter" package="R0603" value="10k" x="39.878" y="34.036" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="41.783" y="34.671" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R2_FAN1" library="3dprinter" package="R0603" value="100k" x="40.386" y="28.194" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="38.481" y="27.559" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="R1_FAN1" library="3dprinter" package="R0603" value="100R" x="43.18" y="29.21" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="43.815" y="27.305" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="R2_FAN2" library="3dprinter" package="R0603" value="100k" x="33.274" y="28.194" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="31.369" y="27.559" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="R1_FAN2" library="3dprinter" package="R0603" value="100R" x="43.18" y="30.734" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="43.815" y="28.829" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="R2_NOZ" library="3dprinter" package="R0603" value="100k" x="16.764" y="26.416" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="14.859" y="25.781" size="1.27" layer="28" rot="MR90"/>
+</element>
+<element name="R1_NOZ" library="3dprinter" package="R0603" value="100R" x="20.32" y="31.496" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="22.225" y="32.131" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R2_BED" library="3dprinter" package="R0603" value="100k" x="8.382" y="31.242" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="10.287" y="31.877" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="R1_BED" library="3dprinter" package="R0603" value="100R" x="10.16" y="31.242" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="12.065" y="31.877" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="IC1_REG" library="3dprinter" package="REGULATOR" value="REGULATOR" x="32" y="43.5" smashed="yes" rot="MR0">
 <attribute name="DIGIKEY" value="LM2596SX-5.0/NOPBCT-ND " x="32" y="43.5" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="VALUE" x="41" y="50.5" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="D1_REG" library="3dprinter" package="SCHOTTKY" value="SCHOTTKY" x="27.94" y="44.44" rot="MR270">
+<element name="D1_REG" library="3dprinter" package="SCHOTTKY" value="SCHOTTKY" x="27.94" y="44.44" smashed="yes" rot="MR270">
 <attribute name="DIGIKEY" value="RSX501L-20TE25CT-ND " x="27.94" y="44.44" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="VALUE" x="30.94" y="46.44" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="C1_REG" library="3dprinter" package="TANTULUM" value="560u" x="29.016" y="44" rot="R270">
+<element name="C1_REG" library="3dprinter" package="TANTULUM" value="560u" x="29.016" y="44" smashed="yes" rot="R270">
 <attribute name="DIGIKEY" value="565-4300-1-ND / 565-4301-1-ND " x="29.016" y="44" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="VALUE" x="21.016" y="49" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="C2_REG" library="3dprinter" package="TANTULUM" value="390u" x="15.262" y="44" rot="R90">
+<element name="C2_REG" library="3dprinter" package="TANTULUM" value="390u" x="15.262" y="44" smashed="yes" rot="R90">
 <attribute name="DIGIKEY" value="565-4300-1-ND / 565-4301-1-ND " x="15.262" y="44" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="VALUE" x="23.262" y="39" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="L1_REG" library="3dprinter" package="INDUCTOR" value="33u" x="18.36" y="42.78" rot="MR0">
+<element name="L1_REG" library="3dprinter" package="INDUCTOR" value="33u" x="18.36" y="42.78" smashed="yes" rot="MR0">
 <attribute name="DIGIKEY" value="PM124SH-330M-RCCT-ND " x="18.36" y="42.78" size="1.778" layer="28" rot="MR0" display="off"/>
+<attribute name="VALUE" x="24.71" y="49.765" size="1.27" layer="28" rot="MR0"/>
 </element>
-<element name="IC2_REG" library="3dprinter" package="SOT23" value="LP2985-3V3" x="57.294" y="47.278" rot="MR180">
+<element name="IC2_REG" library="3dprinter" package="SOT23" value="LP2985-3V3" x="57.294" y="47.278" smashed="yes" rot="MR180">
 <attribute name="DIGIKEY" value="296-18476-1-ND" x="57.294" y="47.278" size="1.778" layer="28" rot="MR180" display="off"/>
+<attribute name="VALUE" x="59.199" y="47.913" size="0.4064" layer="28" rot="MR180"/>
 </element>
-<element name="C4_REG" library="3dprinter" package="C0603" value="10n" x="61.24" y="48.156" rot="MR180"/>
-<element name="C5_REG" library="3dprinter" package="C0805" value="2.2u" x="54.736" y="43.344" rot="MR0"/>
-<element name="C3_REG" library="3dprinter" package="C0805" value="1u" x="54.394" y="46.662" rot="MR270"/>
-<element name="+12V" library="3dprinter" package="MA04-1_5MM" value="" x="6.088" y="34.718" rot="R90">
-<attribute name="DIGIKEY" value="ED2702-ND / ED2910-ND " x="6.088" y="34.718" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="C4_REG" library="3dprinter" package="C0603" value="10n" x="61.24" y="48.156" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="60.605" y="50.061" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="BED" library="3dprinter" package="MA04-1" value="" x="14.478" y="34.036" rot="R180">
+<element name="C5_REG" library="3dprinter" package="C0805" value="2.2u" x="54.736" y="43.344" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="56.006" y="40.804" size="1.27" layer="28" rot="MR0"/>
+</element>
+<element name="C3_REG" library="3dprinter" package="C0805" value="1u" x="54.394" y="46.662" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="56.934" y="47.932" size="1.27" layer="28" rot="MR270"/>
+</element>
+<element name="+12V" library="3dprinter" package="MA04-1_5MM" value="" x="4.564" y="34.718" smashed="yes" rot="R90">
+<attribute name="DIGIKEY" value="ED2699-ND / ED2910-ND " x="4.564" y="34.718" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="VALUE" x="2.913" y="35.353" size="1.27" layer="27" ratio="10" rot="R90"/>
+</element>
+<element name="BED" library="3dprinter" package="MA04-1" value="" x="14.478" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="19.939" y="35.814" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="13.843" y="32.385" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="NOZ" library="3dprinter" package="MA04-1" value="" x="26.67" y="34.036" rot="R180">
+<element name="NOZZLE" library="3dprinter" package="MA04-1" value="" x="26.67" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="32.131" y="37.338" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="26.035" y="32.385" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="TH_NOZ" library="3dprinter" package="MA02-1" value="" x="42.164" y="25.146" rot="R180">
+<element name="TEMP_NOZZLE" library="3dprinter" package="MA02-1" value="" x="42.164" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="46.355" y="28.194" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="45.974" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="TH_BED" library="3dprinter" package="MA02-1" value="" x="49.276" y="25.146" rot="R180">
+<element name="TEMP_BED" library="3dprinter" package="MA02-1" value="" x="49.276" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="53.467" y="28.194" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="VALUE" x="53.086" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="R3_NOZ" library="3dprinter" package="R0603" value="100k" x="43.18" y="27.178" rot="MR180"/>
-<element name="R3_BED" library="3dprinter" package="R0603" value="100k" x="50.292" y="27.178" rot="MR180"/>
-<element name="SJ1" library="3dprinter" package="SJ_2" value="" x="61.468" y="19.304" rot="R90"/>
-<element name="SJ2" library="3dprinter" package="SJ_2" value="" x="48.768" y="19.304" rot="R90"/>
-<element name="SJ3" library="3dprinter" package="SJ_2" value="" x="46.228" y="19.304" rot="R90"/>
-<element name="SJ4" library="3dprinter" package="SJ_2" value="" x="33.528" y="19.304" rot="R90"/>
-<element name="SJ5" library="3dprinter" package="SJ_2" value="" x="30.988" y="19.304" rot="R90"/>
-<element name="SJ6" library="3dprinter" package="SJ_2" value="" x="18.288" y="19.304" rot="R90"/>
-<element name="SJ7" library="3dprinter" package="SJ_2" value="" x="15.748" y="19.304" rot="R90"/>
-<element name="SJ8" library="3dprinter" package="SJ_2" value="" x="5.588" y="22.225" rot="R90"/>
-<element name="SWA" library="3dprinter" package="BUTTON" value="BUTTON" x="57.658" y="46.228">
+<element name="R3_NOZ" library="3dprinter" package="R0603" value="100k" x="43.18" y="27.178" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="42.545" y="29.083" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="R3_BED" library="3dprinter" package="R0603" value="100k" x="50.292" y="27.178" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="49.657" y="29.083" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="CHG1_X" library="3dprinter" package="SJ_2" value="" x="61.468" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="62.738" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="61.468" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CHG2_X" library="3dprinter" package="SJ_2" value="" x="48.768" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="50.038" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="48.768" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CHG1_Y" library="3dprinter" package="SJ_2" value="" x="46.228" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="44.45" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="46.228" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CHG2_Y" library="3dprinter" package="SJ_2" value="" x="33.528" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="34.798" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="33.528" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CHG1_Z" library="3dprinter" package="SJ_2" value="" x="30.988" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="29.21" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="30.988" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CHG2_Z" library="3dprinter" package="SJ_2" value="" x="18.288" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="19.558" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="18.288" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CFG1_E" library="3dprinter" package="SJ_2" value="" x="15.748" y="19.304" smashed="yes" rot="R90">
+<attribute name="NAME" x="13.97" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="15.748" y="19.2039" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="CFG2_E" library="3dprinter" package="SJ_2" value="" x="5.588" y="22.225" smashed="yes" rot="R90">
+<attribute name="NAME" x="6.858" y="23.876" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="5.588" y="22.1249" size="0.02" layer="27" rot="R90"/>
+</element>
+<element name="SWA" library="3dprinter" package="BUTTON" value="BUTTON" x="57.658" y="46.228" smashed="yes">
 <attribute name="DIGIKEY" value="CKN9085CT-ND" x="57.658" y="46.228" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="53.658" y="41.228" size="1.27" layer="27"/>
 </element>
-<element name="R1_SWA" library="3dprinter" package="R0603" value="10k" x="61.976" y="45.72" rot="MR180"/>
-<element name="LED" library="3dprinter" package="RGBLED" value="RGBLED" x="61.4045" y="40.64">
+<element name="R1_SWA" library="3dprinter" package="R0603" value="10k" x="61.976" y="45.72" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="61.341" y="47.625" size="1.27" layer="28" rot="MR180"/>
+</element>
+<element name="LED" library="3dprinter" package="RGBLED" value="RGBLED" x="61.4045" y="40.64" smashed="yes">
 <attribute name="DIGIKEY" value="160-1446-1-ND" x="61.4045" y="40.64" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="59.4045" y="42.64" size="1.27" layer="27"/>
 </element>
-<element name="R1_LED" library="3dprinter" package="R0603" value="100R" x="61.976" y="44.196" rot="MR180"/>
-<element name="TP1" library="3dprinter" package="B1,27" value="TPB1,27" x="65.278" y="42.926">
-<attribute name="TP_SIGNAL_NAME" value="" x="65.278" y="42.926" size="1.778" layer="27" display="off"/>
+<element name="R1_LED" library="3dprinter" package="R0603" value="100R" x="61.976" y="44.196" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="61.341" y="46.101" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="TP2" library="3dprinter" package="B1,27" value="TPB1,27" x="60.96" y="27.178">
-<attribute name="TP_SIGNAL_NAME" value="" x="60.96" y="27.178" size="1.778" layer="27" display="off"/>
+<element name="P0.17" library="3dprinter" package="B1,27" value="TPB1,27" x="65.278" y="42.926" smashed="yes">
+<attribute name="NAME" x="67.31" y="43.561" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="64.643" y="41.021" size="1" layer="37"/>
+<attribute name="VALUE" x="64.643" y="42.164" size="0.0254" layer="27"/>
+</element>
+<element name="P0.21" library="3dprinter" package="B1,27" value="TPB1,27" x="60.96" y="27.178" smashed="yes">
+<attribute name="NAME" x="59.182" y="28.829" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="60.325" y="25.273" size="1" layer="37"/>
+<attribute name="VALUE" x="60.325" y="26.416" size="0.0254" layer="27"/>
 </element>
 </elements>
 <signals>
@@ -1367,12 +1480,12 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="IC2_REG" pad="3"/>
 <contactref element="+12V" pad="3"/>
 <contactref element="+12V" pad="4"/>
-<contactref element="NOZ" pad="3"/>
+<contactref element="NOZZLE" pad="3"/>
 <contactref element="BED" pad="3"/>
 <contactref element="BED" pad="4"/>
-<contactref element="NOZ" pad="4"/>
+<contactref element="NOZZLE" pad="4"/>
 <polygon width="0.1524" layer="16" isolate="0.4064">
-<vertex x="4.318" y="44.958"/>
+<vertex x="3.81" y="44.958"/>
 <vertex x="6.096" y="44.958"/>
 <vertex x="7.874" y="43.18"/>
 <vertex x="7.874" y="39.37"/>
@@ -1391,9 +1504,9 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="13.716" y="33.147"/>
 <vertex x="10.16" y="33.02"/>
 <vertex x="8.636" y="34.798"/>
-<vertex x="4.318" y="34.798"/>
-<vertex x="2.794" y="36.068"/>
-<vertex x="2.794" y="43.434"/>
+<vertex x="3.81" y="34.798"/>
+<vertex x="2.286" y="36.068"/>
+<vertex x="2.286" y="43.434"/>
 </polygon>
 <polygon width="0.1524" layer="16" isolate="0.4064">
 <vertex x="23.876" y="38.354"/>
@@ -1425,18 +1538,18 @@ Please make sure your boards conform to these design rules.</description>
 <vertex x="8" y="43.5"/>
 <vertex x="8" y="36"/>
 <vertex x="7" y="35"/>
-<vertex x="4" y="35"/>
-<vertex x="4" y="14.5"/>
-<vertex x="4.5" y="14"/>
+<vertex x="2.73" y="35"/>
+<vertex x="2.73" y="14.5"/>
+<vertex x="3.23" y="14"/>
 <vertex x="65" y="14"/>
 <vertex x="65" y="3.5" curve="-90"/>
 <vertex x="61.5" y="0"/>
 <vertex x="3.5" y="0" curve="-90"/>
 <vertex x="0" y="3.5"/>
 </polygon>
-<wire x1="5.319" y1="15.225" x2="4.079" y2="15.225" width="0.254" layer="16"/>
-<wire x1="4.079" y1="15.225" x2="3.556" y2="15.748" width="0.254" layer="16"/>
-<via x="3.556" y="15.748" extent="1-16" drill="0.3302"/>
+<wire x1="5.319" y1="15.225" x2="3.063" y2="15.225" width="0.254" layer="16"/>
+<wire x1="3.063" y1="15.225" x2="2.54" y2="15.748" width="0.254" layer="16"/>
+<via x="2.54" y="15.748" extent="1-16" drill="0.3302"/>
 <wire x1="13.74" y1="15.645" x2="14.581" y2="15.645" width="0.254" layer="16"/>
 <wire x1="14.581" y1="15.645" x2="14.732" y2="15.494" width="0.1524" layer="16"/>
 <via x="14.732" y="15.494" extent="1-16" drill="0.3302"/>
@@ -1677,9 +1790,9 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="SWD" pad="1"/>
 <contactref element="Q1_FAN2" pad="2"/>
 <contactref element="Q1_FAN1" pad="2"/>
-<contactref element="SWX" pad="1"/>
-<contactref element="SWY" pad="1"/>
-<contactref element="SWZ" pad="1"/>
+<contactref element="END_X" pad="1"/>
+<contactref element="END_Y" pad="1"/>
+<contactref element="END_Z" pad="1"/>
 <contactref element="R2_FAN1" pad="1"/>
 <contactref element="R2_FAN2" pad="1"/>
 <contactref element="R2_BED" pad="1"/>
@@ -1702,8 +1815,8 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="IC2_REG" pad="2"/>
 <contactref element="+12V" pad="2"/>
 <contactref element="+12V" pad="1"/>
-<contactref element="TH_BED" pad="1"/>
-<contactref element="TH_NOZ" pad="1"/>
+<contactref element="TEMP_BED" pad="1"/>
+<contactref element="TEMP_NOZZLE" pad="1"/>
 <via x="44.958" y="48.006" extent="1-16" drill="0.6" shape="square"/>
 <via x="44.958" y="45.466" extent="1-16" drill="0.6" shape="square"/>
 <via x="44.958" y="44.196" extent="1-16" drill="0.6" shape="square"/>
@@ -1736,14 +1849,14 @@ Please make sure your boards conform to these design rules.</description>
 <via x="40.386" y="40.386" extent="1-16" drill="0.6" shape="square"/>
 <via x="40.386" y="39.116" extent="1-16" drill="0.6" shape="square"/>
 <via x="40.386" y="46.736" extent="1-16" drill="0.6" shape="square"/>
-<contactref element="SJ1" pad="1"/>
-<contactref element="SJ2" pad="1"/>
-<contactref element="SJ3" pad="1"/>
-<contactref element="SJ4" pad="1"/>
-<contactref element="SJ5" pad="1"/>
-<contactref element="SJ6" pad="1"/>
-<contactref element="SJ7" pad="1"/>
-<contactref element="SJ8" pad="1"/>
+<contactref element="CHG1_X" pad="1"/>
+<contactref element="CHG2_X" pad="1"/>
+<contactref element="CHG1_Y" pad="1"/>
+<contactref element="CHG2_Y" pad="1"/>
+<contactref element="CHG1_Z" pad="1"/>
+<contactref element="CHG2_Z" pad="1"/>
+<contactref element="CFG1_E" pad="1"/>
+<contactref element="CFG2_E" pad="1"/>
 <polygon width="0.254" layer="16" isolate="0.3048" rank="2">
 <vertex x="0" y="52.578"/>
 <vertex x="0" y="3.556" curve="90"/>
@@ -1915,7 +2028,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA1_M1">
 <contactref element="IC_M1" pad="34"/>
-<contactref element="MOTOR1" pad="1"/>
+<contactref element="X" pad="1"/>
 <wire x1="52.269" y1="17.792" x2="51.296" y2="17.792" width="0.254" layer="16"/>
 <wire x1="51.296" y1="17.792" x2="51.054" y2="18.034" width="0.254" layer="16"/>
 <via x="51.054" y="18.034" extent="1-16" drill="0.3302"/>
@@ -1926,7 +2039,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA2_M1">
 <contactref element="IC_M1" pad="32"/>
-<contactref element="MOTOR1" pad="2"/>
+<contactref element="X" pad="2"/>
 <wire x1="52.269" y1="16.792" x2="51.336" y2="16.792" width="0.254" layer="16"/>
 <wire x1="51.336" y1="16.792" x2="51.054" y2="16.51" width="0.254" layer="16"/>
 <via x="51.054" y="16.51" extent="1-16" drill="0.3302"/>
@@ -1936,7 +2049,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB1_M1">
 <contactref element="IC_M1" pad="13"/>
-<contactref element="MOTOR1" pad="3"/>
+<contactref element="X" pad="3"/>
 <wire x1="58.42" y1="17.018" x2="58.42" y2="15.24" width="0.254" layer="1"/>
 <wire x1="58.42" y1="15.24" x2="52.07" y2="8.89" width="0.254" layer="1"/>
 <wire x1="52.07" y1="8.89" x2="52.07" y2="3.81" width="0.254" layer="1"/>
@@ -1947,7 +2060,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB2_M1">
 <contactref element="IC_M1" pad="15"/>
-<contactref element="MOTOR1" pad="4"/>
+<contactref element="X" pad="4"/>
 <wire x1="58.269" y1="16.792" x2="59.408" y2="16.792" width="0.254" layer="16"/>
 <wire x1="59.408" y1="16.792" x2="59.944" y2="16.256" width="0.254" layer="16"/>
 <via x="59.944" y="16.256" extent="1-16" drill="0.3302"/>
@@ -2036,7 +2149,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG1_M1">
 <contactref element="IC_M1" pad="4"/>
-<contactref element="SJ1" pad="2"/>
+<contactref element="CHG1_X" pad="2"/>
 <wire x1="54.519" y1="19.542" x2="54.519" y2="20.991" width="0.1524" layer="16"/>
 <wire x1="54.519" y1="20.991" x2="54.864" y2="21.336" width="0.1524" layer="16"/>
 <via x="54.864" y="21.336" extent="1-16" drill="0.3302"/>
@@ -2047,7 +2160,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG2_M1">
 <contactref element="IC_M1" pad="3"/>
-<contactref element="SJ2" pad="2"/>
+<contactref element="CHG2_X" pad="2"/>
 <wire x1="54.019" y1="19.542" x2="54.019" y2="20.403" width="0.1524" layer="16"/>
 <wire x1="54.019" y1="20.403" x2="53.594" y2="20.828" width="0.1524" layer="16"/>
 <via x="53.594" y="20.828" extent="1-16" drill="0.3302"/>
@@ -2136,14 +2249,14 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="45.046" y1="28.194" x2="50.292" y2="28.194" width="0.1524" layer="16"/>
 <wire x1="50.292" y1="28.194" x2="51.142" y2="27.344" width="0.1524" layer="16"/>
 <wire x1="51.142" y1="27.344" x2="51.142" y2="27.178" width="0.1524" layer="16"/>
-<contactref element="SJ1" pad="3"/>
-<contactref element="SJ2" pad="3"/>
-<contactref element="SJ3" pad="3"/>
-<contactref element="SJ4" pad="3"/>
-<contactref element="SJ5" pad="3"/>
-<contactref element="SJ6" pad="3"/>
-<contactref element="SJ7" pad="3"/>
-<contactref element="SJ8" pad="3"/>
+<contactref element="CHG1_X" pad="3"/>
+<contactref element="CHG2_X" pad="3"/>
+<contactref element="CHG1_Y" pad="3"/>
+<contactref element="CHG2_Y" pad="3"/>
+<contactref element="CHG1_Z" pad="3"/>
+<contactref element="CHG2_Z" pad="3"/>
+<contactref element="CFG1_E" pad="3"/>
+<contactref element="CFG2_E" pad="3"/>
 <wire x1="56.519" y1="19.542" x2="56.519" y2="20.197" width="0.254" layer="16"/>
 <wire x1="56.519" y1="20.197" x2="56.896" y2="20.574" width="0.254" layer="16"/>
 <wire x1="56.896" y1="20.574" x2="58.888" y2="20.574" width="0.254" layer="16"/>
@@ -2300,6 +2413,9 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="56.031" y1="13.232" x2="55.523" y2="13.74" width="0.1524" layer="16"/>
 <wire x1="55.523" y1="13.74" x2="55.523" y2="14.538" width="0.1524" layer="16"/>
 <wire x1="55.523" y1="14.538" x2="55.519" y2="14.542" width="0.1524" layer="16"/>
+<via x="56.642" y="5.334" extent="1-16" drill="0.508"/>
+<wire x1="57.047" y1="8.914" x2="57.047" y2="5.739" width="0.1524" layer="16"/>
+<wire x1="57.047" y1="5.739" x2="56.642" y2="5.334" width="0.1524" layer="16"/>
 </signal>
 <signal name="POT_M1">
 <contactref element="POT_M1" pad="1"/>
@@ -2333,7 +2449,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA1_M2">
 <contactref element="IC_M2" pad="34"/>
-<contactref element="MOTOR2" pad="1"/>
+<contactref element="Y" pad="1"/>
 <wire x1="37.029" y1="17.792" x2="36.056" y2="17.792" width="0.254" layer="16"/>
 <wire x1="36.056" y1="17.792" x2="35.814" y2="18.034" width="0.254" layer="16"/>
 <via x="35.814" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2343,7 +2459,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA2_M2">
 <contactref element="IC_M2" pad="32"/>
-<contactref element="MOTOR2" pad="2"/>
+<contactref element="Y" pad="2"/>
 <wire x1="37.029" y1="16.792" x2="36.096" y2="16.792" width="0.254" layer="16"/>
 <wire x1="36.096" y1="16.792" x2="35.814" y2="16.51" width="0.254" layer="16"/>
 <via x="35.814" y="16.51" extent="1-16" drill="0.3302"/>
@@ -2352,7 +2468,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB1_M2">
 <contactref element="IC_M2" pad="13"/>
-<contactref element="MOTOR2" pad="3"/>
+<contactref element="Y" pad="3"/>
 <wire x1="43.029" y1="17.792" x2="43.954" y2="17.792" width="0.254" layer="16"/>
 <wire x1="43.954" y1="17.792" x2="44.196" y2="18.034" width="0.254" layer="16"/>
 <via x="44.196" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2363,7 +2479,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB2_M2">
 <contactref element="IC_M2" pad="15"/>
-<contactref element="MOTOR2" pad="4"/>
+<contactref element="Y" pad="4"/>
 <wire x1="43.029" y1="16.792" x2="44.422" y2="16.792" width="0.254" layer="16"/>
 <wire x1="44.422" y1="16.792" x2="44.704" y2="16.51" width="0.254" layer="16"/>
 <via x="44.704" y="16.51" extent="1-16" drill="0.3302"/>
@@ -2460,7 +2576,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG1_M2">
 <contactref element="IC_M2" pad="4"/>
-<contactref element="SJ3" pad="2"/>
+<contactref element="CHG1_Y" pad="2"/>
 <wire x1="39.279" y1="19.542" x2="39.279" y2="20.411" width="0.1524" layer="16"/>
 <via x="37.846" y="21.59" extent="1-16" drill="0.3302"/>
 <wire x1="39.279" y1="20.411" x2="38.1" y2="21.59" width="0.1524" layer="16"/>
@@ -2472,7 +2588,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG2_M2">
 <contactref element="IC_M2" pad="3"/>
-<contactref element="SJ4" pad="2"/>
+<contactref element="CHG2_Y" pad="2"/>
 <wire x1="38.779" y1="19.542" x2="38.779" y2="20.149" width="0.1524" layer="16"/>
 <wire x1="38.779" y1="20.149" x2="38.354" y2="20.574" width="0.1524" layer="16"/>
 <wire x1="38.354" y1="20.574" x2="37.338" y2="20.574" width="0.1524" layer="16"/>
@@ -2493,12 +2609,15 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="AIN_M2">
 <contactref element="POT_M2" pad="2"/>
 <contactref element="IC_M2" pad="23"/>
-<wire x1="42.105" y1="8.914" x2="41.807" y2="8.914" width="0.1524" layer="16"/>
+<wire x1="41.807" y1="8.914" x2="42.105" y2="8.914" width="0.1524" layer="16"/>
 <wire x1="41.807" y1="8.914" x2="40.791" y2="9.93" width="0.1524" layer="16"/>
 <wire x1="40.791" y1="9.93" x2="40.791" y2="13.232" width="0.1524" layer="16"/>
 <wire x1="40.791" y1="13.232" x2="40.283" y2="13.74" width="0.1524" layer="16"/>
 <wire x1="40.283" y1="13.74" x2="40.283" y2="14.538" width="0.1524" layer="16"/>
 <wire x1="40.283" y1="14.538" x2="40.279" y2="14.542" width="0.1524" layer="16"/>
+<via x="43.942" y="5.334" extent="1-16" drill="0.508"/>
+<wire x1="42.105" y1="8.914" x2="42.105" y2="7.171" width="0.1524" layer="16"/>
+<wire x1="42.105" y1="7.171" x2="43.942" y2="5.334" width="0.1524" layer="16"/>
 </signal>
 <signal name="POT_M2">
 <contactref element="POT_M2" pad="1"/>
@@ -2532,7 +2651,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA1_M3">
 <contactref element="IC_M3" pad="34"/>
-<contactref element="MOTOR3" pad="1"/>
+<contactref element="Z" pad="1"/>
 <wire x1="21.789" y1="17.792" x2="21.07" y2="17.792" width="0.254" layer="16"/>
 <wire x1="21.07" y1="17.792" x2="20.828" y2="18.034" width="0.254" layer="16"/>
 <via x="20.828" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2543,7 +2662,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA2_M3">
 <contactref element="IC_M3" pad="32"/>
-<contactref element="MOTOR3" pad="2"/>
+<contactref element="Z" pad="2"/>
 <wire x1="21.789" y1="16.792" x2="20.856" y2="16.792" width="0.254" layer="16"/>
 <wire x1="20.856" y1="16.792" x2="20.32" y2="16.256" width="0.254" layer="16"/>
 <via x="20.32" y="16.256" extent="1-16" drill="0.3302"/>
@@ -2552,7 +2671,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB1_M3">
 <contactref element="IC_M3" pad="13"/>
-<contactref element="MOTOR3" pad="3"/>
+<contactref element="Z" pad="3"/>
 <wire x1="27.789" y1="17.792" x2="28.714" y2="17.792" width="0.254" layer="16"/>
 <wire x1="28.714" y1="17.792" x2="28.956" y2="18.034" width="0.254" layer="16"/>
 <via x="28.956" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2563,7 +2682,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB2_M3">
 <contactref element="IC_M3" pad="15"/>
-<contactref element="MOTOR3" pad="4"/>
+<contactref element="Z" pad="4"/>
 <wire x1="27.789" y1="16.792" x2="28.928" y2="16.792" width="0.254" layer="16"/>
 <wire x1="28.928" y1="16.792" x2="29.464" y2="16.256" width="0.254" layer="16"/>
 <via x="29.464" y="16.256" extent="1-16" drill="0.3302"/>
@@ -2658,7 +2777,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG1_M3">
 <contactref element="IC_M3" pad="4"/>
-<contactref element="SJ5" pad="2"/>
+<contactref element="CHG1_Z" pad="2"/>
 <via x="22.606" y="21.59" extent="1-16" drill="0.3302"/>
 <wire x1="24.039" y1="19.542" x2="24.039" y2="20.411" width="0.1524" layer="16"/>
 <wire x1="24.039" y1="20.411" x2="23.368" y2="21.082" width="0.1524" layer="16"/>
@@ -2672,7 +2791,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG2_M3">
 <contactref element="IC_M3" pad="3"/>
-<contactref element="SJ6" pad="2"/>
+<contactref element="CHG2_Z" pad="2"/>
 <wire x1="23.539" y1="19.542" x2="23.539" y2="20.149" width="0.1524" layer="16"/>
 <wire x1="23.539" y1="20.149" x2="23.114" y2="20.574" width="0.1524" layer="16"/>
 <wire x1="23.114" y1="20.574" x2="21.844" y2="20.574" width="0.1524" layer="16"/>
@@ -2693,12 +2812,17 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="AIN_M3">
 <contactref element="POT_M3" pad="2"/>
 <contactref element="IC_M3" pad="23"/>
-<wire x1="26.865" y1="8.914" x2="26.567" y2="8.914" width="0.1524" layer="16"/>
+<wire x1="26.567" y1="8.914" x2="26.865" y2="8.914" width="0.1524" layer="16"/>
 <wire x1="26.567" y1="8.914" x2="25.551" y2="9.93" width="0.1524" layer="16"/>
 <wire x1="25.551" y1="9.93" x2="25.551" y2="13.232" width="0.1524" layer="16"/>
 <wire x1="25.551" y1="13.232" x2="25.043" y2="13.74" width="0.1524" layer="16"/>
 <wire x1="25.043" y1="13.74" x2="25.043" y2="14.538" width="0.1524" layer="16"/>
 <wire x1="25.043" y1="14.538" x2="25.039" y2="14.542" width="0.1524" layer="16"/>
+<via x="31.242" y="5.334" extent="1-16" drill="0.508"/>
+<wire x1="26.865" y1="8.914" x2="26.865" y2="7.933" width="0.1524" layer="16"/>
+<wire x1="26.865" y1="7.933" x2="28.702" y2="6.096" width="0.1524" layer="16"/>
+<wire x1="28.702" y1="6.096" x2="30.48" y2="6.096" width="0.1524" layer="16"/>
+<wire x1="30.48" y1="6.096" x2="31.242" y2="5.334" width="0.1524" layer="16"/>
 </signal>
 <signal name="POT_M3">
 <contactref element="POT_M3" pad="1"/>
@@ -2732,7 +2856,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA1_M4">
 <contactref element="IC_M4" pad="34"/>
-<contactref element="MOTOR4" pad="1"/>
+<contactref element="E" pad="1"/>
 <wire x1="6.549" y1="17.792" x2="5.83" y2="17.792" width="0.254" layer="16"/>
 <wire x1="5.83" y1="17.792" x2="5.588" y2="18.034" width="0.254" layer="16"/>
 <via x="5.588" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2743,7 +2867,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OA2_M4">
 <contactref element="IC_M4" pad="32"/>
-<contactref element="MOTOR4" pad="2"/>
+<contactref element="E" pad="2"/>
 <wire x1="6.549" y1="16.792" x2="5.616" y2="16.792" width="0.254" layer="16"/>
 <wire x1="5.616" y1="16.792" x2="5.334" y2="16.51" width="0.254" layer="16"/>
 <via x="5.334" y="16.51" extent="1-16" drill="0.3302"/>
@@ -2755,7 +2879,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB1_M4">
 <contactref element="IC_M4" pad="13"/>
-<contactref element="MOTOR4" pad="3"/>
+<contactref element="E" pad="3"/>
 <wire x1="12.549" y1="17.792" x2="13.474" y2="17.792" width="0.254" layer="16"/>
 <wire x1="13.474" y1="17.792" x2="13.716" y2="18.034" width="0.254" layer="16"/>
 <via x="13.716" y="18.034" extent="1-16" drill="0.3302"/>
@@ -2768,7 +2892,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="OB2_M4">
 <contactref element="IC_M4" pad="15"/>
-<contactref element="MOTOR4" pad="4"/>
+<contactref element="E" pad="4"/>
 <wire x1="12.549" y1="16.792" x2="13.688" y2="16.792" width="0.254" layer="16"/>
 <wire x1="13.688" y1="16.792" x2="13.97" y2="16.51" width="0.254" layer="16"/>
 <via x="13.97" y="16.51" extent="1-16" drill="0.3302"/>
@@ -2871,7 +2995,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG1_M4">
 <contactref element="IC_M4" pad="4"/>
-<contactref element="SJ7" pad="2"/>
+<contactref element="CFG1_E" pad="2"/>
 <wire x1="8.799" y1="19.542" x2="8.799" y2="20.665" width="0.1524" layer="16"/>
 <wire x1="8.799" y1="20.665" x2="8.128" y2="21.336" width="0.1524" layer="16"/>
 <via x="8.128" y="21.336" extent="1-16" drill="0.3302"/>
@@ -2882,7 +3006,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="CFG2_M4">
 <contactref element="IC_M4" pad="3"/>
-<contactref element="SJ8" pad="2"/>
+<contactref element="CFG2_E" pad="2"/>
 <wire x1="8.299" y1="19.542" x2="8.299" y2="20.149" width="0.1524" layer="16"/>
 <via x="7.112" y="22.606" extent="1-16" drill="0.3302"/>
 <wire x1="7.112" y1="22.606" x2="6.604" y2="22.098" width="0.1524" layer="1"/>
@@ -2904,12 +3028,17 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="AIN_M4">
 <contactref element="POT_M4" pad="2"/>
 <contactref element="IC_M4" pad="23"/>
-<wire x1="11.625" y1="8.914" x2="11.327" y2="8.914" width="0.1524" layer="16"/>
+<wire x1="11.327" y1="8.914" x2="11.625" y2="8.914" width="0.1524" layer="16"/>
 <wire x1="11.327" y1="8.914" x2="10.311" y2="9.93" width="0.1524" layer="16"/>
 <wire x1="10.311" y1="9.93" x2="10.311" y2="13.232" width="0.1524" layer="16"/>
 <wire x1="10.311" y1="13.232" x2="9.803" y2="13.74" width="0.1524" layer="16"/>
 <wire x1="9.803" y1="13.74" x2="9.803" y2="14.538" width="0.1524" layer="16"/>
 <wire x1="9.803" y1="14.538" x2="9.799" y2="14.542" width="0.1524" layer="16"/>
+<via x="18.542" y="5.334" extent="1-16" drill="0.508"/>
+<wire x1="11.625" y1="8.914" x2="11.625" y2="8.187" width="0.1524" layer="16"/>
+<wire x1="11.625" y1="8.187" x2="13.716" y2="6.096" width="0.1524" layer="16"/>
+<wire x1="13.716" y1="6.096" x2="17.78" y2="6.096" width="0.1524" layer="16"/>
+<wire x1="17.78" y1="6.096" x2="18.542" y2="5.334" width="0.1524" layer="16"/>
 </signal>
 <signal name="POT_M4">
 <contactref element="POT_M4" pad="1"/>
@@ -2993,7 +3122,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="42.164" y1="29.044" x2="42.33" y2="29.21" width="0.1524" layer="16"/>
 </signal>
 <signal name="SWZ">
-<contactref element="SWZ" pad="2"/>
+<contactref element="END_Z" pad="2"/>
 <contactref element="R1_SWZ" pad="1"/>
 <wire x1="35.052" y1="34.036" x2="36.322" y2="35.306" width="0.1524" layer="16"/>
 <wire x1="39.878" y1="34.886" x2="39.458" y2="35.306" width="0.1524" layer="16"/>
@@ -3007,7 +3136,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="53.594" y1="36.322" x2="47.752" y2="36.322" width="0.1524" layer="16"/>
 </signal>
 <signal name="SWY">
-<contactref element="SWY" pad="2"/>
+<contactref element="END_Y" pad="2"/>
 <contactref element="R1_SWY" pad="1"/>
 <wire x1="42.164" y1="34.036" x2="43.434" y2="35.306" width="0.1524" layer="16"/>
 <wire x1="46.99" y1="34.886" x2="46.57" y2="35.306" width="0.1524" layer="16"/>
@@ -3019,7 +3148,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="53.848" y1="35.814" x2="47.918" y2="35.814" width="0.1524" layer="16"/>
 </signal>
 <signal name="SWX">
-<contactref element="SWX" pad="2"/>
+<contactref element="END_X" pad="2"/>
 <contactref element="R1_SWX" pad="1"/>
 <wire x1="49.276" y1="34.036" x2="50.546" y2="35.306" width="0.1524" layer="16"/>
 <wire x1="53.428" y1="35.306" x2="54.102" y2="34.632" width="0.1524" layer="16"/>
@@ -3106,8 +3235,8 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="NOZ-">
 <contactref element="Q1_NOZ" pad="TAB"/>
-<contactref element="NOZ" pad="2"/>
-<contactref element="NOZ" pad="1"/>
+<contactref element="NOZZLE" pad="2"/>
+<contactref element="NOZZLE" pad="1"/>
 <polygon width="0.1524" layer="16" isolate="0.4064">
 <vertex x="20.32" y="28.956"/>
 <vertex x="23.876" y="32.512"/>
@@ -3235,7 +3364,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="THNOZ">
 <contactref element="R3_NOZ" pad="1"/>
-<contactref element="TH_NOZ" pad="2"/>
+<contactref element="TEMP_NOZZLE" pad="2"/>
 <wire x1="42.164" y1="25.146" x2="42.33" y2="25.312" width="0.1524" layer="16"/>
 <wire x1="42.33" y1="25.312" x2="42.33" y2="27.178" width="0.1524" layer="16"/>
 <wire x1="42.164" y1="25.146" x2="43.942" y2="26.924" width="0.1524" layer="1"/>
@@ -3250,7 +3379,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="THBED">
 <contactref element="R3_BED" pad="1"/>
-<contactref element="TH_BED" pad="2"/>
+<contactref element="TEMP_BED" pad="2"/>
 <wire x1="49.276" y1="25.146" x2="49.442" y2="25.312" width="0.1524" layer="16"/>
 <wire x1="49.442" y1="25.312" x2="49.442" y2="27.178" width="0.1524" layer="16"/>
 <wire x1="49.276" y1="25.146" x2="50.546" y2="26.416" width="0.1524" layer="1"/>
@@ -3271,7 +3400,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="P0.21">
 <contactref element="IC1" pad="40"/>
-<contactref element="TP2" pad="TP"/>
+<contactref element="P0.21" pad="TP"/>
 <wire x1="61.452" y1="34.846" x2="61.452" y2="30.718" width="0.1524" layer="16"/>
 <wire x1="61.452" y1="30.718" x2="60.452" y2="29.718" width="0.1524" layer="16"/>
 <wire x1="60.452" y1="29.718" x2="60.452" y2="28.448" width="0.1524" layer="16"/>
@@ -3284,7 +3413,7 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="P0.17">
 <contactref element="IC1" pad="25"/>
-<contactref element="TP1" pad="TP"/>
+<contactref element="P0.17" pad="TP"/>
 <wire x1="63.452" y1="40.046" x2="63.668" y2="40.046" width="0.1524" layer="16"/>
 <wire x1="63.668" y1="40.046" x2="64.77" y2="41.148" width="0.1524" layer="16"/>
 <via x="64.77" y="41.148" extent="1-16" drill="0.3302"/>
@@ -3482,90 +3611,90 @@ Please make sure your boards conform to these design rules.</description>
 <approved hash="19,1,3c18402c449738a3"/>
 <approved hash="19,1,2418742c709320a7"/>
 <approved hash="19,1,3c18082c0c8e38ba"/>
-<approved hash="19,16,02ead61e1a1aceee"/>
-<approved hash="19,16,45329a57d6530936"/>
 <approved hash="19,16,89dc5d4d914945d8"/>
-<approved hash="19,16,cdeae11fad1b81ee"/>
+<approved hash="19,16,45329a57d6530936"/>
+<approved hash="19,16,02ead61e1a1aceee"/>
 <approved hash="19,16,f033252fe92b3c37"/>
+<approved hash="19,16,cdeae11fad1b81ee"/>
+<approved hash="19,16,1ace083ac436d6c2"/>
 <approved hash="19,16,91f883694f655df4"/>
 <approved hash="19,16,e817fb0b3707241b"/>
-<approved hash="19,16,5d164473087f111a"/>
-<approved hash="19,16,1ace083ac436d6c2"/>
 <approved hash="19,16,d5ce3f3b733799c2"/>
-<approved hash="19,16,df7bd3e71fe3137f"/>
+<approved hash="19,16,5d164473087f111a"/>
 <approved hash="19,16,e2a217d75bd3aea6"/>
-<approved hash="19,16,6a7a6c9f209b267e"/>
-<approved hash="19,16,a694ab8567816a90"/>
 <approved hash="19,16,2da220d6ecd2e1a6"/>
-<approved hash="19,16,658619f2d58ea9fa"/>
+<approved hash="19,16,6a7a6c9f209b267e"/>
+<approved hash="19,16,df7bd3e71fe3137f"/>
+<approved hash="19,16,a694ab8567816a90"/>
+<approved hash="19,16,eeb092a15edd22cc"/>
 <approved hash="19,16,aa862ef3628fe6fa"/>
 <approved hash="19,16,225e55bb19c76e22"/>
-<approved hash="19,16,eeb092a15edd22cc"/>
+<approved hash="19,16,658619f2d58ea9fa"/>
 <approved hash="19,16,975feac326bf5b23"/>
-<approved hash="19,16,092cbabd76b9c528"/>
-<approved hash="19,16,70c3c2df0edbbcc7"/>
-<approved hash="19,16,821a31eefdea4e1e"/>
 <approved hash="19,16,4d1a06ef4aeb011e"/>
+<approved hash="19,16,70c3c2df0edbbcc7"/>
 <approved hash="19,16,c5c27da731a389c6"/>
-<approved hash="19,16,a8bb0c4e404ae4bf"/>
+<approved hash="19,16,821a31eefdea4e1e"/>
+<approved hash="19,16,092cbabd76b9c528"/>
 <approved hash="19,16,206377063b026c67"/>
-<approved hash="19,16,67bb3b4ff74babbf"/>
-<approved hash="19,16,9562c87e047a5966"/>
+<approved hash="19,16,a8bb0c4e404ae4bf"/>
 <approved hash="19,16,ec8db01c7c182089"/>
-<approved hash="19,16,f4a9e6382a3438a5"/>
+<approved hash="19,16,9562c87e047a5966"/>
+<approved hash="19,16,67bb3b4ff74babbf"/>
 <approved hash="19,16,8d469e5a5256414a"/>
+<approved hash="19,16,f4a9e6382a3438a5"/>
 <approved hash="19,16,b09f5a6a1666fc93"/>
 <approved hash="19,16,384721226d2e744b"/>
 <approved hash="19,16,7f9f6d6ba167b393"/>
-<approved hash="19,16,39f3b286fe8275f7"/>
-<approved hash="19,16,7dc50ed4c2d0b1c1"/>
 <approved hash="19,16,f6f3858749833af7"/>
 <approved hash="19,16,042a76b6bab2c82e"/>
 <approved hash="19,16,b12bc9ce85cafd2f"/>
+<approved hash="19,16,7dc50ed4c2d0b1c1"/>
+<approved hash="19,16,39f3b286fe8275f7"/>
 <approved hash="19,16,d934f0c03cdc1528"/>
 <approved hash="19,16,890f32ea7ef6c513"/>
+<approved hash="19,16,01d749a205be4dcb"/>
 <approved hash="19,16,3c0e8d92418ef012"/>
 <approved hash="19,16,45e1f5f039ec89fd"/>
-<approved hash="19,16,01d749a205be4dcb"/>
-<approved hash="19,16,4c1d1d8cd1888019"/>
-<approved hash="19,16,082ba1deedda442f"/>
-<approved hash="19,16,c72b96df5adb0b2f"/>
 <approved hash="19,16,80f3da969692ccf7"/>
+<approved hash="19,16,082ba1deedda442f"/>
 <approved hash="19,16,35f265eea9eaf9f6"/>
-<approved hash="19,16,0c87db72d7770082"/>
-<approved hash="19,16,842c40e94cec8829"/>
-<approved hash="19,16,90815f7653739c84"/>
-<approved hash="19,16,9fa62953255693a3"/>
-<approved hash="19,16,191cd7dbdbde1519"/>
-<approved hash="19,16,b81774dc78d9b412"/>
+<approved hash="19,16,4c1d1d8cd1888019"/>
+<approved hash="19,16,c72b96df5adb0b2f"/>
 <approved hash="19,16,3ea2ce51c25432a7"/>
 <approved hash="19,16,338dfd88f18d3f88"/>
-<approved hash="19,16,4c1740d04cd54012"/>
-<approved hash="19,16,6ba9595a555f67ac"/>
+<approved hash="19,16,842c40e94cec8829"/>
+<approved hash="19,16,0c87db72d7770082"/>
+<approved hash="19,16,b81774dc78d9b412"/>
+<approved hash="19,16,90815f7653739c84"/>
+<approved hash="19,16,191cd7dbdbde1519"/>
+<approved hash="19,16,9fa62953255693a3"/>
 <approved hash="19,16,66866a8366866a83"/>
-<approved hash="19,16,c58ac87dc478c98f"/>
-<approved hash="19,16,caadbe58b25dc6a8"/>
 <approved hash="19,16,598c4c79407c5589"/>
 <approved hash="19,16,d127d7e2dbe7dd22"/>
+<approved hash="19,16,6ba9595a555f67ac"/>
 <approved hash="19,16,ed1ce3d7efd2e119"/>
+<approved hash="19,16,c58ac87dc478c98f"/>
+<approved hash="19,16,4c1740d04cd54012"/>
+<approved hash="19,16,caadbe58b25dc6a8"/>
 <approved hash="19,16,520432cf3ec85e03"/>
-<approved hash="19,16,d4b188428445d8b6"/>
-<approved hash="19,16,7a92196515627695"/>
-<approved hash="19,16,75b56f40634779b2"/>
-<approved hash="19,16,f30f91c89dcfff08"/>
-<approved hash="19,16,6e3f06fa0afd6238"/>
 <approved hash="19,16,e6949d619166ea93"/>
+<approved hash="19,16,d4b188428445d8b6"/>
+<approved hash="19,16,6e3f06fa0afd6238"/>
+<approved hash="19,16,f30f91c89dcfff08"/>
+<approved hash="19,16,75b56f40634779b2"/>
+<approved hash="19,16,7a92196515627695"/>
 <approved hash="19,16,d99ebb9bb79cd599"/>
-<approved hash="19,16,870db9c6b5c38b08"/>
+<approved hash="19,16,a0bce449e84cacb9"/>
 <approved hash="19,16,26061ac116c42a03"/>
+<approved hash="19,16,870db9c6b5c38b08"/>
+<approved hash="19,16,af9b926c9e69a39e"/>
+<approved hash="19,16,01b8034b0f4e0dbd"/>
 <approved hash="19,16,0c9730923c970092"/>
 <approved hash="19,16,bb368df381f6b733"/>
-<approved hash="19,16,01b8034b0f4e0dbd"/>
 <approved hash="19,16,339d16681a6d3f98"/>
-<approved hash="19,16,a0bce449e84cacb9"/>
-<approved hash="19,16,af9b926c9e69a39e"/>
-<approved hash="19,16,4829281d2b084b3c"/>
 <approved hash="19,16,4869285d2f804fb4"/>
+<approved hash="19,16,4829281d2b084b3c"/>
 <approved hash="19,16,c42c2c182f09c73d"/>
 <approved hash="19,16,c46c2c582b81c3b5"/>
 </errors>
