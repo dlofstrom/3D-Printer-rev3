@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="2.5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.4" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="2.5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -16,10 +16,10 @@
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -32,19 +32,19 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="51" name="tDocu" color="61" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="13" fill="1" visible="no" active="yes"/>
 <layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
 <layer number="91" name="Nets" color="2" fill="1" visible="no" active="no"/>
 <layer number="92" name="Busses" color="1" fill="1" visible="no" active="no"/>
@@ -55,6 +55,9 @@
 <layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
 <layer number="99" name="SpiceOrder" color="5" fill="1" visible="no" active="no"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="201" name="201bmp" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="202" name="202bmp" color="3" fill="10" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
@@ -63,6 +66,357 @@
 <text x="30.988" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
 <text x="43.688" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
 <text x="56.388" y="4.318" size="0.635" layer="21" font="vector" rot="SR270">adj</text>
+<text x="59.77801875" y="36.21248125" size="0.9652" layer="21" font="vector" rot="SR270">3D Printer board
+PCB rev1 #</text>
+<rectangle x1="59.631071875" y1="24.03348125" x2="60.901071875" y2="27.33548125" layer="21"/>
+<polygon width="0" layer="21">
+<vertex x="63.42888125" y="41.38168125"/>
+<vertex x="68.1228" y="39.9288"/>
+<vertex x="67.9196" y="39.04488125"/>
+<vertex x="63.0936" y="40.548559375"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.0936" y="40.548559375"/>
+<vertex x="62.961521875" y="40.101521875"/>
+<vertex x="62.87008125" y="39.715440625"/>
+<vertex x="62.7989625" y="39.29888125"/>
+<vertex x="62.7888" y="39.116"/>
+<vertex x="62.7989625" y="38.6588"/>
+<vertex x="62.8396" y="38.343840625"/>
+<vertex x="62.92088125" y="38.0492"/>
+<vertex x="63.07328125" y="37.734240625"/>
+<vertex x="63.266321875" y="37.449759375"/>
+<vertex x="63.6016" y="37.124640625"/>
+<vertex x="63.9165625" y="36.890959375"/>
+<vertex x="64.231521875" y="36.7284"/>
+<vertex x="64.5769625" y="36.586159375"/>
+<vertex x="65.024" y="36.4744"/>
+<vertex x="65.2373625" y="36.443921875"/>
+<vertex x="62.8497625" y="36.443921875"/>
+<vertex x="62.8497625" y="33.487359375"/>
+<vertex x="63.6117625" y="33.487359375"/>
+<vertex x="63.6117625" y="35.53968125"/>
+<vertex x="67.8281625" y="35.53968125"/>
+<vertex x="67.8281625" y="36.443921875"/>
+<vertex x="65.725040625" y="36.443921875"/>
+<vertex x="66.1924" y="36.535359375"/>
+<vertex x="66.365121875" y="36.60648125"/>
+<vertex x="66.62928125" y="36.748721875"/>
+<vertex x="66.8629625" y="36.9316"/>
+<vertex x="67.08648125" y="37.155121875"/>
+<vertex x="67.2592" y="37.398959375"/>
+<vertex x="67.4624" y="37.734240625"/>
+<vertex x="67.685921875" y="38.242240625"/>
+<vertex x="67.807840625" y="38.608"/>
+<vertex x="67.9196" y="39.04488125"/>
+<vertex x="67.198240625" y="39.2684"/>
+<vertex x="67.1576" y="38.99408125"/>
+<vertex x="67.08648125" y="38.679121875"/>
+<vertex x="66.944240625" y="38.313359375"/>
+<vertex x="66.791840625" y="38.039040625"/>
+<vertex x="66.68008125" y="37.8968"/>
+<vertex x="66.52768125" y="37.72408125"/>
+<vertex x="66.334640625" y="37.592"/>
+<vertex x="66.1009625" y="37.47008125"/>
+<vertex x="65.8368" y="37.398959375"/>
+<vertex x="65.5421625" y="37.378640625"/>
+<vertex x="65.267840625" y="37.398959375"/>
+<vertex x="64.90208125" y="37.480240625"/>
+<vertex x="64.556640625" y="37.612321875"/>
+<vertex x="64.180721875" y="37.846"/>
+<vertex x="63.9064" y="38.069521875"/>
+<vertex x="63.73368125" y="38.3032"/>
+<vertex x="63.58128125" y="38.618159375"/>
+<vertex x="63.53048125" y="38.902640625"/>
+<vertex x="63.520321875" y="39.2684"/>
+<vertex x="63.5609625" y="39.583359375"/>
+<vertex x="63.672721875" y="39.9796"/>
+<vertex x="63.8149625" y="40.325040625"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.88608125" y="34.32048125"/>
+<vertex x="63.93688125" y="34.62528125"/>
+<vertex x="64.048640625" y="34.8488"/>
+<vertex x="64.24168125" y="35.041840625"/>
+<vertex x="64.455040625" y="35.1536"/>
+<vertex x="64.739521875" y="35.2044"/>
+<vertex x="65.013840625" y="35.194240625"/>
+<vertex x="65.278" y="35.112959375"/>
+<vertex x="65.51168125" y="34.970721875"/>
+<vertex x="65.6844" y="34.7472"/>
+<vertex x="65.786" y="34.432240625"/>
+<vertex x="65.7961625" y="34.249359375"/>
+<vertex x="65.46088125" y="34.279840625"/>
+<vertex x="65.420240625" y="34.462721875"/>
+<vertex x="65.298321875" y="34.604959375"/>
+<vertex x="65.095121875" y="34.6964"/>
+<vertex x="64.8817625" y="34.72688125"/>
+<vertex x="64.64808125" y="34.72688125"/>
+<vertex x="64.434721875" y="34.62528125"/>
+<vertex x="64.29248125" y="34.513521875"/>
+<vertex x="64.2213625" y="34.32048125"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.88608125" y="34.32048125"/>
+<vertex x="63.88608125" y="34.1884"/>
+<vertex x="63.9165625" y="34.06648125"/>
+<vertex x="63.997840625" y="33.822640625"/>
+<vertex x="64.1096" y="33.670240625"/>
+<vertex x="64.282321875" y="33.528"/>
+<vertex x="64.44488125" y="33.446721875"/>
+<vertex x="64.658240625" y="33.385759375"/>
+<vertex x="64.8817625" y="33.365440625"/>
+<vertex x="65.10528125" y="33.385759375"/>
+<vertex x="65.318640625" y="33.45688125"/>
+<vertex x="65.532" y="33.619440625"/>
+<vertex x="65.66408125" y="33.782"/>
+<vertex x="65.7453625" y="33.995359375"/>
+<vertex x="65.7961625" y="34.249359375"/>
+<vertex x="65.46088125" y="34.279840625"/>
+<vertex x="65.399921875" y="34.096959375"/>
+<vertex x="65.3288" y="34.005521875"/>
+<vertex x="65.1764" y="33.903921875"/>
+<vertex x="64.9732" y="33.842959375"/>
+<vertex x="64.7192" y="33.842959375"/>
+<vertex x="64.505840625" y="33.893759375"/>
+<vertex x="64.34328125" y="34.005521875"/>
+<vertex x="64.262" y="34.11728125"/>
+<vertex x="64.231521875" y="34.259521875"/>
+<vertex x="64.2213625" y="34.32048125"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="62.859921875" y="33.284159375"/>
+<vertex x="63.6016" y="33.284159375"/>
+<vertex x="63.6016" y="22.9108"/>
+<vertex x="62.859921875" y="22.9108"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.926721875" y="32.94888125"/>
+<vertex x="65.3897625" y="32.94888125"/>
+<vertex x="65.3897625" y="33.182559375"/>
+<vertex x="65.7453625" y="33.182559375"/>
+<vertex x="65.7453625" y="32.94888125"/>
+<vertex x="65.979040625" y="32.94888125"/>
+<vertex x="66.1009625" y="32.928559375"/>
+<vertex x="66.283840625" y="32.857440625"/>
+<vertex x="66.415921875" y="32.755840625"/>
+<vertex x="66.517521875" y="32.623759375"/>
+<vertex x="66.568321875" y="32.512"/>
+<vertex x="66.5988" y="32.39008125"/>
+<vertex x="66.619121875" y="32.258"/>
+<vertex x="66.6089625" y="32.125921875"/>
+<vertex x="66.568321875" y="31.973521875"/>
+<vertex x="66.22288125" y="32.014159375"/>
+<vertex x="66.2533625" y="32.18688125"/>
+<vertex x="66.233040625" y="32.318959375"/>
+<vertex x="66.131440625" y="32.430721875"/>
+<vertex x="65.9892" y="32.49168125"/>
+<vertex x="65.7453625" y="32.49168125"/>
+<vertex x="65.7453625" y="32.1056"/>
+<vertex x="65.3897625" y="32.1056"/>
+<vertex x="65.3897625" y="32.501840625"/>
+<vertex x="63.926721875" y="32.501840625"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="64.0181625" y="31.9532"/>
+<vertex x="64.353440625" y="31.8516"/>
+<vertex x="64.262" y="31.67888125"/>
+<vertex x="64.231521875" y="31.506159375"/>
+<vertex x="64.2213625" y="31.3436"/>
+<vertex x="64.24168125" y="31.231840625"/>
+<vertex x="64.2721625" y="31.181040625"/>
+<vertex x="64.333121875" y="31.130240625"/>
+<vertex x="64.39408125" y="31.12008125"/>
+<vertex x="64.49568125" y="31.12008125"/>
+<vertex x="64.5668" y="31.17088125"/>
+<vertex x="64.6277625" y="31.282640625"/>
+<vertex x="64.74968125" y="31.556959375"/>
+<vertex x="64.841121875" y="31.719521875"/>
+<vertex x="64.9325625" y="31.8008"/>
+<vertex x="65.05448125" y="31.88208125"/>
+<vertex x="65.1865625" y="31.912559375"/>
+<vertex x="65.2881625" y="31.9024"/>
+<vertex x="65.420240625" y="31.861759375"/>
+<vertex x="65.532" y="31.8008"/>
+<vertex x="65.6336" y="31.6992"/>
+<vertex x="65.71488125" y="31.5468"/>
+<vertex x="65.755521875" y="31.465521875"/>
+<vertex x="65.786" y="31.32328125"/>
+<vertex x="65.786" y="31.181040625"/>
+<vertex x="65.755521875" y="30.96768125"/>
+<vertex x="65.725040625" y="30.86608125"/>
+<vertex x="65.674240625" y="30.744159375"/>
+<vertex x="65.35928125" y="30.8356"/>
+<vertex x="65.4405625" y="31.079440625"/>
+<vertex x="65.46088125" y="31.211521875"/>
+<vertex x="65.4405625" y="31.333440625"/>
+<vertex x="65.3897625" y="31.414721875"/>
+<vertex x="65.318640625" y="31.455359375"/>
+<vertex x="65.2272" y="31.455359375"/>
+<vertex x="65.145921875" y="31.414721875"/>
+<vertex x="65.044321875" y="31.252159375"/>
+<vertex x="64.9833625" y="31.06928125"/>
+<vertex x="64.891921875" y="30.91688125"/>
+<vertex x="64.80048125" y="30.805121875"/>
+<vertex x="64.69888125" y="30.723840625"/>
+<vertex x="64.587121875" y="30.6832"/>
+<vertex x="64.44488125" y="30.66288125"/>
+<vertex x="64.262" y="30.693359375"/>
+<vertex x="64.14008125" y="30.76448125"/>
+<vertex x="63.98768125" y="30.9372"/>
+<vertex x="63.93688125" y="31.048959375"/>
+<vertex x="63.9064" y="31.201359375"/>
+<vertex x="63.88608125" y="31.414721875"/>
+<vertex x="63.896240625" y="31.536640625"/>
+<vertex x="63.926721875" y="31.668721875"/>
+<vertex x="63.977521875" y="31.871921875"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="66.1517625" y="30.195521875"/>
+<vertex x="65.7453625" y="30.195521875"/>
+<vertex x="65.7453625" y="30.469840625"/>
+<vertex x="65.3897625" y="30.469840625"/>
+<vertex x="65.3897625" y="30.195521875"/>
+<vertex x="64.4245625" y="30.195521875"/>
+<vertex x="64.251840625" y="30.1752"/>
+<vertex x="64.099440625" y="30.114240625"/>
+<vertex x="63.98768125" y="30.00248125"/>
+<vertex x="63.9165625" y="29.880559375"/>
+<vertex x="63.896240625" y="29.7688"/>
+<vertex x="63.896240625" y="29.626559375"/>
+<vertex x="63.9064" y="29.484321875"/>
+<vertex x="63.93688125" y="29.34208125"/>
+<vertex x="64.282321875" y="29.34208125"/>
+<vertex x="64.262" y="29.44368125"/>
+<vertex x="64.2721625" y="29.606240625"/>
+<vertex x="64.34328125" y="29.707840625"/>
+<vertex x="64.4652" y="29.74848125"/>
+<vertex x="65.3897625" y="29.74848125"/>
+<vertex x="65.3897625" y="29.321759375"/>
+<vertex x="65.7453625" y="29.321759375"/>
+<vertex x="65.7453625" y="29.74848125"/>
+<vertex x="66.2533625" y="29.74848125"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.926721875" y="28.98648125"/>
+<vertex x="65.7453625" y="28.98648125"/>
+<vertex x="65.7453625" y="28.6004"/>
+<vertex x="65.3897625" y="28.6004"/>
+<vertex x="65.4812" y="28.5496"/>
+<vertex x="65.5929625" y="28.458159375"/>
+<vertex x="65.6945625" y="28.3464"/>
+<vertex x="65.755521875" y="28.214321875"/>
+<vertex x="65.7961625" y="28.102559375"/>
+<vertex x="65.786" y="28.000959375"/>
+<vertex x="65.775840625" y="27.960321875"/>
+<vertex x="65.349121875" y="27.960321875"/>
+<vertex x="65.349121875" y="28.183840625"/>
+<vertex x="65.30848125" y="28.285440625"/>
+<vertex x="65.196721875" y="28.42768125"/>
+<vertex x="65.044321875" y="28.4988"/>
+<vertex x="64.861440625" y="28.52928125"/>
+<vertex x="63.926721875" y="28.52928125"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.896240625" y="26.90368125"/>
+<vertex x="63.926721875" y="27.178"/>
+<vertex x="64.079121875" y="27.472640625"/>
+<vertex x="64.29248125" y="27.655521875"/>
+<vertex x="64.536321875" y="27.757121875"/>
+<vertex x="64.90208125" y="27.7876"/>
+<vertex x="65.20688125" y="27.726640625"/>
+<vertex x="65.471040625" y="27.574240625"/>
+<vertex x="65.623440625" y="27.401521875"/>
+<vertex x="65.755521875" y="27.1272"/>
+<vertex x="65.786" y="26.863040625"/>
+<vertex x="65.450721875" y="26.863040625"/>
+<vertex x="65.41008125" y="27.045921875"/>
+<vertex x="65.20688125" y="27.238959375"/>
+<vertex x="64.9833625" y="27.31008125"/>
+<vertex x="64.688721875" y="27.299921875"/>
+<vertex x="64.4652" y="27.2288"/>
+<vertex x="64.3128" y="27.10688125"/>
+<vertex x="64.2213625" y="26.913840625"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.896240625" y="26.90368125"/>
+<vertex x="63.926721875" y="26.609040625"/>
+<vertex x="64.028321875" y="26.355040625"/>
+<vertex x="64.2213625" y="26.151840625"/>
+<vertex x="64.4652" y="26.019759375"/>
+<vertex x="64.810640625" y="25.948640625"/>
+<vertex x="65.064640625" y="25.968959375"/>
+<vertex x="65.298321875" y="26.04008125"/>
+<vertex x="65.501521875" y="26.172159375"/>
+<vertex x="65.653921875" y="26.355040625"/>
+<vertex x="65.755521875" y="26.588721875"/>
+<vertex x="65.786" y="26.812240625"/>
+<vertex x="65.786" y="26.863040625"/>
+<vertex x="65.450721875" y="26.863040625"/>
+<vertex x="65.420240625" y="26.7208"/>
+<vertex x="65.3389625" y="26.609040625"/>
+<vertex x="65.2373625" y="26.537921875"/>
+<vertex x="65.0341625" y="26.456640625"/>
+<vertex x="64.912240625" y="26.426159375"/>
+<vertex x="64.74968125" y="26.426159375"/>
+<vertex x="64.607440625" y="26.44648125"/>
+<vertex x="64.4652" y="26.49728125"/>
+<vertex x="64.34328125" y="26.588721875"/>
+<vertex x="64.262" y="26.710640625"/>
+<vertex x="64.2213625" y="26.842721875"/>
+<vertex x="64.2213625" y="26.913840625"/>
+</polygon>
+<polygon width="0" layer="21">
+<vertex x="63.926721875" y="25.58288125"/>
+<vertex x="65.7453625" y="25.58288125"/>
+<vertex x="65.7453625" y="25.206959375"/>
+<vertex x="65.471040625" y="25.206959375"/>
+<vertex x="65.56248125" y="25.12568125"/>
+<vertex x="65.674240625" y="24.983440625"/>
+<vertex x="65.7453625" y="24.861521875"/>
+<vertex x="65.775840625" y="24.729440625"/>
+<vertex x="65.786" y="24.607521875"/>
+<vertex x="65.76568125" y="24.46528125"/>
+<vertex x="65.725040625" y="24.343359375"/>
+<vertex x="65.6336" y="24.241759375"/>
+<vertex x="65.46088125" y="24.099521875"/>
+<vertex x="65.61328125" y="23.9776"/>
+<vertex x="65.6844" y="23.865840625"/>
+<vertex x="65.7453625" y="23.7236"/>
+<vertex x="65.786" y="23.5712"/>
+<vertex x="65.775840625" y="23.44928125"/>
+<vertex x="65.755521875" y="23.3172"/>
+<vertex x="65.6945625" y="23.185121875"/>
+<vertex x="65.61328125" y="23.103840625"/>
+<vertex x="65.521840625" y="23.022559375"/>
+<vertex x="65.349121875" y="22.951440625"/>
+<vertex x="65.196721875" y="22.920959375"/>
+<vertex x="65.0849625" y="22.9108"/>
+<vertex x="63.926721875" y="22.9108"/>
+<vertex x="63.926721875" y="23.357840625"/>
+<vertex x="65.10528125" y="23.357840625"/>
+<vertex x="65.2881625" y="23.428959375"/>
+<vertex x="65.349121875" y="23.479759375"/>
+<vertex x="65.3796" y="23.540721875"/>
+<vertex x="65.399921875" y="23.622"/>
+<vertex x="65.399921875" y="23.733759375"/>
+<vertex x="65.369440625" y="23.835359375"/>
+<vertex x="65.2881625" y="23.936959375"/>
+<vertex x="65.1865625" y="23.987759375"/>
+<vertex x="65.0748" y="24.018240625"/>
+<vertex x="63.926721875" y="24.018240625"/>
+<vertex x="63.926721875" y="24.475440625"/>
+<vertex x="65.10528125" y="24.475440625"/>
+<vertex x="65.25768125" y="24.51608125"/>
+<vertex x="65.35928125" y="24.607521875"/>
+<vertex x="65.399921875" y="24.698959375"/>
+<vertex x="65.41008125" y="24.810721875"/>
+<vertex x="65.369440625" y="24.932640625"/>
+<vertex x="65.318640625" y="25.003759375"/>
+<vertex x="65.2373625" y="25.085040625"/>
+<vertex x="65.0849625" y="25.135840625"/>
+<vertex x="63.926721875" y="25.135840625"/>
+</polygon>
 </plain>
 <libraries>
 <library name="3dprinter">
@@ -1076,7 +1430,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="SWD" library="3dprinter" package="MA04-1" value="" x="66.794" y="49.568" smashed="yes" rot="R90">
 <attribute name="MF" value="" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
-<attribute name="NAME" x="64.143" y="49.492" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="64.397" y="50.508" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="66.794" y="49.568" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="VALUE" x="65.143" y="50.203" size="1.27" layer="27" ratio="10" rot="R90"/>
@@ -1100,7 +1454,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="FAN1" library="3dprinter" package="MA02-1" value="" x="35.052" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="39.243" y="27.432" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="39.243" y="26.67" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="35.052" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="38.862" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1108,7 +1462,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="FAN2" library="3dprinter" package="MA02-1" value="" x="27.94" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="32.131" y="27.432" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="32.131" y="26.67" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="27.94" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="31.75" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1116,7 +1470,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="END_X" library="3dprinter" package="MA02-1" value="" x="49.276" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="53.467" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="53.467" y="35.814" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="49.276" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="53.086" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1124,7 +1478,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="END_Y" library="3dprinter" package="MA02-1" value="" x="42.164" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="46.355" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="46.355" y="35.814" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="42.164" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="45.974" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1132,7 +1486,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="END_Z" library="3dprinter" package="MA02-1" value="" x="35.052" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="39.243" y="36.83" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="39.243" y="35.814" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="35.052" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="38.862" y="36.957" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1210,7 +1564,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="BED" library="3dprinter" package="MA04-1" value="" x="14.478" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="19.939" y="35.814" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="19.939" y="35.306" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="14.478" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="13.843" y="32.385" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1218,7 +1572,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="NOZZLE" library="3dprinter" package="MA04-1" value="" x="26.67" y="34.036" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="32.131" y="37.338" size="1.27" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="32.131" y="36.068" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="26.67" y="34.036" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="26.035" y="32.385" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1226,7 +1580,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="TEMP_NOZZLE" library="3dprinter" package="MA02-1" value="" x="42.164" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="46.355" y="28.194" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="46.355" y="29.718" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="42.164" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="45.974" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1234,7 +1588,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="TEMP_BED" library="3dprinter" package="MA02-1" value="" x="49.276" y="25.146" smashed="yes" rot="R180">
 <attribute name="MF" value="" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="NAME" x="53.467" y="28.194" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="53.467" y="27.94" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="OC_FARNELL" value="unknown" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="53.086" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
@@ -1246,35 +1600,35 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="49.657" y="29.083" size="1.27" layer="28" rot="MR180"/>
 </element>
 <element name="CHG1_X" library="3dprinter" package="SJ_2" value="" x="61.468" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="62.738" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="59.436" y="20.701" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="61.468" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CHG2_X" library="3dprinter" package="SJ_2" value="" x="48.768" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="50.038" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="50.038" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="48.768" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CHG1_Y" library="3dprinter" package="SJ_2" value="" x="46.228" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="44.45" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="44.196" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="46.228" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CHG2_Y" library="3dprinter" package="SJ_2" value="" x="33.528" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="34.798" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="34.798" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="33.528" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CHG1_Z" library="3dprinter" package="SJ_2" value="" x="30.988" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="29.21" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="28.956" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="30.988" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CHG2_Z" library="3dprinter" package="SJ_2" value="" x="18.288" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="19.558" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="19.558" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="18.288" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CFG1_E" library="3dprinter" package="SJ_2" value="" x="15.748" y="19.304" smashed="yes" rot="R90">
-<attribute name="NAME" x="13.97" y="20.955" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="13.716" y="20.955" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="15.748" y="19.2039" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="CFG2_E" library="3dprinter" package="SJ_2" value="" x="5.588" y="22.225" smashed="yes" rot="R90">
-<attribute name="NAME" x="6.858" y="23.876" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="NAME" x="6.858" y="23.876" size="0.762" layer="25" font="vector" ratio="10" rot="SR270"/>
 <attribute name="VALUE" x="5.588" y="22.1249" size="0.02" layer="27" rot="R90"/>
 </element>
 <element name="SWA" library="3dprinter" package="BUTTON" value="BUTTON" x="57.658" y="46.228" smashed="yes">
@@ -1296,10 +1650,10 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="TP_SIGNAL_NAME" value="" x="64.643" y="41.021" size="1" layer="37"/>
 <attribute name="VALUE" x="64.643" y="42.164" size="0.0254" layer="27"/>
 </element>
-<element name="P0.21" library="3dprinter" package="B1,27" value="TPB1,27" x="60.96" y="27.178" smashed="yes">
-<attribute name="NAME" x="59.182" y="28.829" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="60.325" y="25.273" size="1" layer="37"/>
-<attribute name="VALUE" x="60.325" y="26.416" size="0.0254" layer="27"/>
+<element name="P0.21" library="3dprinter" package="B1,27" value="TPB1,27" x="56.642" y="29.972" smashed="yes">
+<attribute name="NAME" x="57.404" y="29.083" size="0.635" layer="25" font="vector" ratio="10" rot="SR270"/>
+<attribute name="TP_SIGNAL_NAME" value="" x="56.007" y="28.067" size="1" layer="37"/>
+<attribute name="VALUE" x="56.007" y="29.21" size="0.0254" layer="27"/>
 </element>
 </elements>
 <signals>
@@ -3401,12 +3755,12 @@ Please make sure your boards conform to these design rules.</description>
 <signal name="P0.21">
 <contactref element="IC1" pad="40"/>
 <contactref element="P0.21" pad="TP"/>
-<wire x1="61.452" y1="34.846" x2="61.452" y2="30.718" width="0.1524" layer="16"/>
-<wire x1="61.452" y1="30.718" x2="60.452" y2="29.718" width="0.1524" layer="16"/>
-<wire x1="60.452" y1="29.718" x2="60.452" y2="28.448" width="0.1524" layer="16"/>
-<via x="60.452" y="28.448" extent="1-16" drill="0.3302"/>
-<wire x1="60.452" y1="28.448" x2="60.96" y2="27.94" width="0.1524" layer="1"/>
-<wire x1="60.96" y1="27.94" x2="60.96" y2="27.178" width="0.1524" layer="1"/>
+<wire x1="61.452" y1="34.846" x2="61.452" y2="30.972" width="0.1524" layer="16"/>
+<wire x1="61.452" y1="30.972" x2="58.166" y2="27.686" width="0.1524" layer="16"/>
+<wire x1="58.166" y1="27.686" x2="56.896" y2="27.686" width="0.1524" layer="16"/>
+<wire x1="56.896" y1="27.686" x2="56.642" y2="27.432" width="0.1524" layer="16"/>
+<via x="56.642" y="27.432" extent="1-16" drill="0.3302"/>
+<wire x1="56.642" y1="27.432" x2="56.642" y2="29.972" width="0.1524" layer="1"/>
 </signal>
 <signal name="P0.08">
 <contactref element="IC1" pad="14"/>
@@ -3611,93 +3965,99 @@ Please make sure your boards conform to these design rules.</description>
 <approved hash="19,1,3c18402c449738a3"/>
 <approved hash="19,1,2418742c709320a7"/>
 <approved hash="19,1,3c18082c0c8e38ba"/>
+<approved hash="19,16,cdeae11fad1b81ee"/>
+<approved hash="19,16,02ead61e1a1aceee"/>
 <approved hash="19,16,89dc5d4d914945d8"/>
 <approved hash="19,16,45329a57d6530936"/>
-<approved hash="19,16,02ead61e1a1aceee"/>
 <approved hash="19,16,f033252fe92b3c37"/>
-<approved hash="19,16,cdeae11fad1b81ee"/>
-<approved hash="19,16,1ace083ac436d6c2"/>
-<approved hash="19,16,91f883694f655df4"/>
 <approved hash="19,16,e817fb0b3707241b"/>
-<approved hash="19,16,d5ce3f3b733799c2"/>
+<approved hash="19,16,1ace083ac436d6c2"/>
 <approved hash="19,16,5d164473087f111a"/>
+<approved hash="19,16,91f883694f655df4"/>
+<approved hash="19,16,d5ce3f3b733799c2"/>
+<approved hash="19,16,a694ab8567816a90"/>
 <approved hash="19,16,e2a217d75bd3aea6"/>
-<approved hash="19,16,2da220d6ecd2e1a6"/>
 <approved hash="19,16,6a7a6c9f209b267e"/>
 <approved hash="19,16,df7bd3e71fe3137f"/>
-<approved hash="19,16,a694ab8567816a90"/>
-<approved hash="19,16,eeb092a15edd22cc"/>
-<approved hash="19,16,aa862ef3628fe6fa"/>
+<approved hash="19,16,2da220d6ecd2e1a6"/>
 <approved hash="19,16,225e55bb19c76e22"/>
 <approved hash="19,16,658619f2d58ea9fa"/>
+<approved hash="19,16,aa862ef3628fe6fa"/>
 <approved hash="19,16,975feac326bf5b23"/>
-<approved hash="19,16,4d1a06ef4aeb011e"/>
+<approved hash="19,16,eeb092a15edd22cc"/>
 <approved hash="19,16,70c3c2df0edbbcc7"/>
+<approved hash="19,16,4d1a06ef4aeb011e"/>
 <approved hash="19,16,c5c27da731a389c6"/>
 <approved hash="19,16,821a31eefdea4e1e"/>
 <approved hash="19,16,092cbabd76b9c528"/>
-<approved hash="19,16,206377063b026c67"/>
 <approved hash="19,16,a8bb0c4e404ae4bf"/>
+<approved hash="19,16,206377063b026c67"/>
 <approved hash="19,16,ec8db01c7c182089"/>
-<approved hash="19,16,9562c87e047a5966"/>
 <approved hash="19,16,67bb3b4ff74babbf"/>
-<approved hash="19,16,8d469e5a5256414a"/>
+<approved hash="19,16,9562c87e047a5966"/>
 <approved hash="19,16,f4a9e6382a3438a5"/>
 <approved hash="19,16,b09f5a6a1666fc93"/>
-<approved hash="19,16,384721226d2e744b"/>
 <approved hash="19,16,7f9f6d6ba167b393"/>
-<approved hash="19,16,f6f3858749833af7"/>
+<approved hash="19,16,8d469e5a5256414a"/>
+<approved hash="19,16,384721226d2e744b"/>
 <approved hash="19,16,042a76b6bab2c82e"/>
+<approved hash="19,16,f6f3858749833af7"/>
 <approved hash="19,16,b12bc9ce85cafd2f"/>
-<approved hash="19,16,7dc50ed4c2d0b1c1"/>
 <approved hash="19,16,39f3b286fe8275f7"/>
+<approved hash="19,16,7dc50ed4c2d0b1c1"/>
 <approved hash="19,16,d934f0c03cdc1528"/>
 <approved hash="19,16,890f32ea7ef6c513"/>
 <approved hash="19,16,01d749a205be4dcb"/>
 <approved hash="19,16,3c0e8d92418ef012"/>
 <approved hash="19,16,45e1f5f039ec89fd"/>
-<approved hash="19,16,80f3da969692ccf7"/>
 <approved hash="19,16,082ba1deedda442f"/>
+<approved hash="19,16,c72b96df5adb0b2f"/>
 <approved hash="19,16,35f265eea9eaf9f6"/>
 <approved hash="19,16,4c1d1d8cd1888019"/>
-<approved hash="19,16,c72b96df5adb0b2f"/>
-<approved hash="19,16,3ea2ce51c25432a7"/>
+<approved hash="19,16,80f3da969692ccf7"/>
 <approved hash="19,16,338dfd88f18d3f88"/>
-<approved hash="19,16,842c40e94cec8829"/>
 <approved hash="19,16,0c87db72d7770082"/>
-<approved hash="19,16,b81774dc78d9b412"/>
+<approved hash="19,16,3ea2ce51c25432a7"/>
 <approved hash="19,16,90815f7653739c84"/>
+<approved hash="19,16,842c40e94cec8829"/>
 <approved hash="19,16,191cd7dbdbde1519"/>
+<approved hash="19,16,b81774dc78d9b412"/>
 <approved hash="19,16,9fa62953255693a3"/>
-<approved hash="19,16,66866a8366866a83"/>
-<approved hash="19,16,598c4c79407c5589"/>
-<approved hash="19,16,d127d7e2dbe7dd22"/>
-<approved hash="19,16,6ba9595a555f67ac"/>
 <approved hash="19,16,ed1ce3d7efd2e119"/>
 <approved hash="19,16,c58ac87dc478c98f"/>
-<approved hash="19,16,4c1740d04cd54012"/>
+<approved hash="19,16,598c4c79407c5589"/>
 <approved hash="19,16,caadbe58b25dc6a8"/>
-<approved hash="19,16,520432cf3ec85e03"/>
-<approved hash="19,16,e6949d619166ea93"/>
-<approved hash="19,16,d4b188428445d8b6"/>
-<approved hash="19,16,6e3f06fa0afd6238"/>
-<approved hash="19,16,f30f91c89dcfff08"/>
-<approved hash="19,16,75b56f40634779b2"/>
+<approved hash="19,16,d127d7e2dbe7dd22"/>
+<approved hash="19,16,66866a8366866a83"/>
+<approved hash="19,16,4c1740d04cd54012"/>
+<approved hash="19,16,6ba9595a555f67ac"/>
 <approved hash="19,16,7a92196515627695"/>
 <approved hash="19,16,d99ebb9bb79cd599"/>
-<approved hash="19,16,a0bce449e84cacb9"/>
-<approved hash="19,16,26061ac116c42a03"/>
-<approved hash="19,16,870db9c6b5c38b08"/>
-<approved hash="19,16,af9b926c9e69a39e"/>
-<approved hash="19,16,01b8034b0f4e0dbd"/>
+<approved hash="19,16,d4b188428445d8b6"/>
+<approved hash="19,16,e6949d619166ea93"/>
+<approved hash="19,16,6e3f06fa0afd6238"/>
+<approved hash="19,16,f30f91c89dcfff08"/>
+<approved hash="19,16,520432cf3ec85e03"/>
+<approved hash="19,16,75b56f40634779b2"/>
 <approved hash="19,16,0c9730923c970092"/>
-<approved hash="19,16,bb368df381f6b733"/>
+<approved hash="19,16,a0bce449e84cacb9"/>
+<approved hash="19,16,870db9c6b5c38b08"/>
 <approved hash="19,16,339d16681a6d3f98"/>
-<approved hash="19,16,4869285d2f804fb4"/>
+<approved hash="19,16,af9b926c9e69a39e"/>
+<approved hash="19,16,26061ac116c42a03"/>
+<approved hash="19,16,01b8034b0f4e0dbd"/>
+<approved hash="19,16,bb368df381f6b733"/>
 <approved hash="19,16,4829281d2b084b3c"/>
+<approved hash="19,16,4869285d2f804fb4"/>
 <approved hash="19,16,c42c2c182f09c73d"/>
 <approved hash="19,16,c46c2c582b81c3b5"/>
 </errors>
 </board>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
