@@ -8,4 +8,7 @@ eagle.epf
 #Nordic SDK files
 code/sdk/*
 
+#Emacs
+*.*~
+
 .DS_Store
