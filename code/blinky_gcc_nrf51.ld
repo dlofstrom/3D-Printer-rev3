@@ -1,0 +1,9 @@
+SEARCH_DIR(.)
+GROUP(-lgcc -lc -lnosys)
+
+MEMORY
+{
+  FLASH (rx) : ORIGIN = 0x0, LENGTH = 256K
+  RAM (rwx) :  ORIGIN = 0x20000000, LENGTH = 16K
+}
+INCLUDE "nrf5x_common.ld"
