@@ -31,6 +31,10 @@ SRC_FILES += \
   $(SDK_ROOT)/external/segger_rtt/SEGGER_RTT_printf.c \
   $(SDK_ROOT)/components/toolchain/gcc/gcc_startup_nrf51.S \
   $(SDK_ROOT)/components/toolchain/system_nrf51.c \
+  $(SDK_ROOT)/components/libraries/fifo/app_fifo.c \
+  $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
+  $(SDK_ROOT)/components/libraries/uart/retarget.c \
+  $(PROJ_DIR)/src/uart.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \
@@ -132,6 +136,8 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/drivers_nrf/swi \
   $(SDK_ROOT)/components/ble/ble_services/ble_hrs \
   $(SDK_ROOT)/components/libraries/log/src \
+  $(SDK_ROOT)/components/libraries/fifo \
+  $(PROJ_DIR)/inc \
 
 # Libraries common to all targets
 LIB_FILES += \
