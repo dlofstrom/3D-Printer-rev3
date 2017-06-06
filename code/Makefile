@@ -34,7 +34,10 @@ SRC_FILES += \
   $(SDK_ROOT)/components/libraries/fifo/app_fifo.c \
   $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
   $(SDK_ROOT)/components/libraries/uart/retarget.c \
+  $(SDK_ROOT)/components/drivers_nrf/hal/nrf_adc.c \
+  $(SDK_ROOT)/components/drivers_nrf/adc/nrf_drv_adc.c \
   $(PROJ_DIR)/src/uart.c \
+  $(PROJ_DIR)/src/adc.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \
