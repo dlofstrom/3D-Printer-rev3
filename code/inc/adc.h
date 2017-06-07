@@ -15,6 +15,8 @@
 void adc_init(void);
 
 //adc functions
-uint32_t adc_get(void);
+bool adc_available(void);
+int16_t adc_get(void);
+bool adc_sample(void);
 
 #endif
