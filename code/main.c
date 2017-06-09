@@ -13,7 +13,7 @@ int main(void)
 {
     nrf_gpio_pin_dir_set(11, NRF_GPIO_PIN_DIR_OUTPUT);
 
-    adc_init();
+    adc_init((1<<AIN3)|(1<<AIN4));
     uart_init();
 
     uart_print("Hello world!\n");
@@ -29,7 +29,9 @@ int main(void)
         }
         
         if (adc_available()) {
-            sprintf(adc, "%d\n", adc_get());
+            sprintf(adc, "%d\n", adc_get(AIN3));
+            uart_print(adc);
+            sprintf(adc, "%d\n", adc_get(AIN4));
             uart_print(adc);
         }
 
