@@ -23,7 +23,7 @@ static void adc_event_handler(nrf_drv_adc_evt_t const *p_event)
         adc_is_available = true;
         nrf_drv_adc_buffer_convert(adc_buffer, adc_channels);
     }
-    //nrf_gpio_pin_set(11);
+    nrf_gpio_pin_set(11);
 }
 
 //Initialize adc
@@ -103,9 +103,9 @@ int16_t adc_get(uint8_t channel)
 
 bool adc_sample(void)
 {
-    //NRF_ADC->TASKS_START = 1;
-    if (nrf_drv_adc_is_busy()) return false;
-    else nrf_drv_adc_sample();
+    NRF_ADC->TASKS_START = 1;
+    //if (nrf_drv_adc_is_busy()) return false;
+    //else nrf_drv_adc_sample();
     return true;
 }
 

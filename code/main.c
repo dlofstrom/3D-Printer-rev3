@@ -25,13 +25,13 @@ int main(void)
             uart_print(line);
             uart_print("Sampling adc: ");
             if (adc_sample()) uart_print("OK\n");
-           else uart_print("NOK\n");
+            else uart_print("NOK\n");
         }
         
         if (adc_available()) {
-            sprintf(adc, "%d\n", adc_get(AIN3));
+            sprintf(adc, "%d\n", adc_get(0));
             uart_print(adc);
-            sprintf(adc, "%d\n", adc_get(AIN4));
+            sprintf(adc, "%d\n", adc_get(1));
             uart_print(adc);
         }
 
