@@ -38,6 +38,8 @@ SRC_FILES += \
   $(SDK_ROOT)/components/drivers_nrf/adc/nrf_drv_adc.c \
   $(PROJ_DIR)/src/uart.c \
   $(PROJ_DIR)/src/adc.c \
+  $(PROJ_DIR)/src/time.c \
+  $(SDK_ROOT)/components/drivers_nrf/timer/nrf_drv_timer.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \

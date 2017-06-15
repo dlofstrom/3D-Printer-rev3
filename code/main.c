@@ -5,9 +5,13 @@
 
 #include "uart.h"
 #include "adc.h"
+#include "time.h"
 
 char line[100];
 char adc[10];
+
+uint32_t tic;
+uint32_t toc;
 
 int main(void)
 {
@@ -15,11 +19,17 @@ int main(void)
 
     adc_init((1<<AIN3)|(1<<AIN4));
     uart_init();
-
+    
+    time_init();
+    
+    tic = millis();
+    toc = millis();
+    
     uart_print("Hello world!\n");
     
     while (1)
     {
+        toc = millis();
         if (uart_read_line(line) != 0) {
             uart_print("Got a line: ");
             uart_print(line);
@@ -33,14 +43,14 @@ int main(void)
             uart_print(adc);
             sprintf(adc, "%d\n", adc_get(1));
             uart_print(adc);
+            sprintf(adc, "%lu\n", toc);
+            uart_print(adc);
         }
 
-        /*
-        nrf_gpio_pin_set(11);
-        nrf_delay_ms(500);
-        nrf_gpio_pin_clear(11);
-        nrf_delay_ms(500);
-        */
+        if (toc - tic >= 500) {
+            nrf_gpio_pin_toggle(11);   
+            tic = toc;
+        }
     }
 }
 
