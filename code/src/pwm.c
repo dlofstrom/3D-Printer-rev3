@@ -48,8 +48,7 @@ void pwm_init(void)
     NRF_TIMER2->CC[0] = 0x0;
     NRF_TIMER2->CC[1] = 0x0;
     NRF_TIMER2->CC[2] = 0x0;
-    NRF_TIMER2->CC[3] = 0x8000; //Top value for counter 0x8000 => 16000000/2^4/32768 ~ 30Hz
-		
+    NRF_TIMER2->CC[3] = 1024; //Top value for counter 0x8000 => 16000000/2^4
     // Enable interrupt for CC[0], CC[1], CC[2], CC[3] and overflow
     NRF_TIMER2->INTENSET = (TIMER_INTENSET_COMPARE0_Enabled << TIMER_INTENSET_COMPARE0_Pos) |
         (TIMER_INTENSET_COMPARE1_Enabled << TIMER_INTENSET_COMPARE1_Pos) |
