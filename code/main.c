@@ -42,27 +42,21 @@ int main(void)
         if (uart_read_line(line) != 0) {
             uart_print("Got a line: ");
             uart_print(line);
-            uart_print("Sampling adc: ");
-            if (adc_sample()) uart_print("OK\n");
-            else uart_print("NOK\n");
         }
         
-        if (adc_available()) {
-            sprintf(adc, "%d\n", adc_get(0));
-            uart_print(adc);
-            sprintf(adc, "%d\n", adc_get(1));
-            uart_print(adc);
-            sprintf(adc, "%lu\n", toc);
-            uart_print(adc);
-        }
-
         if (toc - tic >= 500) {
             nrf_gpio_pin_toggle(11);   
             tic = toc;
             pwm_set_duty(NOZ_PWM_CHANNEL, pwm_test);
             pwm_set_duty(BED_PWM_CHANNEL, pwm_test);
             pwm_set_duty(FAN1_PWM_CHANNEL, pwm_test);
-            pwm_test = (pwm_test + 100) % 0x8000;
+            pwm_test = (pwm_test + 10) % 1024;
+            sprintf(adc, "%d\n", adc_get(0));
+            uart_print(adc);
+            sprintf(adc, "%d\n", adc_get(1));
+            uart_print(adc);
+            sprintf(adc, "%lu\n", toc);
+            uart_print(adc);
         }
     }
 }
