@@ -24,7 +24,7 @@ int main(void)
     
     nrf_gpio_pin_dir_set(11, NRF_GPIO_PIN_DIR_OUTPUT);
 
-    adc_init((1<<AIN3)|(1<<AIN4));
+    adc_init();
     uart_init();
     
     time_init();

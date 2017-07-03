@@ -5,88 +5,56 @@
 #include "adc.h"
 
 #include "nrf.h"
-#include "nrf_drv_adc.h"
 #include "nrf_gpio.h"
 
-#define ADC_BUFFER_SIZE 8
-static int16_t adc_buffer[ADC_BUFFER_SIZE];
-static int16_t adc_channels;
+static int16_t adc_value[2];
+static uint8_t adc_channel;
 static bool adc_is_available;
 
 char buf[10];
 
 //ADC interrupt handler
-static void adc_event_handler(nrf_drv_adc_evt_t const *p_event)
+void ADC_IRQHandler(void)
 {
-    if (p_event->type == NRF_DRV_ADC_EVT_DONE)
-    {
+    //Clear event
+    NRF_ADC->EVENTS_END = 0;
+    adc_value[adc_channel] = NRF_ADC->RESULT;
+
+    //ADC values are available after both channels have been sampled
+    if (adc_channel == 1) {
         adc_is_available = true;
-        nrf_drv_adc_buffer_convert(adc_buffer, adc_channels);
+    } else {
+        adc_channel = NOZ_ADC_CHANNEL;
+        NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
+            | (NOZ_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
+            | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
+            | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
+            | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
+        NRF_ADC->TASKS_START = 1;
     }
-    nrf_gpio_pin_set(11);
 }
 
 //Initialize adc
-void adc_init(uint8_t channels)
+void adc_init(void)
 {
-    //Initialize ADC
-    nrf_drv_adc_config_t config = NRF_DRV_ADC_DEFAULT_CONFIG;
-    nrf_drv_adc_init(&config, adc_event_handler);
-
-    //Init selected channels
-    adc_channels = 0;
-    
-    //Configure and enable ADC channel 0
-    if (channels & (1 << AIN0)) {
-        static nrf_drv_adc_channel_t m_channel_0_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_0);
-        nrf_drv_adc_channel_enable(&m_channel_0_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 1
-    if (channels & (1 << AIN1)) {
-        static nrf_drv_adc_channel_t m_channel_1_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_1);
-        nrf_drv_adc_channel_enable(&m_channel_1_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 2
-    if (channels & (1 << AIN2)) {
-        static nrf_drv_adc_channel_t m_channel_2_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_2);
-        nrf_drv_adc_channel_enable(&m_channel_2_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 3
-    if (channels & (1 << AIN3)) {
-        static nrf_drv_adc_channel_t m_channel_3_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_3);
-        nrf_drv_adc_channel_enable(&m_channel_3_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 4
-    if (channels & (1 << AIN4)) {
-        static nrf_drv_adc_channel_t m_channel_4_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_4);
-        nrf_drv_adc_channel_enable(&m_channel_4_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 5
-    if (channels & (1 << AIN5)) {
-        static nrf_drv_adc_channel_t m_channel_5_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_5);
-        nrf_drv_adc_channel_enable(&m_channel_5_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 6
-    if (channels & (1 << AIN6)) {
-        static nrf_drv_adc_channel_t m_channel_6_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_6);
-        nrf_drv_adc_channel_enable(&m_channel_6_config);
-        adc_channels++;
-    }
-    //Configure and enable ADC channel 7
-    if (channels & (1 << AIN7)) {
-        static nrf_drv_adc_channel_t m_channel_7_config = NRF_DRV_ADC_DEFAULT_CHANNEL(NRF_ADC_CONFIG_INPUT_7);
-        nrf_drv_adc_channel_enable(&m_channel_7_config);
-        adc_channels++;
-    }
-    
-    nrf_drv_adc_buffer_convert(adc_buffer, adc_channels);
+    adc_value[0] = 0;
+    adc_value[1] = 0;
+    adc_channel = BED_ADC_CHANNEL;
     adc_is_available = false;
+    
+    //Enable interrupt on ADC sample ready event
+    NRF_ADC->INTENSET = ADC_INTENSET_END_Msk;
+    NVIC_EnableIRQ(ADC_IRQn);	
+	
+    //Configure ADC
+    NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos) //ADC external reference pin selection
+        | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos) //Use analog input
+        | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos) //Use internal 1.2V bandgap voltage as reference for conversion
+        | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos) //Analog input with no prescaling
+        | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos); //10bit ADC resolution
+	
+    //Enable ADC
+    NRF_ADC->ENABLE = ADC_ENABLE_ENABLE_Enabled;	     
 }
 
 //adc functions
@@ -98,14 +66,21 @@ bool adc_available(void)
 int16_t adc_get(uint8_t channel)
 {
     adc_is_available = false;
-    return adc_buffer[channel];
+    return adc_value[channel];
 }
 
 bool adc_sample(void)
 {
+    adc_is_available = false;
+    //Reconfigure ADC
+    adc_channel = BED_ADC_CHANNEL;
+    NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
+        | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
+        | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
+        | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
+        | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
+
     NRF_ADC->TASKS_START = 1;
-    //if (nrf_drv_adc_is_busy()) return false;
-    //else nrf_drv_adc_sample();
     return true;
 }
 

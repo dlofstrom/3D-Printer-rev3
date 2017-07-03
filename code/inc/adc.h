@@ -11,17 +11,14 @@
 #include <stdio.h>
 #include <string.h>
 
-#define AIN0 0
-#define AIN1 1
-#define AIN2 2
-#define AIN3 3
-#define AIN4 4
-#define AIN5 5
-#define AIN6 6
-#define AIN7 7
+#define BED_ADC_INPUT ADC_CONFIG_PSEL_AnalogInput3
+#define NOZ_ADC_INPUT ADC_CONFIG_PSEL_AnalogInput4
+
+#define BED_ADC_CHANNEL 0
+#define NOZ_ADC_CHANNEL 1
 
 //Initialize adc
-void adc_init(uint8_t channels);
+void adc_init(void);
 
 //adc functions
 bool adc_available(void);
