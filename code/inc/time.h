@@ -12,7 +12,6 @@
 #include <string.h>
 
 void time_init(void);
-uint32_t micros(void);
 uint32_t millis(void);
 
 #endif
