@@ -21,8 +21,7 @@
 void adc_init(void);
 
 //adc functions
-bool adc_available(void);
 int16_t adc_get(uint8_t channel);
-bool adc_sample(void);
+void adc_sample(void);
 
 #endif

@@ -5,7 +5,6 @@
 #include "adc.h"
 
 #include "nrf.h"
-#include "nrf_gpio.h"
 
 static int16_t adc_value[2];
 static uint8_t adc_channel;
@@ -22,6 +21,12 @@ void ADC_IRQHandler(void)
 
     //ADC values are available after both channels have been sampled
     if (adc_channel == 1) {
+        adc_channel = BED_ADC_CHANNEL;
+        NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
+            | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
+            | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
+            | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
+            | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
         adc_is_available = true;
     } else {
         adc_channel = NOZ_ADC_CHANNEL;
@@ -54,33 +59,19 @@ void adc_init(void)
         | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos); //10bit ADC resolution
 	
     //Enable ADC
-    NRF_ADC->ENABLE = ADC_ENABLE_ENABLE_Enabled;	     
+    NRF_ADC->ENABLE = ADC_ENABLE_ENABLE_Enabled;
 }
 
 //adc functions
-bool adc_available(void)
-{
-    return adc_is_available;
-}
-
 int16_t adc_get(uint8_t channel)
 {
     adc_is_available = false;
     return adc_value[channel];
 }
 
-bool adc_sample(void)
+void adc_sample(void)
 {
     adc_is_available = false;
-    //Reconfigure ADC
-    adc_channel = BED_ADC_CHANNEL;
-    NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
-        | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
-        | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
-        | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
-        | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
-
     NRF_ADC->TASKS_START = 1;
-    return true;
 }
 
