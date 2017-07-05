@@ -10,6 +10,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 
 #define MAX_TEST_DATA_BYTES (15U) //max number of test bytes to be used for tx and rx.
 #define UART_TX_BUF_SIZE 256 //UART TX buffer size.
@@ -25,5 +26,6 @@ void uart_init(void);
 bool uart_line_available(void);
 uint32_t uart_read_line(char *data);
 uint32_t uart_print(const char *data);
+uint32_t uart_printf(const char *format, ...);
 
 #endif

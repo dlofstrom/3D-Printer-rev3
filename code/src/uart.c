@@ -91,3 +91,13 @@ uint32_t uart_print(const char *data){
     }
     return count;
 }
+
+static char str[UART_TX_BUF_SIZE];
+uint32_t uart_printf(const char *format, ...) {
+    va_list argp;
+    va_start(argp, format);
+
+    vsprintf(str, format, argp);
+    return uart_print(str);
+    
+}
