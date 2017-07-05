@@ -39,6 +39,8 @@ SRC_FILES += \
   $(PROJ_DIR)/src/adc.c \
   $(PROJ_DIR)/src/time.c \
   $(PROJ_DIR)/src/pwm.c \
+  $(PROJ_DIR)/src/switch.c \
+  $(PROJ_DIR)/src/stepper.c \
 #  $(SDK_ROOT)/components/drivers_nrf/timer/nrf_drv_timer.c \
 #  $(SDK_ROOT)/components/drivers_nrf/adc/nrf_drv_adc.c \
 

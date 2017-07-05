@@ -1,5 +1,6 @@
 #include <stdbool.h>
 #include <stdint.h>
+#include "nrf.h"
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 
@@ -7,13 +8,14 @@
 #include "adc.h"
 #include "time.h"
 #include "pwm.h"
-
+#include "switch.h"
+#include "stepper.h"
 
 char line[100];
-char adc[10];
 
 uint32_t tic;
 uint32_t toc;
+int i;
 
 uint32_t pwm_test = 0;
 
@@ -21,15 +23,20 @@ int main(void)
 {
     //Use external 16MHz crystal
     NRF_CLOCK->TASKS_HFCLKSTART = 1;
-    
     nrf_gpio_pin_dir_set(11, NRF_GPIO_PIN_DIR_OUTPUT);
 
+    //Physical layer
     adc_init();
     uart_init();
-    
     time_init();
-
     pwm_init();
+    switch_init();
+    stepper_init();
+
+    stepper_enable(STEPPER_X_CHANNEL);
+    stepper_disable(STEPPER_Y_CHANNEL);
+    stepper_disable(STEPPER_Z_CHANNEL);
+    stepper_disable(STEPPER_E_CHANNEL);
     
     tic = millis();
     toc = millis();
@@ -42,6 +49,15 @@ int main(void)
         if (uart_read_line(line) != 0) {
             uart_print("Got a line: ");
             uart_print(line);
+
+            for (i = 0; i < 200; i++) {
+                stepper_step(STEPPER_X_CHANNEL, STEPPER_DIR_POS);
+                nrf_delay_ms(1);
+            }
+        }
+
+        for (i = 0; i < NUMBER_OF_SWITCHES; i++) {
+            if (switch_get(i)) uart_printf("A switch is closed: %lu\n", i);
         }
         
         if (toc - tic >= 500) {
@@ -51,12 +67,9 @@ int main(void)
             pwm_set_duty(BED_PWM_CHANNEL, pwm_test);
             pwm_set_duty(FAN1_PWM_CHANNEL, pwm_test);
             pwm_test = (pwm_test + 10) % 1024;
-            sprintf(adc, "%d\n", adc_get(0));
-            uart_print(adc);
-            sprintf(adc, "%d\n", adc_get(1));
-            uart_print(adc);
-            sprintf(adc, "%lu\n", toc);
-            uart_print(adc);
+            //uart_printf("%d\n", adc_get(0));
+            //uart_printf("%d\n", adc_get(1));
+            //uart_printf("%lu\n", toc);
         }
     }
 }
