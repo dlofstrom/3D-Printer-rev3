@@ -41,6 +41,7 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/pwm.c \
   $(PROJ_DIR)/peripheral/switch.c \
   $(PROJ_DIR)/peripheral/stepper.c \
+  $(PROJ_DIR)/peripheral/led.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \

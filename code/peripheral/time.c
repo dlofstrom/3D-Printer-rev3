@@ -6,6 +6,7 @@
 #include "adc.h"
 
 #include "nrf.h"
+#include "nrf_delay.h"
 
 static uint32_t ms;
 
@@ -23,6 +24,9 @@ void TIMER1_IRQHandler(void)
 //Initialize timer 1
 void time_init(void)
 {
+    //Use external 16MHz crystal
+    NRF_CLOCK->TASKS_HFCLKSTART = 1;
+
     ms = 0;
 
     NRF_TIMER1->MODE = TIMER_MODE_MODE_Timer; // Set the timer in Timer Mode
@@ -36,7 +40,13 @@ void time_init(void)
     NRF_TIMER1->TASKS_START = 1; // Start TIMER2
 }
 
+//Get milliseconds
 uint32_t millis(void)
 {
     return ms;
+}
+
+//Blocking delay
+void delay_ms(uint32_t ms) {
+    nrf_delay_ms(1);
 }

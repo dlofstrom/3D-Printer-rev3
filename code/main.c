@@ -4,6 +4,7 @@
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
 
+#include "led.h"
 #include "uart.h"
 #include "adc.h"
 #include "time.h"
@@ -21,11 +22,10 @@ uint32_t pwm_test = 0;
 
 int main(void)
 {
-    //Use external 16MHz crystal
-    NRF_CLOCK->TASKS_HFCLKSTART = 1;
-    nrf_gpio_pin_dir_set(11, NRF_GPIO_PIN_DIR_OUTPUT);
+    
 
-    //Physical layer
+    //Perippheral layer
+    led_init();
     adc_init();
     uart_init();
     time_init();
@@ -49,10 +49,10 @@ int main(void)
         if (uart_read_line(line) != 0) {
             uart_print("Got a line: ");
             uart_print(line);
-
+            
             for (i = 0; i < 200; i++) {
                 stepper_step(STEPPER_X_CHANNEL, STEPPER_DIR_POS);
-                nrf_delay_ms(1);
+                delay_ms(1);
             }
         }
 
@@ -61,7 +61,7 @@ int main(void)
         }
         
         if (toc - tic >= 500) {
-            nrf_gpio_pin_toggle(11);   
+            led_toggle();   
             tic = toc;
             pwm_set_duty(NOZ_PWM_CHANNEL, pwm_test);
             pwm_set_duty(BED_PWM_CHANNEL, pwm_test);
