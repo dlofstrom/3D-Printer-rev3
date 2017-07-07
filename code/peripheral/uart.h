@@ -27,5 +27,6 @@ bool uart_line_available(void);
 uint32_t uart_read_line(char *data);
 uint32_t uart_print(const char *data);
 uint32_t uart_printf(const char *format, ...);
+unsigned int debug(const char *format, ...);
 
 #endif

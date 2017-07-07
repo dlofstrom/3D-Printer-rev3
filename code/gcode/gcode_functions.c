@@ -30,14 +30,14 @@ int32_t N_f(char *s) {
 
     //Extract command checksum
     int32_t checksum;
-    if (sscanf(scs, "*%d", &checksum) == 0) {
+    if (sscanf(scs, "*%ld", &checksum) == 0) {
         printf("Something is wrong with command format!\n");
         return 2;
     }
 
     //Compare checksums
     if (cs != checksum) {
-        printf("Checksums is not equal: %d != %d!\n",cs, checksum);
+        printf("Checksums is not equal: %ld != %ld!\n",cs, checksum);
         return 3;
     }
 
@@ -49,7 +49,7 @@ int32_t N_f(char *s) {
 
     //Compare line number
     //TODO
-    printf("Line number: %d\n", gp.value);
+    printf("Line number: %ld\n", gp.value);
 
     //Execute G-code command
     //scs points to *
@@ -75,7 +75,7 @@ int32_t G1_f(char *s) {
     //Testing parameter pop
     gcode_parameter_t gp;
     while (gcode_get_parameter(&s, &gp) > 0) {
-        printf("Parameter: %c %d\n", gp.type, gp.value);
+        printf("Parameter: %c %ld\n", gp.type, gp.value);
     }
     
     return 1;

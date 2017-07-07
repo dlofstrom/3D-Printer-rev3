@@ -8,25 +8,34 @@
 #include "gcode.h"
 #include "gcode_lookup.h"
 
+#ifndef NRF51
+// G-code debug print
+unsigned int debug(const char *format, ...) {
+    va_list argp;
+    va_start(argp, format);
+    return vprintf(format, argp);
+}
+#endif
+
 //Parse G-code command
-int32_t gcode_parse(const char *s) {
+int gcode_parse(const char *s) {
     //Create a copy of the input that we can modify
     char command[strlen(s)+1];
     strncpy(command, s, strlen(s)+1);
-    printf("Command length after copy: %lu (%s)\n", strlen(command), command);
+    debug("Command length after copy: %u (%s)\n", (unsigned int)strlen(command), command);
     
     //Filter out comments, newlines and trailing spaces
-    uint32_t i = 0;
+    unsigned int i = 0;
     while (command[i] != ';' && command[i] != '\n' && command[i] != '\0') i++;
     while (command[i-1] == ' ') i--;
     command[i] = '\0';
-    printf("Command length after comment filter: %lu (%s)\n", strlen(command), command);
+    debug("Command length after comment filter: %u (%s)\n", (unsigned int)strlen(command), command);
 
     //Extract Xnnn
     char type = 'X';
-    int32_t id = -1;
+    int id = -1;
     if (sscanf(command, "%c%d", &type, &id) == 0) {
-        printf("Something is wrong with sscanf command");
+        debug("Something is wrong with sscanf command");
         return 1;
     }
 
@@ -42,6 +51,7 @@ int32_t gcode_parse(const char *s) {
         //Run function
         return (*(gf->fp))(command);
     } else {
+        debug("Not a valid G-code command\n");
         return 2;
     }
     
@@ -50,11 +60,12 @@ int32_t gcode_parse(const char *s) {
 
 
 // Extract G-code parameter (similar to strtok)
-int32_t gcode_get_parameter(char **s, gcode_parameter_t *gp) {
+int gcode_get_parameter(char **s, gcode_parameter_t *gp) {
     //Get first Xnnn
-    int32_t n = sscanf(*s, "%c%d", &(gp->type), &(gp->value));
+    int n = sscanf(*s, "%c%d", &(gp->type), &(gp->value));
     //Move pointer forward;
     while (*((*s)++) != ' ') if (**s == '\0') break;
     if (n == 1) gp->value = -1;
     return n;
 }
+

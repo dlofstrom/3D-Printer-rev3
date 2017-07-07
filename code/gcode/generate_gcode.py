@@ -43,7 +43,7 @@ gh.write('''//
 for command in commands:
     gh.write('// ' + command + '_f(char *s)\n')
     gh.write('// ' + command + ': ' + comments[command] + '\n')
-    gh.write('int32_t ' + command + '_f();\n\n')
+    gh.write('int ' + command + '_f();\n\n')
 gh.write('#endif')
 gh.close()
 
@@ -66,9 +66,9 @@ gc.write('''//
 for command in commands:
     gc.write('// ' + command + '_f(const char *s)\n')
     gc.write('// ' + command + ': ' + comments[command] + '\n')
-    gc.write('int32_t ' + command + '_f(char *s) {\n')
-    gc.write('    printf("' + command + '_f(const char *s) is not yet implemented!\\n");\n')
-    gc.write('    printf("%s\\n", s);\n')
+    gc.write('int ' + command + '_f(char *s) {\n')
+    gc.write('    debug("' + command + '_f(const char *s) is not yet implemented!\\n");\n')
+    gc.write('    debug("%s\\n", s);\n')
     gc.write('    return 1;\n}\n\n')
 gc.close()
 
@@ -88,11 +88,11 @@ gl.write('''//
 
 #include "gcode_functions.h"
 
-typedef int32_t (*gcode_function)();
+typedef int (*gcode_function)();
 
 typedef struct {
     char type;
-    int32_t id;
+    int id;
     gcode_function fp;
 } gcode_function_t;
 

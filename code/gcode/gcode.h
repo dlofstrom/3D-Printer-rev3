@@ -12,17 +12,25 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <stdarg.h>
+
+#ifndef NRF51
+// G-code debug print
+unsigned int debug(const char *format, ...);
+#else
+#include "uart.h"
+#endif
 
 // Single G-code parameter
 typedef struct {
     char type;
-    int32_t value;
+    int value;
 } gcode_parameter_t;
 
 // Parse G-code command
-int32_t gcode_parse(const char *s);
+int gcode_parse(const char *s);
 
 // Extract G-code parameter (similar to strtok)
-int32_t gcode_get_parameter(char **s, gcode_parameter_t *gp);
+int gcode_get_parameter(char **s, gcode_parameter_t *gp);
 
 #endif

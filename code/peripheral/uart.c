@@ -101,3 +101,12 @@ uint32_t uart_printf(const char *format, ...) {
     return uart_print(str);
     
 }
+
+unsigned int debug(const char *format, ...) {
+    va_list argp;
+    va_start(argp, format);
+
+    vsprintf(str, format, argp);
+    return uart_print(str);
+    
+}

@@ -12,6 +12,8 @@
 #include "switch.h"
 #include "stepper.h"
 
+#include "gcode.h"
+
 char line[100];
 
 uint32_t tic;
@@ -49,6 +51,7 @@ int main(void)
         if (uart_read_line(line) != 0) {
             uart_print("Got a line: ");
             uart_print(line);
+            gcode_parse(line);
             
             for (i = 0; i < 200; i++) {
                 stepper_step(STEPPER_X_CHANNEL, STEPPER_DIR_POS);

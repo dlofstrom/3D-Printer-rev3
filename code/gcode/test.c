@@ -12,6 +12,7 @@ int main() {
     gcode_parse("N3 T0*57 ; This is a comment\n");
     gcode_parse("G\n");
     gcode_parse("G X100\n");
+    gcode_parse("F X100\n");
     
     return 1;
 }

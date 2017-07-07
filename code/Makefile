@@ -42,6 +42,9 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/switch.c \
   $(PROJ_DIR)/peripheral/stepper.c \
   $(PROJ_DIR)/peripheral/led.c \
+  $(PROJ_DIR)/gcode/gcode.c \
+  $(PROJ_DIR)/gcode/gcode_functions_template.c \
+
 
 # Include folders common to all targets
 INC_FOLDERS += \
@@ -145,6 +148,7 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/log/src \
   $(SDK_ROOT)/components/libraries/fifo \
   $(PROJ_DIR)/peripheral \
+  $(PROJ_DIR)/gcode \
 
 # Libraries common to all targets
 LIB_FILES += \
