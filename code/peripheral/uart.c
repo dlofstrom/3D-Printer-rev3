@@ -103,7 +103,7 @@ uint32_t uart_printf(const char *format, ...) {
 }
 
 unsigned int debug(const char *format, ...) {
-#if DEBUG
+#ifdef DEBUG
     va_list argp;
     va_start(argp, format);
 

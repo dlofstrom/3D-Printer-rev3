@@ -12,8 +12,6 @@
 #include <string.h>
 #include <stdarg.h>
 
-#define DEBUG 1
-
 #define MAX_TEST_DATA_BYTES (15U) //max number of test bytes to be used for tx and rx.
 #define UART_TX_BUF_SIZE 256 //UART TX buffer size.
 #define UART_RX_BUF_SIZE 256 //UART RX buffer size.

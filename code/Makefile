@@ -187,7 +187,7 @@ LDFLAGS += -Wl,--gc-sections
 LDFLAGS += --specs=nano.specs -lc -lnosys
 
 
-.PHONY: $(TARGETS) default all clean help flash 
+.PHONY: $(TARGETS) default all clean help flash debug
 
 # Default target - first one defined
 default: nrf51822_xxac
@@ -202,6 +202,9 @@ TEMPLATE_PATH := $(SDK_ROOT)/components/toolchain/gcc
 include $(TEMPLATE_PATH)/Makefile.common
 
 $(foreach target, $(TARGETS), $(call define_target, $(target)))
+
+debug: CFLAGS += -DDEBUG
+debug: flash
 
 # Flash the program
 flash: $(OUTPUT_DIRECTORY)/nrf51822_xxac.hex
