@@ -1,4 +1,4 @@
-PROJECT_NAME     := blinky_pca10028
+PROJECT_NAME     := printer
 TARGETS          := nrf51822_xxac
 OUTPUT_DIRECTORY := _build
 
@@ -6,7 +6,7 @@ SDK_ROOT := ./sdk
 PROJ_DIR := .
 
 $(OUTPUT_DIRECTORY)/nrf51822_xxac.out: \
-  LINKER_SCRIPT  := blinky_gcc_nrf51.ld
+  LINKER_SCRIPT  := gcc_nrf51.ld
 
 # Source files common to all targets
 SRC_FILES += \
