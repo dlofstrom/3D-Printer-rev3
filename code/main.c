@@ -37,7 +37,7 @@ int main(void)
 
     //Testing flash read and write
     //flash_page_erase();
-    //flash_word_write(1234);
+    //flash_word_write(31234);
     uint32_t w = flash_word_read();
     uart_printf("Read word from flash memory: %lu\n", w);
     
