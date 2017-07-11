@@ -16,5 +16,5 @@
 make #Compile all
 make clean #Remove all build files
 make flash #Compile and flash device
-make debug #Compile with debug serial prints
+make debug #Compile and flash with debug serial prints
 ```
