@@ -11,6 +11,7 @@
 #include "pwm.h"
 #include "switch.h"
 #include "stepper.h"
+#include "flash.h"
 
 #include "gcode.h"
 
@@ -24,8 +25,6 @@ uint32_t pwm_test = 0;
 
 int main(void)
 {
-    
-
     //Perippheral layer
     led_init();
     adc_init();
@@ -35,6 +34,13 @@ int main(void)
     switch_init();
     stepper_init();
 
+
+    //Testing flash read and write
+    //flash_page_erase();
+    //flash_word_write(1234);
+    uint32_t w = flash_word_read();
+    uart_printf("Read word from flash memory: %lu\n", w);
+    
     stepper_enable(STEPPER_X_CHANNEL);
     stepper_disable(STEPPER_Y_CHANNEL);
     stepper_disable(STEPPER_Z_CHANNEL);

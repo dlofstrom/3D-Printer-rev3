@@ -42,6 +42,7 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/switch.c \
   $(PROJ_DIR)/peripheral/stepper.c \
   $(PROJ_DIR)/peripheral/led.c \
+  $(PROJ_DIR)/peripheral/flash.c \
   $(PROJ_DIR)/gcode/gcode.c \
   $(PROJ_DIR)/gcode/gcode_functions_template.c \
 
