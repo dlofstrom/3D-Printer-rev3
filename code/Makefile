@@ -22,7 +22,6 @@ SRC_FILES += \
   $(SDK_ROOT)/components/boards/boards.c \
   $(SDK_ROOT)/components/drivers_nrf/clock/nrf_drv_clock.c \
   $(SDK_ROOT)/components/drivers_nrf/common/nrf_drv_common.c \
-  $(SDK_ROOT)/components/drivers_nrf/uart/nrf_drv_uart.c \
   $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd/nrf_nvic.c \
   $(SDK_ROOT)/components/drivers_nrf/nrf_soc_nosd/nrf_soc.c \
   $(PROJ_DIR)/main.c \
@@ -32,7 +31,6 @@ SRC_FILES += \
   $(SDK_ROOT)/components/toolchain/gcc/gcc_startup_nrf51.S \
   $(SDK_ROOT)/components/toolchain/system_nrf51.c \
   $(SDK_ROOT)/components/libraries/fifo/app_fifo.c \
-  $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
   $(SDK_ROOT)/components/libraries/uart/retarget.c \
   $(SDK_ROOT)/components/drivers_nrf/hal/nrf_adc.c \
   $(PROJ_DIR)/peripheral/uart.c \
@@ -45,7 +43,8 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/flash.c \
   $(PROJ_DIR)/gcode/gcode.c \
   $(PROJ_DIR)/gcode/gcode_functions_template.c \
-
+#  $(SDK_ROOT)/components/drivers_nrf/uart/nrf_drv_uart.c \
+#  $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \

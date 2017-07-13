@@ -7,59 +7,73 @@
 #include "app_uart.h"
 #include "app_error.h"
 #include "nrf.h"
+#include "nrf_gpio.h"
 #include "SEGGER_RTT.h"
 
 //Simple ring buffer for uart data
+#define TX_BUFFER_SIZE 1024
+static uint8_t tx_buffer[TX_BUFFER_SIZE];
+static uint32_t tx_head = 0;
+static uint32_t tx_tail = 0;
+static uint32_t tx_ready = 1;
+
 #define RX_BUFFER_SIZE 1024
 static uint8_t rx_buffer[RX_BUFFER_SIZE];
 static uint32_t rx_head = 0;
 static uint32_t rx_tail = 0;
 static uint32_t rx_newline_count = 0;
 
-//Handle uart interrupts
-//TODO: Maybe use while (app_uart_get(&cr) != NRF_SUCCESS)?
-void uart_evt_callback(app_uart_evt_t * p_event)
+//Uart interrupt
+void UART0_IRQHandler(void)
 {
-    //Received byte
-    if (p_event->evt_type == APP_UART_DATA_READY) {
-        app_uart_get(&rx_buffer[rx_head]);
+    if (NRF_UART0->EVENTS_RXDRDY != 0) {
+        rx_buffer[rx_head] = NRF_UART0->RXD;
         if (rx_buffer[rx_head] == '\n') rx_newline_count++;
         rx_head = (rx_head + 1) % RX_BUFFER_SIZE;
+        NRF_UART0->EVENTS_RXDRDY = 0;
     }
 
-    else if (p_event->evt_type == APP_UART_COMMUNICATION_ERROR) {
-        APP_ERROR_HANDLER(p_event->data.error_communication);
+    if (NRF_UART0->EVENTS_TXDRDY != 0) {
+        //If buffer has data
+        if (tx_head != tx_tail) {
+            //Pop and send
+            NRF_UART0->TXD = (char)tx_buffer[tx_tail];
+            tx_tail = (tx_tail + 1) % TX_BUFFER_SIZE;
+        } else {
+            tx_ready = 1;
+        }
+        NRF_UART0->EVENTS_TXDRDY = 0;
     }
 
-    else if (p_event->evt_type == APP_UART_FIFO_ERROR) {
-        APP_ERROR_HANDLER(p_event->data.error_code);
+    if (NRF_UART0->EVENTS_ERROR != 0) {
+        debug("ERROR\n");
+        NRF_UART0->EVENTS_ERROR = 0;
     }
 }
 
 //Initialize uart
 void uart_init(void)
 {
-    uint32_t err_code;
-    
-    const app_uart_comm_params_t comm_params = {
-        UART_RX_PIN,
-        UART_TX_PIN,
-        0,
-        0,
-        APP_UART_FLOW_CONTROL_DISABLED,
-        false,
-        UART_BAUDRATE_BAUDRATE_Baud115200
-    };
+    nrf_gpio_cfg_output(UART_TX_PIN);
+    nrf_gpio_cfg_input(UART_RX_PIN, NRF_GPIO_PIN_PULLUP);
 
-    APP_UART_FIFO_INIT(
-        &comm_params,
-        UART_RX_BUF_SIZE,
-        UART_TX_BUF_SIZE,
-        uart_evt_callback,
-        APP_IRQ_PRIORITY_LOWEST,
-        err_code);
+    NRF_UART0->PSELTXD = UART_TX_PIN;
+    NRF_UART0->PSELRXD = UART_RX_PIN;
 
-    APP_ERROR_CHECK(err_code);
+    NRF_UART0->BAUDRATE = (UART_BAUDRATE_BAUDRATE_Baud115200 << UART_BAUDRATE_BAUDRATE_Pos);
+
+    NRF_UART0->INTENSET = (UART_INTENSET_TXDRDY_Enabled << UART_INTENSET_TXDRDY_Pos) |
+        (UART_INTENSET_RXDRDY_Enabled << UART_INTENSET_RXDRDY_Pos) |
+        (UART_INTENSET_ERROR_Enabled << UART_INTENSET_ERROR_Pos);
+    NVIC_EnableIRQ(UART0_IRQn);
+
+    NRF_UART0->ENABLE = (UART_ENABLE_ENABLE_Enabled << UART_ENABLE_ENABLE_Pos);
+
+    NRF_UART0->TASKS_STARTTX = 1;
+    NRF_UART0->TASKS_STARTRX = 1;
+    NRF_UART0->EVENTS_RXDRDY = 0;
+    NRF_UART0->EVENTS_TXDRDY = 0;
+    NRF_UART0->EVENTS_ERROR = 0;
 }
 
 
@@ -83,12 +97,23 @@ uint32_t uart_read_line(char *data) {
     return count;
 }
 
-//TODO: Maybe use while (app_uart_put(cr) != NRF_SUCCESS)?
 uint32_t uart_print(const char *data){
     uint32_t count = 0;
     char *d = (char *)data;
+    //debug("pushing:");
     while (*d != '\0') {
-        app_uart_put((uint8_t)*(d++));
+        //Push to buffer
+        //debug("%c", (char)*d);
+        tx_buffer[tx_head] = *d++;
+        tx_head = (tx_head + 1) % TX_BUFFER_SIZE;
+
+        //If transmitter is ready start transmission
+        if (tx_ready) {
+            tx_ready = 0;
+            //debug("\nTX ready, sending\n");
+            NRF_UART0->TXD = (char)tx_buffer[tx_tail];
+            tx_tail = (tx_tail + 1) % TX_BUFFER_SIZE;
+        }
     }
     return count;
 }
