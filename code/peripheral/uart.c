@@ -103,15 +103,13 @@ uint32_t uart_printf(const char *format, ...) {
     
 }
 
-//Allows use of vprintf function in SEGGER_RTT_printf.c
-int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pParamList);
 unsigned int debug(const char *format, ...) {
 #ifdef DEBUG
     va_list argp;
     va_start(argp, format);
 
-    return SEGGER_RTT_vprintf(0, format, &argp);
-    //vsprintf(str, format, argp);
+    vsprintf(str, format, argp);
+    return SEGGER_RTT_WriteString(0,str);
     //return uart_print(str);
 #else
     return 0;
