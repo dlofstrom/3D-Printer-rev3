@@ -42,7 +42,7 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/led.c \
   $(PROJ_DIR)/peripheral/flash.c \
   $(PROJ_DIR)/gcode/gcode.c \
-  $(PROJ_DIR)/gcode/gcode_functions_template.c \
+  $(PROJ_DIR)/gcode/gcode_functions.c \
 #  $(SDK_ROOT)/components/drivers_nrf/uart/nrf_drv_uart.c \
 #  $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
 

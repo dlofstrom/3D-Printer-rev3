@@ -3,20 +3,21 @@
 // before implementing functions so it isn't overwritten!
 //
 // gcode_functions_template.c
-// generated on 2017-05-17
+// generated on 2017-07-07
 //
 
 #include "gcode_functions.h"
 #include "gcode.h"
 
 // N_f(const char *s)
-// N: Line number 
-int32_t N_f(char *s) {
+// N: Line number
+static int line_number = 0;
+int N_f(char *s) {
     //Nnnn [G-code command]*checksum
     
     //Calculate command checksum
     char *scs = s;
-    int32_t cs = 0;
+    int cs = 0;
     while (*scs != '*' && *scs != '\0') {
         cs ^= *(scs++);
     }
@@ -24,32 +25,34 @@ int32_t N_f(char *s) {
 
     //Check command format
     if (*scs == '\0') {
-        printf("Something is wrong with command format!\n");
+        debug("Something is wrong with command format!\n");
         return 1;
     }
 
     //Extract command checksum
-    int32_t checksum;
-    if (sscanf(scs, "*%ld", &checksum) == 0) {
-        printf("Something is wrong with command format!\n");
+    int checksum;
+    if (sscanf(scs, "*%d", &checksum) == 0) {
+        debug("Something is wrong with command format!\n");
         return 2;
     }
 
     //Compare checksums
     if (cs != checksum) {
-        printf("Checksums is not equal: %ld != %ld!\n",cs, checksum);
+        debug("Checksums are not equal: %d != %d!\n",cs, checksum);
         return 3;
     }
 
     //Get first parameter (Nnnn)
     gcode_parameter_t gp;
     if (gcode_get_parameter(&s, &gp) != 2) {
-        printf("No line number!\n");
+        debug("No line number!\n");
     }
 
     //Compare line number
-    //TODO
-    printf("Line number: %ld\n", gp.value);
+    if (line_number != gp.value) {
+        debug("Line numbers are not equal: %d != %d\n", line_number, gp.value);
+    }
+    debug("Line number: %d\n", gp.value);
 
     //Execute G-code command
     //scs points to *
@@ -60,2536 +63,2541 @@ int32_t N_f(char *s) {
 
 // G0_f(const char *s)
 // G0: Move 
-int32_t G0_f(char *s) {
-    printf("G0_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G0_f(char *s) {
+    debug("G0_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G1_f(const char *s)
 // G1: Move 
-int32_t G1_f(char *s) {
-    printf("G1_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G1_f(char *s) {
+    debug("G1_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
 
     //Testing parameter pop
     gcode_parameter_t gp;
     while (gcode_get_parameter(&s, &gp) > 0) {
-        printf("Parameter: %c %ld\n", gp.type, gp.value);
+        debug("Parameter: %c %d\n", gp.type, gp.value);
     }
-    
+
     return 1;
 }
 
 // G2_f(const char *s)
 // G2: Controlled Arc Move 
-int32_t G2_f(char *s) {
-    printf("G2_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G2_f(char *s) {
+    debug("G2_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G3_f(const char *s)
 // G3: Controlled Arc Move 
-int32_t G3_f(char *s) {
-    printf("G3_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G3_f(char *s) {
+    debug("G3_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G4_f(const char *s)
 // G4: Dwell 
-int32_t G4_f(char *s) {
-    printf("G4_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G4_f(char *s) {
+    debug("G4_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G6_f(const char *s)
 // G6: Direct Stepper Move 
-int32_t G6_f(char *s) {
-    printf("G6_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G6_f(char *s) {
+    debug("G6_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G10_f(const char *s)
 // G10: Retract 
-int32_t G10_f(char *s) {
-    printf("G10_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G10_f(char *s) {
+    debug("G10_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G11_f(const char *s)
 // G11: Unretract 
-int32_t G11_f(char *s) {
-    printf("G11_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G11_f(char *s) {
+    debug("G11_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G17_f(const char *s)
 // G17: Plane Selection (CNC specific) 
-int32_t G17_f(char *s) {
-    printf("G17_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G17_f(char *s) {
+    debug("G17_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G18_f(const char *s)
 // G18: Plane Selection (CNC specific) 
-int32_t G18_f(char *s) {
-    printf("G18_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G18_f(char *s) {
+    debug("G18_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G19_f(const char *s)
 // G19: Plane Selection (CNC specific) 
-int32_t G19_f(char *s) {
-    printf("G19_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G19_f(char *s) {
+    debug("G19_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G20_f(const char *s)
 // G20: Set Units to Inches 
-int32_t G20_f(char *s) {
-    printf("G20_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G20_f(char *s) {
+    debug("G20_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G21_f(const char *s)
 // G21: Set Units to Millimeters 
-int32_t G21_f(char *s) {
-    printf("G21_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G21_f(char *s) {
+    debug("G21_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G22_f(const char *s)
 // G22: Firmware controlled Retract/Precharge 
-int32_t G22_f(char *s) {
-    printf("G22_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G22_f(char *s) {
+    debug("G22_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G23_f(const char *s)
 // G23: Firmware controlled Retract/Precharge 
-int32_t G23_f(char *s) {
-    printf("G23_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G23_f(char *s) {
+    debug("G23_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G26_f(const char *s)
 // G26: Mesh Validation Pattern 
-int32_t G26_f(char *s) {
-    printf("G26_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G26_f(char *s) {
+    debug("G26_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G28_f(const char *s)
 // G28: Move to Origin (Home) 
-int32_t G28_f(char *s) {
-    printf("G28_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G28_f(char *s) {
+    debug("G28_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G29_f(const char *s)
 // G29: Detailed Z-Probe 
-int32_t G29_f(char *s) {
-    printf("G29_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G29_f(char *s) {
+    debug("G29_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G30_f(const char *s)
 // G30: Single Z-Probe 
-int32_t G30_f(char *s) {
-    printf("G30_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G30_f(char *s) {
+    debug("G30_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G31_f(const char *s)
 // G31: Dock Z Probe sled 
-int32_t G31_f(char *s) {
-    printf("G31_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G31_f(char *s) {
+    debug("G31_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G32_f(const char *s)
 // G32: Undock Z Probe sled 
-int32_t G32_f(char *s) {
-    printf("G32_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G32_f(char *s) {
+    debug("G32_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G33_f(const char *s)
 // G33: Firmware dependent 
-int32_t G33_f(char *s) {
-    printf("G33_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G33_f(char *s) {
+    debug("G33_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G38_f(const char *s)
 // G38: Straight Probe (CNC specific)
-int32_t G38_f(char *s) {
-    printf("G38_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G38_f(char *s) {
+    debug("G38_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G40_f(const char *s)
 // G40: Compensation Off (CNC specific) 
-int32_t G40_f(char *s) {
-    printf("G40_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G40_f(char *s) {
+    debug("G40_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G54_f(const char *s)
 // G54: Coordinate System Select (CNC specific) 
-int32_t G54_f(char *s) {
-    printf("G54_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G54_f(char *s) {
+    debug("G54_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G55_f(const char *s)
 // G55: Coordinate System Select (CNC specific)
-int32_t G55_f(char *s) {
-    printf("G55_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G55_f(char *s) {
+    debug("G55_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G56_f(const char *s)
 // G56: Coordinate System Select (CNC specific)
-int32_t G56_f(char *s) {
-    printf("G56_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G56_f(char *s) {
+    debug("G56_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G57_f(const char *s)
 // G57: Coordinate System Select (CNC specific)
-int32_t G57_f(char *s) {
-    printf("G57_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G57_f(char *s) {
+    debug("G57_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G58_f(const char *s)
 // G58: Coordinate System Select (CNC specific)
-int32_t G58_f(char *s) {
-    printf("G58_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G58_f(char *s) {
+    debug("G58_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G59_f(const char *s)
 // G59: Coordinate System Select (CNC specific) 
-int32_t G59_f(char *s) {
-    printf("G59_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G59_f(char *s) {
+    debug("G59_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G60_f(const char *s)
 // G60: save current position to slot 
-int32_t G60_f(char *s) {
-    printf("G60_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G60_f(char *s) {
+    debug("G60_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G61_f(const char *s)
 // G61: Apply/restore saved coordinates to the active extruder. 
-int32_t G61_f(char *s) {
-    printf("G61_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G61_f(char *s) {
+    debug("G61_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G80_f(const char *s)
 // G80: Cancel Canned Cycle (CNC specific) 
-int32_t G80_f(char *s) {
-    printf("G80_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G80_f(char *s) {
+    debug("G80_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G90_f(const char *s)
 // G90: Set to Absolute Positioning 
-int32_t G90_f(char *s) {
-    printf("G90_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G90_f(char *s) {
+    debug("G90_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G91_f(const char *s)
 // G91: Set to Relative Positioning 
-int32_t G91_f(char *s) {
-    printf("G91_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G91_f(char *s) {
+    debug("G91_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G92_f(const char *s)
 // G92: Set Position 
-int32_t G92_f(char *s) {
-    printf("G92_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G92_f(char *s) {
+    debug("G92_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G93_f(const char *s)
 // G93: Feed Rate Mode (Inverse Time Mode) (CNC specific) 
-int32_t G93_f(char *s) {
-    printf("G93_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G93_f(char *s) {
+    debug("G93_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G94_f(const char *s)
 // G94: Feed Rate Mode (Units per Minute) (CNC specific) 
-int32_t G94_f(char *s) {
-    printf("G94_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G94_f(char *s) {
+    debug("G94_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G100_f(const char *s)
 // G100: Calibrate floor or rod radius 
-int32_t G100_f(char *s) {
-    printf("G100_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G100_f(char *s) {
+    debug("G100_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G130_f(const char *s)
 // G130: Set digital potentiometer value 
-int32_t G130_f(char *s) {
-    printf("G130_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G130_f(char *s) {
+    debug("G130_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G131_f(const char *s)
 // G131: Remove offset 
-int32_t G131_f(char *s) {
-    printf("G131_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G131_f(char *s) {
+    debug("G131_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G132_f(const char *s)
 // G132: Calibrate endstop offsets 
-int32_t G132_f(char *s) {
-    printf("G132_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G132_f(char *s) {
+    debug("G132_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G133_f(const char *s)
 // G133: Measure steps to top 
-int32_t G133_f(char *s) {
-    printf("G133_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G133_f(char *s) {
+    debug("G133_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G161_f(const char *s)
 // G161: Home axes to minimum 
-int32_t G161_f(char *s) {
-    printf("G161_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G161_f(char *s) {
+    debug("G161_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G162_f(const char *s)
 // G162: Home axes to maximum 
-int32_t G162_f(char *s) {
-    printf("G162_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G162_f(char *s) {
+    debug("G162_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M0_f(const char *s)
 // M0: Stop or Unconditional stop 
-int32_t M0_f(char *s) {
-    printf("M0_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M0_f(char *s) {
+    debug("M0_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M1_f(const char *s)
 // M1: Sleep or Conditional stop 
-int32_t M1_f(char *s) {
-    printf("M1_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M1_f(char *s) {
+    debug("M1_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M2_f(const char *s)
 // M2: Program End 
-int32_t M2_f(char *s) {
-    printf("M2_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M2_f(char *s) {
+    debug("M2_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M3_f(const char *s)
 // M3: Spindle On, Clockwise  (CNC specific) 
-int32_t M3_f(char *s) {
-    printf("M3_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M3_f(char *s) {
+    debug("M3_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M4_f(const char *s)
 // M4: Spindle On, Counter-Clockwise (CNC specific) 
-int32_t M4_f(char *s) {
-    printf("M4_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M4_f(char *s) {
+    debug("M4_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M5_f(const char *s)
 // M5: Spindle Off (CNC specific) 
-int32_t M5_f(char *s) {
-    printf("M5_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M5_f(char *s) {
+    debug("M5_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M6_f(const char *s)
 // M6: Tool change 
-int32_t M6_f(char *s) {
-    printf("M6_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M6_f(char *s) {
+    debug("M6_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M7_f(const char *s)
 // M7: Mist Coolant On (CNC specific) 
-int32_t M7_f(char *s) {
-    printf("M7_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M7_f(char *s) {
+    debug("M7_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M8_f(const char *s)
 // M8: Flood Coolant On (CNC specific) 
-int32_t M8_f(char *s) {
-    printf("M8_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M8_f(char *s) {
+    debug("M8_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M9_f(const char *s)
 // M9: Coolant Off (CNC specific) 
-int32_t M9_f(char *s) {
-    printf("M9_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M9_f(char *s) {
+    debug("M9_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M10_f(const char *s)
 // M10: Vacuum On (CNC specific) 
-int32_t M10_f(char *s) {
-    printf("M10_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M10_f(char *s) {
+    debug("M10_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M11_f(const char *s)
 // M11: Vacuum Off (CNC specific) 
-int32_t M11_f(char *s) {
-    printf("M11_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M11_f(char *s) {
+    debug("M11_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M17_f(const char *s)
 // M17: Enable/Power all stepper motors 
-int32_t M17_f(char *s) {
-    printf("M17_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M17_f(char *s) {
+    debug("M17_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M18_f(const char *s)
 // M18: Disable all stepper motors 
-int32_t M18_f(char *s) {
-    printf("M18_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M18_f(char *s) {
+    debug("M18_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M20_f(const char *s)
 // M20: List SD card 
-int32_t M20_f(char *s) {
-    printf("M20_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M20_f(char *s) {
+    debug("M20_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M21_f(const char *s)
 // M21: Initialize SD card 
-int32_t M21_f(char *s) {
-    printf("M21_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M21_f(char *s) {
+    debug("M21_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M22_f(const char *s)
 // M22: Release SD card 
-int32_t M22_f(char *s) {
-    printf("M22_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M22_f(char *s) {
+    debug("M22_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M23_f(const char *s)
 // M23: Select SD file 
-int32_t M23_f(char *s) {
-    printf("M23_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M23_f(char *s) {
+    debug("M23_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M24_f(const char *s)
 // M24: Start/resume SD print 
-int32_t M24_f(char *s) {
-    printf("M24_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M24_f(char *s) {
+    debug("M24_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M25_f(const char *s)
 // M25: Pause SD print 
-int32_t M25_f(char *s) {
-    printf("M25_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M25_f(char *s) {
+    debug("M25_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M26_f(const char *s)
 // M26: Set SD position 
-int32_t M26_f(char *s) {
-    printf("M26_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M26_f(char *s) {
+    debug("M26_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M27_f(const char *s)
 // M27: Report SD print status 
-int32_t M27_f(char *s) {
-    printf("M27_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M27_f(char *s) {
+    debug("M27_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M28_f(const char *s)
 // M28: Begin write to SD card 
-int32_t M28_f(char *s) {
-    printf("M28_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M28_f(char *s) {
+    debug("M28_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M29_f(const char *s)
 // M29: Stop writing to SD card 
-int32_t M29_f(char *s) {
-    printf("M29_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M29_f(char *s) {
+    debug("M29_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M30_f(const char *s)
 // M30: Delete a file on the SD card or SD card start to serial 
-int32_t M30_f(char *s) {
-    printf("M30_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M30_f(char *s) {
+    debug("M30_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M32_f(const char *s)
 // M32: Select file and start SD print 
-int32_t M32_f(char *s) {
-    printf("M32_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M32_f(char *s) {
+    debug("M32_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M33_f(const char *s)
 // M33: Get the long name for an SD card file or folder 
-int32_t M33_f(char *s) {
-    printf("M33_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M33_f(char *s) {
+    debug("M33_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M34_f(const char *s)
 // M34: Set SD file sorting options 
-int32_t M34_f(char *s) {
-    printf("M34_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M34_f(char *s) {
+    debug("M34_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M35_f(const char *s)
 // M35: Upload firmware NEXTION from SD 
-int32_t M35_f(char *s) {
-    printf("M35_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M35_f(char *s) {
+    debug("M35_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M36_f(const char *s)
 // M36: Return file information 
-int32_t M36_f(char *s) {
-    printf("M36_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M36_f(char *s) {
+    debug("M36_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M37_f(const char *s)
 // M37: Simulation mode 
-int32_t M37_f(char *s) {
-    printf("M37_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M37_f(char *s) {
+    debug("M37_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M38_f(const char *s)
 // M38: Compute SHA1 hash of target file 
-int32_t M38_f(char *s) {
-    printf("M38_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M38_f(char *s) {
+    debug("M38_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M40_f(const char *s)
 // M40: Eject 
-int32_t M40_f(char *s) {
-    printf("M40_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M40_f(char *s) {
+    debug("M40_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M41_f(const char *s)
 // M41: Loop 
-int32_t M41_f(char *s) {
-    printf("M41_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M41_f(char *s) {
+    debug("M41_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M42_f(const char *s)
 // M42: Switch I/O pin 
-int32_t M42_f(char *s) {
-    printf("M42_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M42_f(char *s) {
+    debug("M42_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M43_f(const char *s)
 // M43: Pin report and debug 
-int32_t M43_f(char *s) {
-    printf("M43_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M43_f(char *s) {
+    debug("M43_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M48_f(const char *s)
 // M48: Measure Z-Probe repeatability 
-int32_t M48_f(char *s) {
-    printf("M48_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M48_f(char *s) {
+    debug("M48_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M70_f(const char *s)
 // M70: Display message 
-int32_t M70_f(char *s) {
-    printf("M70_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M70_f(char *s) {
+    debug("M70_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M72_f(const char *s)
 // M72: Play a tone or song 
-int32_t M72_f(char *s) {
-    printf("M72_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M72_f(char *s) {
+    debug("M72_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M73_f(const char *s)
 // M73: Set build percentage 
-int32_t M73_f(char *s) {
-    printf("M73_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M73_f(char *s) {
+    debug("M73_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M80_f(const char *s)
 // M80: ATX Power On 
-int32_t M80_f(char *s) {
-    printf("M80_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M80_f(char *s) {
+    debug("M80_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M81_f(const char *s)
 // M81: ATX Power Off 
-int32_t M81_f(char *s) {
-    printf("M81_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M81_f(char *s) {
+    debug("M81_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M82_f(const char *s)
 // M82: Set extruder to absolute mode 
-int32_t M82_f(char *s) {
-    printf("M82_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M82_f(char *s) {
+    debug("M82_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M83_f(const char *s)
 // M83: Set extruder to relative mode 
-int32_t M83_f(char *s) {
-    printf("M83_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M83_f(char *s) {
+    debug("M83_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M84_f(const char *s)
 // M84: Stop idle hold 
-int32_t M84_f(char *s) {
-    printf("M84_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M84_f(char *s) {
+    debug("M84_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M85_f(const char *s)
 // M85: Set inactivity shutdown timer 
-int32_t M85_f(char *s) {
-    printf("M85_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M85_f(char *s) {
+    debug("M85_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M92_f(const char *s)
 // M92: Set axis_steps_per_unit 
-int32_t M92_f(char *s) {
-    printf("M92_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M92_f(char *s) {
+    debug("M92_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M93_f(const char *s)
 // M93: Send axis_steps_per_unit 
-int32_t M93_f(char *s) {
-    printf("M93_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M93_f(char *s) {
+    debug("M93_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M98_f(const char *s)
 // M98: Get axis_hysteresis_mm 
-int32_t M98_f(char *s) {
-    printf("M98_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M98_f(char *s) {
+    debug("M98_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M99_f(const char *s)
 // M99: Set axis_hysteresis_mm 
-int32_t M99_f(char *s) {
-    printf("M99_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M99_f(char *s) {
+    debug("M99_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M101_f(const char *s)
 // M101: Turn extruder 1 on (Forward), Undo Retraction 
-int32_t M101_f(char *s) {
-    printf("M101_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M101_f(char *s) {
+    debug("M101_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M102_f(const char *s)
 // M102: Turn extruder 1 on (Reverse) 
-int32_t M102_f(char *s) {
-    printf("M102_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M102_f(char *s) {
+    debug("M102_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M103_f(const char *s)
 // M103: Turn all extruders off, Extruder Retraction 
-int32_t M103_f(char *s) {
-    printf("M103_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M103_f(char *s) {
+    debug("M103_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M104_f(const char *s)
 // M104: Set Extruder Temperature 
-int32_t M104_f(char *s) {
-    printf("M104_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M104_f(char *s) {
+    debug("M104_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M105_f(const char *s)
 // M105: Get Extruder Temperature 
-int32_t M105_f(char *s) {
-    printf("M105_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M105_f(char *s) {
+    debug("M105_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M106_f(const char *s)
 // M106: Fan On 
-int32_t M106_f(char *s) {
-    printf("M106_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M106_f(char *s) {
+    debug("M106_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M107_f(const char *s)
 // M107: Fan Off 
-int32_t M107_f(char *s) {
-    printf("M107_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M107_f(char *s) {
+    debug("M107_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M108_f(const char *s)
 // M108: Cancel Heating (Marlin) 
-int32_t M108_f(char *s) {
-    printf("M108_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M108_f(char *s) {
+    debug("M108_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M109_f(const char *s)
 // M109: Set Extruder Temperature and Wait 
-int32_t M109_f(char *s) {
-    printf("M109_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M109_f(char *s) {
+    debug("M109_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M110_f(const char *s)
 // M110: Set Current Line Number 
-int32_t M110_f(char *s) {
-    printf("M110_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M110_f(char *s) {
+    //debug("M110_f(const char *s) is not yet implemented!\n");
+    //debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'N') line_number = gp.value;
+    }
+    uart_printf("ok\n");
     return 1;
 }
 
 // M111_f(const char *s)
 // M111: Set Debug Level 
-int32_t M111_f(char *s) {
-    printf("M111_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M111_f(char *s) {
+    debug("M111_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M112_f(const char *s)
 // M112: Emergency Stop 
-int32_t M112_f(char *s) {
-    printf("M112_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M112_f(char *s) {
+    debug("M112_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M113_f(const char *s)
 // M113: Set Extruder PWM 
-int32_t M113_f(char *s) {
-    printf("M113_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M113_f(char *s) {
+    debug("M113_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M114_f(const char *s)
 // M114: Get Current Position 
-int32_t M114_f(char *s) {
-    printf("M114_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M114_f(char *s) {
+    debug("M114_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M115_f(const char *s)
 // M115: Get Firmware Version and Capabilities 
-int32_t M115_f(char *s) {
-    printf("M115_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M115_f(char *s) {
+    debug("M115_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M116_f(const char *s)
 // M116: Wait 
-int32_t M116_f(char *s) {
-    printf("M116_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M116_f(char *s) {
+    debug("M116_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M117_f(const char *s)
 // M117: Display Message 
-int32_t M117_f(char *s) {
-    printf("M117_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M117_f(char *s) {
+    debug("M117_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M118_f(const char *s)
 // M118: Negotiate Features 
-int32_t M118_f(char *s) {
-    printf("M118_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M118_f(char *s) {
+    debug("M118_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M119_f(const char *s)
 // M119: Get Endstop Status 
-int32_t M119_f(char *s) {
-    printf("M119_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M119_f(char *s) {
+    debug("M119_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M120_f(const char *s)
 // M120: Enable endstop detection 
-int32_t M120_f(char *s) {
-    printf("M120_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M120_f(char *s) {
+    debug("M120_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M121_f(const char *s)
 // M121: Disable endstop detection 
-int32_t M121_f(char *s) {
-    printf("M121_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M121_f(char *s) {
+    debug("M121_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M122_f(const char *s)
 // M122: Diagnose 
-int32_t M122_f(char *s) {
-    printf("M122_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M122_f(char *s) {
+    debug("M122_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M123_f(const char *s)
 // M123: Tachometer value 
-int32_t M123_f(char *s) {
-    printf("M123_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M123_f(char *s) {
+    debug("M123_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M124_f(const char *s)
 // M124: Immediate motor stop 
-int32_t M124_f(char *s) {
-    printf("M124_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M124_f(char *s) {
+    debug("M124_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M126_f(const char *s)
 // M126: Open Valve 
-int32_t M126_f(char *s) {
-    printf("M126_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M126_f(char *s) {
+    debug("M126_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M127_f(const char *s)
 // M127: Close Valve 
-int32_t M127_f(char *s) {
-    printf("M127_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M127_f(char *s) {
+    debug("M127_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M128_f(const char *s)
 // M128: Extruder Pressure PWM 
-int32_t M128_f(char *s) {
-    printf("M128_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M128_f(char *s) {
+    debug("M128_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M129_f(const char *s)
 // M129: Extruder pressure off 
-int32_t M129_f(char *s) {
-    printf("M129_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M129_f(char *s) {
+    debug("M129_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M130_f(const char *s)
 // M130: Set PID P value 
-int32_t M130_f(char *s) {
-    printf("M130_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M130_f(char *s) {
+    debug("M130_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M131_f(const char *s)
 // M131: Set PID I value 
-int32_t M131_f(char *s) {
-    printf("M131_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M131_f(char *s) {
+    debug("M131_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M132_f(const char *s)
 // M132: Set PID D value 
-int32_t M132_f(char *s) {
-    printf("M132_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M132_f(char *s) {
+    debug("M132_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M133_f(const char *s)
 // M133: Set PID I limit value 
-int32_t M133_f(char *s) {
-    printf("M133_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M133_f(char *s) {
+    debug("M133_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M134_f(const char *s)
 // M134: Write PID values to EEPROM 
-int32_t M134_f(char *s) {
-    printf("M134_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M134_f(char *s) {
+    debug("M134_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M135_f(const char *s)
 // M135: Set PID sample interval 
-int32_t M135_f(char *s) {
-    printf("M135_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M135_f(char *s) {
+    debug("M135_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M136_f(const char *s)
 // M136: Print PID settings to host 
-int32_t M136_f(char *s) {
-    printf("M136_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M136_f(char *s) {
+    debug("M136_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M140_f(const char *s)
 // M140: Set Bed Temperature (Fast) 
-int32_t M140_f(char *s) {
-    printf("M140_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M140_f(char *s) {
+    debug("M140_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M141_f(const char *s)
 // M141: Set Chamber Temperature (Fast) 
-int32_t M141_f(char *s) {
-    printf("M141_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M141_f(char *s) {
+    debug("M141_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M142_f(const char *s)
 // M142: Holding Pressure 
-int32_t M142_f(char *s) {
-    printf("M142_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M142_f(char *s) {
+    debug("M142_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M143_f(const char *s)
 // M143: Maximum heater temperature 
-int32_t M143_f(char *s) {
-    printf("M143_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M143_f(char *s) {
+    debug("M143_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M144_f(const char *s)
 // M144: Bed Standby 
-int32_t M144_f(char *s) {
-    printf("M144_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M144_f(char *s) {
+    debug("M144_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M146_f(const char *s)
 // M146: Set Chamber Humidity 
-int32_t M146_f(char *s) {
-    printf("M146_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M146_f(char *s) {
+    debug("M146_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M149_f(const char *s)
 // M149: Set temperature units 
-int32_t M149_f(char *s) {
-    printf("M149_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M149_f(char *s) {
+    debug("M149_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M150_f(const char *s)
 // M150: Set display color 
-int32_t M150_f(char *s) {
-    printf("M150_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M150_f(char *s) {
+    debug("M150_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M155_f(const char *s)
 // M155: Automatically send temperatures 
-int32_t M155_f(char *s) {
-    printf("M155_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M155_f(char *s) {
+    debug("M155_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M160_f(const char *s)
 // M160: Number of mixed materials 
-int32_t M160_f(char *s) {
-    printf("M160_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M160_f(char *s) {
+    debug("M160_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M163_f(const char *s)
 // M163: Set weight of mixed material 
-int32_t M163_f(char *s) {
-    printf("M163_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M163_f(char *s) {
+    debug("M163_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M164_f(const char *s)
 // M164: Store weights 
-int32_t M164_f(char *s) {
-    printf("M164_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M164_f(char *s) {
+    debug("M164_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M165_f(const char *s)
 // M165: Set multiple mix weights 
-int32_t M165_f(char *s) {
-    printf("M165_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M165_f(char *s) {
+    debug("M165_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M190_f(const char *s)
 // M190: Wait for bed temperature to reach target temp 
-int32_t M190_f(char *s) {
-    printf("M190_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M190_f(char *s) {
+    debug("M190_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M191_f(const char *s)
 // M191: Wait for chamber temperature to reach target temp 
-int32_t M191_f(char *s) {
-    printf("M191_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M191_f(char *s) {
+    debug("M191_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M200_f(const char *s)
 // M200: Set filament diameter 
-int32_t M200_f(char *s) {
-    printf("M200_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M200_f(char *s) {
+    debug("M200_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M201_f(const char *s)
 // M201: Set max printing acceleration 
-int32_t M201_f(char *s) {
-    printf("M201_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M201_f(char *s) {
+    debug("M201_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M202_f(const char *s)
 // M202: Set max travel acceleration 
-int32_t M202_f(char *s) {
-    printf("M202_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M202_f(char *s) {
+    debug("M202_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M203_f(const char *s)
 // M203: Set maximum feedrate 
-int32_t M203_f(char *s) {
-    printf("M203_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M203_f(char *s) {
+    debug("M203_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M204_f(const char *s)
 // M204: Set default acceleration 
-int32_t M204_f(char *s) {
-    printf("M204_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M204_f(char *s) {
+    debug("M204_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M205_f(const char *s)
 // M205: Advanced settings 
-int32_t M205_f(char *s) {
-    printf("M205_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M205_f(char *s) {
+    debug("M205_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M206_f(const char *s)
 // M206: Offset axes 
-int32_t M206_f(char *s) {
-    printf("M206_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M206_f(char *s) {
+    debug("M206_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M207_f(const char *s)
 // M207: Set retract length 
-int32_t M207_f(char *s) {
-    printf("M207_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M207_f(char *s) {
+    debug("M207_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M208_f(const char *s)
 // M208: Set unretract length 
-int32_t M208_f(char *s) {
-    printf("M208_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M208_f(char *s) {
+    debug("M208_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M209_f(const char *s)
 // M209: Enable automatic retract 
-int32_t M209_f(char *s) {
-    printf("M209_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M209_f(char *s) {
+    debug("M209_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M210_f(const char *s)
 // M210: Set homing feedrates 
-int32_t M210_f(char *s) {
-    printf("M210_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M210_f(char *s) {
+    debug("M210_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M211_f(const char *s)
 // M211: Disable/Enable software endstops 
-int32_t M211_f(char *s) {
-    printf("M211_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M211_f(char *s) {
+    debug("M211_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M212_f(const char *s)
 // M212: Set Bed Level Sensor Offset 
-int32_t M212_f(char *s) {
-    printf("M212_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M212_f(char *s) {
+    debug("M212_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M218_f(const char *s)
 // M218: Set Hotend Offset 
-int32_t M218_f(char *s) {
-    printf("M218_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M218_f(char *s) {
+    debug("M218_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M220_f(const char *s)
 // M220: Set speed factor override percentage 
-int32_t M220_f(char *s) {
-    printf("M220_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M220_f(char *s) {
+    debug("M220_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M221_f(const char *s)
 // M221: Set extrude factor override percentage 
-int32_t M221_f(char *s) {
-    printf("M221_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M221_f(char *s) {
+    debug("M221_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M222_f(const char *s)
 // M222: Set speed of fast XY moves 
-int32_t M222_f(char *s) {
-    printf("M222_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M222_f(char *s) {
+    debug("M222_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M223_f(const char *s)
 // M223: Set speed of fast Z moves 
-int32_t M223_f(char *s) {
-    printf("M223_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M223_f(char *s) {
+    debug("M223_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M224_f(const char *s)
 // M224: Enable extruder during fast moves 
-int32_t M224_f(char *s) {
-    printf("M224_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M224_f(char *s) {
+    debug("M224_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M225_f(const char *s)
 // M225: Disable on extruder during fast moves 
-int32_t M225_f(char *s) {
-    printf("M225_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M225_f(char *s) {
+    debug("M225_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M226_f(const char *s)
 // M226: Wait for pin state 
-int32_t M226_f(char *s) {
-    printf("M226_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M226_f(char *s) {
+    debug("M226_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M227_f(const char *s)
 // M227: Enable Automatic Reverse and Prime 
-int32_t M227_f(char *s) {
-    printf("M227_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M227_f(char *s) {
+    debug("M227_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M228_f(const char *s)
 // M228: Disable Automatic Reverse and Prime 
-int32_t M228_f(char *s) {
-    printf("M228_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M228_f(char *s) {
+    debug("M228_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M229_f(const char *s)
 // M229: Enable Automatic Reverse and Prime 
-int32_t M229_f(char *s) {
-    printf("M229_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M229_f(char *s) {
+    debug("M229_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M230_f(const char *s)
 // M230: Disable / Enable Wait for Temperature Change 
-int32_t M230_f(char *s) {
-    printf("M230_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M230_f(char *s) {
+    debug("M230_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M231_f(const char *s)
 // M231: Set OPS parameter 
-int32_t M231_f(char *s) {
-    printf("M231_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M231_f(char *s) {
+    debug("M231_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M232_f(const char *s)
 // M232: Read and reset max. advance values 
-int32_t M232_f(char *s) {
-    printf("M232_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M232_f(char *s) {
+    debug("M232_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M240_f(const char *s)
 // M240: Trigger camera 
-int32_t M240_f(char *s) {
-    printf("M240_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M240_f(char *s) {
+    debug("M240_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M241_f(const char *s)
 // M241: Stop conveyor belt motor / echo on 
-int32_t M241_f(char *s) {
-    printf("M241_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M241_f(char *s) {
+    debug("M241_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M245_f(const char *s)
 // M245: Start cooler 
-int32_t M245_f(char *s) {
-    printf("M245_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M245_f(char *s) {
+    debug("M245_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M246_f(const char *s)
 // M246: Stop cooler 
-int32_t M246_f(char *s) {
-    printf("M246_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M246_f(char *s) {
+    debug("M246_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M250_f(const char *s)
 // M250: Set LCD contrast 
-int32_t M250_f(char *s) {
-    printf("M250_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M250_f(char *s) {
+    debug("M250_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M251_f(const char *s)
 // M251: Measure Z steps from homing stop (Delta printers) 
-int32_t M251_f(char *s) {
-    printf("M251_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M251_f(char *s) {
+    debug("M251_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M260_f(const char *s)
 // M260: i2c Send Data 
-int32_t M260_f(char *s) {
-    printf("M260_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M260_f(char *s) {
+    debug("M260_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M261_f(const char *s)
 // M261: i2c Request Data 
-int32_t M261_f(char *s) {
-    printf("M261_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M261_f(char *s) {
+    debug("M261_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M280_f(const char *s)
 // M280: Set servo position 
-int32_t M280_f(char *s) {
-    printf("M280_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M280_f(char *s) {
+    debug("M280_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M290_f(const char *s)
 // M290: Baby stepping 
-int32_t M290_f(char *s) {
-    printf("M290_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M290_f(char *s) {
+    debug("M290_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M300_f(const char *s)
 // M300: Play beep sound 
-int32_t M300_f(char *s) {
-    printf("M300_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M300_f(char *s) {
+    debug("M300_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M301_f(const char *s)
 // M301: Set PID parameters 
-int32_t M301_f(char *s) {
-    printf("M301_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M301_f(char *s) {
+    debug("M301_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M302_f(const char *s)
 // M302: Allow cold extrudes 
-int32_t M302_f(char *s) {
-    printf("M302_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M302_f(char *s) {
+    debug("M302_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M303_f(const char *s)
 // M303: Run PID tuning 
-int32_t M303_f(char *s) {
-    printf("M303_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M303_f(char *s) {
+    debug("M303_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M304_f(const char *s)
 // M304: Set PID parameters - Bed 
-int32_t M304_f(char *s) {
-    printf("M304_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M304_f(char *s) {
+    debug("M304_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M305_f(const char *s)
 // M305: Set thermistor and ADC parameters 
-int32_t M305_f(char *s) {
-    printf("M305_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M305_f(char *s) {
+    debug("M305_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M306_f(const char *s)
 // M306: Set home offset calculated from toolhead position 
-int32_t M306_f(char *s) {
-    printf("M306_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M306_f(char *s) {
+    debug("M306_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M307_f(const char *s)
 // M307: Set or report heating process parameters 
-int32_t M307_f(char *s) {
-    printf("M307_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M307_f(char *s) {
+    debug("M307_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M320_f(const char *s)
 // M320: Activate autolevel (Repetier) 
-int32_t M320_f(char *s) {
-    printf("M320_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M320_f(char *s) {
+    debug("M320_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M321_f(const char *s)
 // M321: Deactivate autolevel (Repetier) 
-int32_t M321_f(char *s) {
-    printf("M321_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M321_f(char *s) {
+    debug("M321_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M322_f(const char *s)
 // M322: Reset autolevel matrix (Repetier) 
-int32_t M322_f(char *s) {
-    printf("M322_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M322_f(char *s) {
+    debug("M322_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M323_f(const char *s)
 // M323: Distortion correction on/off (Repetier) 
-int32_t M323_f(char *s) {
-    printf("M323_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M323_f(char *s) {
+    debug("M323_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M340_f(const char *s)
 // M340: Control the servos 
-int32_t M340_f(char *s) {
-    printf("M340_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M340_f(char *s) {
+    debug("M340_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M350_f(const char *s)
 // M350: Set microstepping mode 
-int32_t M350_f(char *s) {
-    printf("M350_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M350_f(char *s) {
+    debug("M350_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M351_f(const char *s)
 // M351: Toggle MS1 MS2 pins directly 
-int32_t M351_f(char *s) {
-    printf("M351_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M351_f(char *s) {
+    debug("M351_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M355_f(const char *s)
 // M355: Turn case lights on/off 
-int32_t M355_f(char *s) {
-    printf("M355_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M355_f(char *s) {
+    debug("M355_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M360_f(const char *s)
 // M360: Move to Theta 0 degree position 
-int32_t M360_f(char *s) {
-    printf("M360_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M360_f(char *s) {
+    debug("M360_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M361_f(const char *s)
 // M361: Move to Theta 90 degree position 
-int32_t M361_f(char *s) {
-    printf("M361_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M361_f(char *s) {
+    debug("M361_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M362_f(const char *s)
 // M362: Move to Psi 0 degree position 
-int32_t M362_f(char *s) {
-    printf("M362_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M362_f(char *s) {
+    debug("M362_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M363_f(const char *s)
 // M363: Move to Psi 90 degree position 
-int32_t M363_f(char *s) {
-    printf("M363_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M363_f(char *s) {
+    debug("M363_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M364_f(const char *s)
 // M364: Move to Psi + Theta 90 degree position 
-int32_t M364_f(char *s) {
-    printf("M364_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M364_f(char *s) {
+    debug("M364_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M365_f(const char *s)
 // M365: SCARA scaling factor 
-int32_t M365_f(char *s) {
-    printf("M365_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M365_f(char *s) {
+    debug("M365_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M366_f(const char *s)
 // M366: SCARA convert trim 
-int32_t M366_f(char *s) {
-    printf("M366_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M366_f(char *s) {
+    debug("M366_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M370_f(const char *s)
 // M370: Morgan manual bed level - clear map 
-int32_t M370_f(char *s) {
-    printf("M370_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M370_f(char *s) {
+    debug("M370_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M371_f(const char *s)
 // M371: Move to next calibration position 
-int32_t M371_f(char *s) {
-    printf("M371_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M371_f(char *s) {
+    debug("M371_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M372_f(const char *s)
 // M372: Record calibration value, and move to next position 
-int32_t M372_f(char *s) {
-    printf("M372_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M372_f(char *s) {
+    debug("M372_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M373_f(const char *s)
 // M373: End bed level calibration mode 
-int32_t M373_f(char *s) {
-    printf("M373_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M373_f(char *s) {
+    debug("M373_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M374_f(const char *s)
 // M374: Save calibration grid 
-int32_t M374_f(char *s) {
-    printf("M374_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M374_f(char *s) {
+    debug("M374_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M375_f(const char *s)
 // M375: Display matrix / Load Matrix 
-int32_t M375_f(char *s) {
-    printf("M375_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M375_f(char *s) {
+    debug("M375_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M376_f(const char *s)
 // M376: Set bed compensation taper 
-int32_t M376_f(char *s) {
-    printf("M376_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M376_f(char *s) {
+    debug("M376_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M380_f(const char *s)
 // M380: Activate solenoid 
-int32_t M380_f(char *s) {
-    printf("M380_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M380_f(char *s) {
+    debug("M380_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M381_f(const char *s)
 // M381: Disable all solenoids 
-int32_t M381_f(char *s) {
-    printf("M381_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M381_f(char *s) {
+    debug("M381_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M400_f(const char *s)
 // M400: Wait for current moves to finish 
-int32_t M400_f(char *s) {
-    printf("M400_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M400_f(char *s) {
+    debug("M400_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M401_f(const char *s)
 // M401: Lower z-probe 
-int32_t M401_f(char *s) {
-    printf("M401_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M401_f(char *s) {
+    debug("M401_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M402_f(const char *s)
 // M402: Raise z-probe 
-int32_t M402_f(char *s) {
-    printf("M402_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M402_f(char *s) {
+    debug("M402_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M404_f(const char *s)
 // M404: Filament width and nozzle diameter 
-int32_t M404_f(char *s) {
-    printf("M404_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M404_f(char *s) {
+    debug("M404_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M405_f(const char *s)
 // M405: Filament Sensor on 
-int32_t M405_f(char *s) {
-    printf("M405_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M405_f(char *s) {
+    debug("M405_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M406_f(const char *s)
 // M406: Filament Sensor off 
-int32_t M406_f(char *s) {
-    printf("M406_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M406_f(char *s) {
+    debug("M406_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M407_f(const char *s)
 // M407: Display filament diameter 
-int32_t M407_f(char *s) {
-    printf("M407_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M407_f(char *s) {
+    debug("M407_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M408_f(const char *s)
 // M408: Report JSON-style response 
-int32_t M408_f(char *s) {
-    printf("M408_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M408_f(char *s) {
+    debug("M408_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M420_f(const char *s)
 // M420: Leveling On/Off/Fade (Marlin) 
-int32_t M420_f(char *s) {
-    printf("M420_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M420_f(char *s) {
+    debug("M420_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M421_f(const char *s)
 // M421: Set a Mesh Bed Leveling Z coordinate 
-int32_t M421_f(char *s) {
-    printf("M421_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M421_f(char *s) {
+    debug("M421_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M450_f(const char *s)
 // M450: Report Printer Mode 
-int32_t M450_f(char *s) {
-    printf("M450_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M450_f(char *s) {
+    debug("M450_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M451_f(const char *s)
 // M451: Select FFF Printer Mode 
-int32_t M451_f(char *s) {
-    printf("M451_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M451_f(char *s) {
+    debug("M451_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M452_f(const char *s)
 // M452: Select Laser Printer Mode 
-int32_t M452_f(char *s) {
-    printf("M452_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M452_f(char *s) {
+    debug("M452_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M453_f(const char *s)
 // M453: Select CNC Printer Mode 
-int32_t M453_f(char *s) {
-    printf("M453_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M453_f(char *s) {
+    debug("M453_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M460_f(const char *s)
 // M460: Define temperature range for thermistor-controlled fan 
-int32_t M460_f(char *s) {
-    printf("M460_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M460_f(char *s) {
+    debug("M460_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M500_f(const char *s)
 // M500: Store parameters in EEPROM 
-int32_t M500_f(char *s) {
-    printf("M500_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M500_f(char *s) {
+    debug("M500_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M501_f(const char *s)
 // M501: Read parameters from EEPROM 
-int32_t M501_f(char *s) {
-    printf("M501_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M501_f(char *s) {
+    debug("M501_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M502_f(const char *s)
 // M502: Revert to the default "factory settings." 
-int32_t M502_f(char *s) {
-    printf("M502_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M502_f(char *s) {
+    debug("M502_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M503_f(const char *s)
 // M503: Print settings 
-int32_t M503_f(char *s) {
-    printf("M503_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M503_f(char *s) {
+    debug("M503_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M530_f(const char *s)
 // M530: Enable printing mode 
-int32_t M530_f(char *s) {
-    printf("M530_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M530_f(char *s) {
+    debug("M530_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M531_f(const char *s)
 // M531: Set print name 
-int32_t M531_f(char *s) {
-    printf("M531_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M531_f(char *s) {
+    debug("M531_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M532_f(const char *s)
 // M532: Set print progress 
-int32_t M532_f(char *s) {
-    printf("M532_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M532_f(char *s) {
+    debug("M532_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M540_f(const char *s)
 // M540: Enable/Disable "Stop SD Print on Endstop Hit" 
-int32_t M540_f(char *s) {
-    printf("M540_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M540_f(char *s) {
+    debug("M540_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M550_f(const char *s)
 // M550: Set Name 
-int32_t M550_f(char *s) {
-    printf("M550_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M550_f(char *s) {
+    debug("M550_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M551_f(const char *s)
 // M551: Set Password 
-int32_t M551_f(char *s) {
-    printf("M551_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M551_f(char *s) {
+    debug("M551_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M552_f(const char *s)
 // M552: Set IP address, enable/disable network interface 
-int32_t M552_f(char *s) {
-    printf("M552_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M552_f(char *s) {
+    debug("M552_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M553_f(const char *s)
 // M553: Set Netmask 
-int32_t M553_f(char *s) {
-    printf("M553_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M553_f(char *s) {
+    debug("M553_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M554_f(const char *s)
 // M554: Set Gateway 
-int32_t M554_f(char *s) {
-    printf("M554_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M554_f(char *s) {
+    debug("M554_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M555_f(const char *s)
 // M555: Set compatibility 
-int32_t M555_f(char *s) {
-    printf("M555_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M555_f(char *s) {
+    debug("M555_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M556_f(const char *s)
 // M556: Axis compensation 
-int32_t M556_f(char *s) {
-    printf("M556_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M556_f(char *s) {
+    debug("M556_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M557_f(const char *s)
 // M557: Set Z probe point or define probing grid 
-int32_t M557_f(char *s) {
-    printf("M557_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M557_f(char *s) {
+    debug("M557_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M558_f(const char *s)
 // M558: Set Z probe type 
-int32_t M558_f(char *s) {
-    printf("M558_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M558_f(char *s) {
+    debug("M558_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M559_f(const char *s)
 // M559: Upload configuration file 
-int32_t M559_f(char *s) {
-    printf("M559_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M559_f(char *s) {
+    debug("M559_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M560_f(const char *s)
 // M560: Upload web page file 
-int32_t M560_f(char *s) {
-    printf("M560_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M560_f(char *s) {
+    debug("M560_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M561_f(const char *s)
 // M561: Set Identity Transform 
-int32_t M561_f(char *s) {
-    printf("M561_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M561_f(char *s) {
+    debug("M561_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M562_f(const char *s)
 // M562: Reset temperature fault 
-int32_t M562_f(char *s) {
-    printf("M562_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M562_f(char *s) {
+    debug("M562_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M563_f(const char *s)
 // M563: Define or remove a tool 
-int32_t M563_f(char *s) {
-    printf("M563_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M563_f(char *s) {
+    debug("M563_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M564_f(const char *s)
 // M564: Limit axes 
-int32_t M564_f(char *s) {
-    printf("M564_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M564_f(char *s) {
+    debug("M564_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M565_f(const char *s)
 // M565: Set Z probe offset 
-int32_t M565_f(char *s) {
-    printf("M565_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M565_f(char *s) {
+    debug("M565_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M566_f(const char *s)
 // M566: Set allowable instantaneous speed change 
-int32_t M566_f(char *s) {
-    printf("M566_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M566_f(char *s) {
+    debug("M566_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M567_f(const char *s)
 // M567: Set tool mix ratios 
-int32_t M567_f(char *s) {
-    printf("M567_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M567_f(char *s) {
+    debug("M567_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M568_f(const char *s)
 // M568: Turn off/on tool mix ratios 
-int32_t M568_f(char *s) {
-    printf("M568_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M568_f(char *s) {
+    debug("M568_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M569_f(const char *s)
 // M569: Set axis direction and enable values 
-int32_t M569_f(char *s) {
-    printf("M569_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M569_f(char *s) {
+    debug("M569_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M570_f(const char *s)
 // M570: Configure heater fault detection 
-int32_t M570_f(char *s) {
-    printf("M570_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M570_f(char *s) {
+    debug("M570_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M571_f(const char *s)
 // M571: Set output on extrude 
-int32_t M571_f(char *s) {
-    printf("M571_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M571_f(char *s) {
+    debug("M571_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M572_f(const char *s)
 // M572: Set or report extruder pressure advance 
-int32_t M572_f(char *s) {
-    printf("M572_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M572_f(char *s) {
+    debug("M572_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M573_f(const char *s)
 // M573: Report heater PWM 
-int32_t M573_f(char *s) {
-    printf("M573_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M573_f(char *s) {
+    debug("M573_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M574_f(const char *s)
 // M574: Set endstop configuration 
-int32_t M574_f(char *s) {
-    printf("M574_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M574_f(char *s) {
+    debug("M574_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M575_f(const char *s)
 // M575: Set serial comms parameters 
-int32_t M575_f(char *s) {
-    printf("M575_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M575_f(char *s) {
+    debug("M575_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M577_f(const char *s)
 // M577: Wait until endstop is triggered 
-int32_t M577_f(char *s) {
-    printf("M577_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M577_f(char *s) {
+    debug("M577_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M578_f(const char *s)
 // M578: Fire inkjet bits 
-int32_t M578_f(char *s) {
-    printf("M578_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M578_f(char *s) {
+    debug("M578_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M579_f(const char *s)
 // M579: Scale Cartesian axes 
-int32_t M579_f(char *s) {
-    printf("M579_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M579_f(char *s) {
+    debug("M579_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M580_f(const char *s)
 // M580: Select Roland 
-int32_t M580_f(char *s) {
-    printf("M580_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M580_f(char *s) {
+    debug("M580_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M581_f(const char *s)
 // M581: Configure external trigger 
-int32_t M581_f(char *s) {
-    printf("M581_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M581_f(char *s) {
+    debug("M581_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M582_f(const char *s)
 // M582: Check external trigger 
-int32_t M582_f(char *s) {
-    printf("M582_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M582_f(char *s) {
+    debug("M582_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M583_f(const char *s)
 // M583: Wait for pin 
-int32_t M583_f(char *s) {
-    printf("M583_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M583_f(char *s) {
+    debug("M583_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M584_f(const char *s)
 // M584: Set drive mapping 
-int32_t M584_f(char *s) {
-    printf("M584_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M584_f(char *s) {
+    debug("M584_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M585_f(const char *s)
 // M585: Probe Tool 
-int32_t M585_f(char *s) {
-    printf("M585_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M585_f(char *s) {
+    debug("M585_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M586_f(const char *s)
 // M586: Configure network protocols 
-int32_t M586_f(char *s) {
-    printf("M586_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M586_f(char *s) {
+    debug("M586_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M587_f(const char *s)
 // M587: Store WiFi host network in list, or list stored networks 
-int32_t M587_f(char *s) {
-    printf("M587_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M587_f(char *s) {
+    debug("M587_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M588_f(const char *s)
 // M588: Forget WiFi host network 
-int32_t M588_f(char *s) {
-    printf("M588_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M588_f(char *s) {
+    debug("M588_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M589_f(const char *s)
 // M589: Configure access point parameters 
-int32_t M589_f(char *s) {
-    printf("M589_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M589_f(char *s) {
+    debug("M589_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M590_f(const char *s)
 // M590: Report current tool type and index 
-int32_t M590_f(char *s) {
-    printf("M590_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M590_f(char *s) {
+    debug("M590_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M600_f(const char *s)
 // M600: Filament change pause 
-int32_t M600_f(char *s) {
-    printf("M600_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M600_f(char *s) {
+    debug("M600_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M605_f(const char *s)
 // M605: Set dual x-carriage movement mode 
-int32_t M605_f(char *s) {
-    printf("M605_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M605_f(char *s) {
+    debug("M605_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M665_f(const char *s)
 // M665: Set delta configuration 
-int32_t M665_f(char *s) {
-    printf("M665_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M665_f(char *s) {
+    debug("M665_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M666_f(const char *s)
 // M666: Set delta endstop adjustment 
-int32_t M666_f(char *s) {
-    printf("M666_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M666_f(char *s) {
+    debug("M666_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M667_f(const char *s)
 // M667: Select CoreXY mode 
-int32_t M667_f(char *s) {
-    printf("M667_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M667_f(char *s) {
+    debug("M667_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M668_f(const char *s)
 // M668: Set Z-offset compensations polynomial 
-int32_t M668_f(char *s) {
-    printf("M668_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M668_f(char *s) {
+    debug("M668_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M669_f(const char *s)
 // M669: Set kinematics type and kinematics parameters 
-int32_t M669_f(char *s) {
-    printf("M669_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M669_f(char *s) {
+    debug("M669_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M700_f(const char *s)
 // M700: Level plate 
-int32_t M700_f(char *s) {
-    printf("M700_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M700_f(char *s) {
+    debug("M700_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M701_f(const char *s)
 // M701: Load filament 
-int32_t M701_f(char *s) {
-    printf("M701_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M701_f(char *s) {
+    debug("M701_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M702_f(const char *s)
 // M702: Unload filament 
-int32_t M702_f(char *s) {
-    printf("M702_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M702_f(char *s) {
+    debug("M702_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M703_f(const char *s)
 // M703: Get Board Type 
-int32_t M703_f(char *s) {
-    printf("M703_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M703_f(char *s) {
+    debug("M703_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M710_f(const char *s)
 // M710: Erase the EEPROM and reset the board 
-int32_t M710_f(char *s) {
-    printf("M710_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M710_f(char *s) {
+    debug("M710_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M750_f(const char *s)
 // M750: Enable 3D scanner extension 
-int32_t M750_f(char *s) {
-    printf("M750_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M750_f(char *s) {
+    debug("M750_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M751_f(const char *s)
 // M751: Register 3D scanner extension over USB 
-int32_t M751_f(char *s) {
-    printf("M751_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M751_f(char *s) {
+    debug("M751_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M752_f(const char *s)
 // M752: Start 3D scan 
-int32_t M752_f(char *s) {
-    printf("M752_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M752_f(char *s) {
+    debug("M752_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M753_f(const char *s)
 // M753: Cancel current 3D scanner action 
-int32_t M753_f(char *s) {
-    printf("M753_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M753_f(char *s) {
+    debug("M753_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M754_f(const char *s)
 // M754: Calibrate 3D scanner 
-int32_t M754_f(char *s) {
-    printf("M754_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M754_f(char *s) {
+    debug("M754_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M755_f(const char *s)
 // M755: Set alignment mode for 3D scanner 
-int32_t M755_f(char *s) {
-    printf("M755_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M755_f(char *s) {
+    debug("M755_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M756_f(const char *s)
 // M756: Shutdown 3D scanner 
-int32_t M756_f(char *s) {
-    printf("M756_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M756_f(char *s) {
+    debug("M756_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M800_f(const char *s)
 // M800: Fire start print procedure 
-int32_t M800_f(char *s) {
-    printf("M800_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M800_f(char *s) {
+    debug("M800_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M801_f(const char *s)
 // M801: Fire end print procedure 
-int32_t M801_f(char *s) {
-    printf("M801_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M801_f(char *s) {
+    debug("M801_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M851_f(const char *s)
 // M851: Set Z-Probe Offset 
-int32_t M851_f(char *s) {
-    printf("M851_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M851_f(char *s) {
+    debug("M851_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M900_f(const char *s)
 // M900: Set Linear Advance Scaling Factors 
-int32_t M900_f(char *s) {
-    printf("M900_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M900_f(char *s) {
+    debug("M900_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M905_f(const char *s)
 // M905: Set local date and time 
-int32_t M905_f(char *s) {
-    printf("M905_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M905_f(char *s) {
+    debug("M905_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M906_f(const char *s)
 // M906: Set motor currents 
-int32_t M906_f(char *s) {
-    printf("M906_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M906_f(char *s) {
+    debug("M906_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M907_f(const char *s)
 // M907: Set digital trimpot motor 
-int32_t M907_f(char *s) {
-    printf("M907_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M907_f(char *s) {
+    debug("M907_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M908_f(const char *s)
 // M908: Control digital trimpot directly 
-int32_t M908_f(char *s) {
-    printf("M908_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M908_f(char *s) {
+    debug("M908_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M909_f(const char *s)
 // M909: Set microstepping 
-int32_t M909_f(char *s) {
-    printf("M909_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M909_f(char *s) {
+    debug("M909_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M910_f(const char *s)
 // M910: Set decay mode 
-int32_t M910_f(char *s) {
-    printf("M910_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M910_f(char *s) {
+    debug("M910_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M911_f(const char *s)
 // M911: Set power monitor threshold voltages 
-int32_t M911_f(char *s) {
-    printf("M911_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M911_f(char *s) {
+    debug("M911_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M912_f(const char *s)
 // M912: Set electronics temperature monitor adjustment 
-int32_t M912_f(char *s) {
-    printf("M912_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M912_f(char *s) {
+    debug("M912_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M913_f(const char *s)
 // M913: Set motor percentage of normal current 
-int32_t M913_f(char *s) {
-    printf("M913_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M913_f(char *s) {
+    debug("M913_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M928_f(const char *s)
 // M928: Start SD logging 
-int32_t M928_f(char *s) {
-    printf("M928_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M928_f(char *s) {
+    debug("M928_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M997_f(const char *s)
 // M997: Perform in-application firmware update 
-int32_t M997_f(char *s) {
-    printf("M997_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M997_f(char *s) {
+    debug("M997_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M998_f(const char *s)
 // M998: Request resend of line 
-int32_t M998_f(char *s) {
-    printf("M998_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M998_f(char *s) {
+    debug("M998_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M999_f(const char *s)
 // M999: Restart after being stopped by error 
-int32_t M999_f(char *s) {
-    printf("M999_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M999_f(char *s) {
+    debug("M999_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // G_f(const char *s)
 // G: List all G-codes 
-int32_t G_f(char *s) {
-    printf("G_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int G_f(char *s) {
+    debug("G_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // M_f(const char *s)
 // M: List all M-codes 
-int32_t M_f(char *s) {
-    printf("M_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int M_f(char *s) {
+    debug("M_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
 // T_f(const char *s)
 // T: Select Tool 
-int32_t T_f(char *s) {
-    printf("T_f(const char *s) is not yet implemented!\n");
-    printf("%s\n", s);
+int T_f(char *s) {
+    debug("T_f(const char *s) is not yet implemented!\n");
+    debug("%s\n", s);
     return 1;
 }
 
