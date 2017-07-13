@@ -204,7 +204,7 @@ include $(TEMPLATE_PATH)/Makefile.common
 
 $(foreach target, $(TARGETS), $(call define_target, $(target)))
 
-debug: CFLAGS += -DDEBUG
+debug: CFLAGS += -DDEBUG -DNRF_LOG_USES_RTT=1
 debug: flash
 
 # Flash the program

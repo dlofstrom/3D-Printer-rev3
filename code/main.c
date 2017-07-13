@@ -39,7 +39,7 @@ int main(void)
     //flash_page_erase();
     //flash_word_write(31234);
     uint32_t w = flash_word_read();
-    uart_printf("Read word from flash memory: %lu\n", w);
+    debug("Read word from flash memory: %lu\n", w);
     
     stepper_enable(STEPPER_X_CHANNEL);
     stepper_disable(STEPPER_Y_CHANNEL);
@@ -49,14 +49,13 @@ int main(void)
     tic = millis();
     toc = millis();
     
-    uart_print("Hello world!\n");
+    debug("Hello world!\n");
     
     while (1)
     {
         toc = millis();
         if (uart_read_line(line) != 0) {
-            uart_print("Got a line: ");
-            uart_print(line);
+            debug("Got a line: %s", line);
             gcode_parse(line);
             
             for (i = 0; i < 200; i++) {
@@ -66,7 +65,7 @@ int main(void)
         }
 
         for (i = 0; i < NUMBER_OF_SWITCHES; i++) {
-            if (switch_get(i)) uart_printf("A switch is closed: %lu\n", i);
+            if (switch_get(i)) debug("A switch is closed: %lu\n", i);
         }
         
         if (toc - tic >= 500) {
@@ -76,9 +75,9 @@ int main(void)
             pwm_set_duty(BED_PWM_CHANNEL, pwm_test);
             pwm_set_duty(FAN1_PWM_CHANNEL, pwm_test);
             pwm_test = (pwm_test + 10) % 1024;
-            //uart_printf("%d\n", adc_get(0));
-            //uart_printf("%d\n", adc_get(1));
-            //uart_printf("%lu\n", toc);
+            //debug("%d\n", adc_get(0));
+            //debug("%d\n", adc_get(1));
+            //debug("%lu\n", toc);
         }
     }
 }
