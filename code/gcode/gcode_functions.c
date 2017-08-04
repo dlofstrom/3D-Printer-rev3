@@ -552,8 +552,7 @@ int M20_f(char *s) {
 // M21_f(const char *s)
 // M21: Initialize SD card 
 int M21_f(char *s) {
-    debug("M21_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    uart_printf("ok\n");
     return 1;
 }
 
@@ -949,8 +948,7 @@ int M114_f(char *s) {
 // M115_f(const char *s)
 // M115: Get Firmware Version and Capabilities 
 int M115_f(char *s) {
-    debug("M115_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    uart_printf("ok\n");
     return 1;
 }
 
