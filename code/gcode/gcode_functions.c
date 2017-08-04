@@ -8,6 +8,7 @@
 
 #include "gcode_functions.h"
 #include "gcode.h"
+#include "printer.h"
 
 // N_f(const char *s)
 // N: Line number
@@ -863,8 +864,7 @@ int M104_f(char *s) {
 // M105_f(const char *s)
 // M105: Get Extruder Temperature 
 int M105_f(char *s) {
-    debug("M105_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    uart_printf("ok T:%d B:%d\n", printer_get_temp_nozzle(), printer_get_temp_bed());
     return 1;
 }
 

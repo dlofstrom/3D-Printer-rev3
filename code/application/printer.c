@@ -42,3 +42,12 @@ void printer_loop(void) {
     }
 }
 
+
+
+int printer_get_temp_nozzle(void) {
+    return (int)heater_get_temperature(&nozzle);
+}
+
+int printer_get_temp_bed(void) {
+    return (int)heater_get_temperature(&bed);
+}

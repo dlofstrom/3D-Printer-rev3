@@ -17,11 +17,14 @@ typedef struct {
     uint32_t pwm_channel;
 } heater_t;
 
+heater_t nozzle;
+heater_t bed;
+
 void heater_init(void);
-void heater_regulate(void);
-void heater_enable(void);
-void heater_disable(void);
-void heater_set_temperature(float t);
-float heater_temperature(void);
+void heater_regulate(heater_t *h);
+void heater_enable(heater_t *h);
+void heater_disable(heater_t *h);
+void heater_set_temperature(heater_t *h, float t);
+float heater_get_temperature(heater_t *h);
 
 #endif

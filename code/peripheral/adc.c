@@ -24,16 +24,16 @@ void ADC_IRQHandler(void)
         adc_channel = BED_ADC_CHANNEL;
         NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
             | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
-            | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
-            | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
+            | (ADC_CONFIG_REFSEL_SupplyOneThirdPrescaling << ADC_CONFIG_REFSEL_Pos)
+            | (ADC_CONFIG_INPSEL_AnalogInputOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos)
             | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
         adc_is_available = true;
     } else {
         adc_channel = NOZ_ADC_CHANNEL;
         NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos)
             | (NOZ_ADC_INPUT << ADC_CONFIG_PSEL_Pos)
-            | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos)
-            | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos)
+            | (ADC_CONFIG_REFSEL_SupplyOneThirdPrescaling << ADC_CONFIG_REFSEL_Pos)
+            | (ADC_CONFIG_INPSEL_AnalogInputOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos)
             | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos);
         NRF_ADC->TASKS_START = 1;
     }
@@ -54,8 +54,8 @@ void adc_init(void)
     //Configure ADC
     NRF_ADC->CONFIG = (ADC_CONFIG_EXTREFSEL_None << ADC_CONFIG_EXTREFSEL_Pos) //ADC external reference pin selection
         | (BED_ADC_INPUT << ADC_CONFIG_PSEL_Pos) //Use analog input
-        | (ADC_CONFIG_REFSEL_VBG << ADC_CONFIG_REFSEL_Pos) //Use internal 1.2V bandgap voltage as reference for conversion
-        | (ADC_CONFIG_INPSEL_AnalogInputNoPrescaling << ADC_CONFIG_INPSEL_Pos) //Analog input with no prescaling
+        | (ADC_CONFIG_REFSEL_SupplyOneThirdPrescaling << ADC_CONFIG_REFSEL_Pos) //Use internal 1.2V bandgap voltage as reference for conversion
+        | (ADC_CONFIG_INPSEL_AnalogInputOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos) //Analog input with no prescaling
         | (ADC_CONFIG_RES_10bit << ADC_CONFIG_RES_Pos); //10bit ADC resolution
 	
     //Enable ADC
