@@ -11,9 +11,9 @@
 #include <stdio.h>
 #include <string.h>
 
-void flash_page_erase();
+void flash_page_erase(void);
 void flash_word_write(uint32_t value);
-uint32_t flash_word_read();
+uint32_t flash_word_read(void);
     
 
 #endif

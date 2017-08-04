@@ -43,6 +43,12 @@ SRC_FILES += \
   $(PROJ_DIR)/peripheral/flash.c \
   $(PROJ_DIR)/gcode/gcode.c \
   $(PROJ_DIR)/gcode/gcode_functions.c \
+  $(PROJ_DIR)/application/settings.c \
+  $(PROJ_DIR)/application/motion.c \
+  $(PROJ_DIR)/application/heater.c \
+  $(PROJ_DIR)/application/settings.c \
+  $(PROJ_DIR)/application/axis.c \
+  $(PROJ_DIR)/application/printer.c \
 #  $(SDK_ROOT)/components/drivers_nrf/uart/nrf_drv_uart.c \
 #  $(SDK_ROOT)/components/libraries/uart/app_uart_fifo.c \
 
@@ -149,6 +155,7 @@ INC_FOLDERS += \
   $(SDK_ROOT)/components/libraries/fifo \
   $(PROJ_DIR)/peripheral \
   $(PROJ_DIR)/gcode \
+  $(PROJ_DIR)/application \
 
 # Libraries common to all targets
 LIB_FILES += \

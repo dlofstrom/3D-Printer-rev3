@@ -6,7 +6,7 @@
 
 #include "nrf.h"
 
-void flash_page_erase()
+void flash_page_erase(void)
 {
     uint32_t pg_size = NRF_FICR->CODEPAGESIZE;
     uint32_t pg_num  = NRF_FICR->CODESIZE - 1;  // Use last page in flash
@@ -39,7 +39,7 @@ void flash_word_write(uint32_t value)
     while (NRF_NVMC->READY == NVMC_READY_READY_Busy); //Do nothing.
 }
 
-uint32_t flash_word_read()
+uint32_t flash_word_read(void)
 {
     uint32_t pg_size = NRF_FICR->CODEPAGESIZE;
     uint32_t pg_num  = NRF_FICR->CODESIZE - 1;  // Use last page in flash
