@@ -98,6 +98,7 @@ uint32_t uart_read_line(char *data) {
 }
 
 uint32_t uart_print(const char *data){
+    debug("Uart send: %s", data);
     uint32_t count = 0;
     char *d = (char *)data;
     //debug("pushing:");
@@ -125,16 +126,16 @@ uint32_t uart_printf(const char *format, ...) {
 
     vsprintf(str, format, argp);
     return uart_print(str);
-    
 }
 
+static char dstr[UART_TX_BUF_SIZE];
 unsigned int debug(const char *format, ...) {
 #ifdef DEBUG
     va_list argp;
     va_start(argp, format);
 
-    vsprintf(str, format, argp);
-    return SEGGER_RTT_WriteString(0,str);
+    vsprintf(dstr, format, argp);
+    return SEGGER_RTT_WriteString(0,dstr);
     //return uart_print(str);
 #else
     return 0;
