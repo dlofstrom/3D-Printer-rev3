@@ -53,6 +53,7 @@ int N_f(char *s) {
         debug("Line numbers are not equal: %d != %d\n", line_number, gp.value);
     }
     debug("Line number: %d\n", gp.value);
+    line_number++;
 
     //Execute G-code command
     //scs points to *
