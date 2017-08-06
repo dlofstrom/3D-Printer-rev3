@@ -3,7 +3,7 @@
 //
 
 #include "motion.h"
-#include "settings.h"
+//#include "settings.h"
 #include "uart.h"
 #include "axis.h"
 
@@ -32,7 +32,7 @@ void motion_init(void) {
 
 void motion_schedule(int x, int y, int z, int e, int f) {
     //head
-    debug("Motion schedule\n");
+    debug("Motion schedule: x%d y%d z%d e%d f%d\n",x,y,z,e,f);
 }
 
 int motion_available(void) {
@@ -40,7 +40,7 @@ int motion_available(void) {
     else return 0;
 }
 
-int motion_execute(void) {
+int motion_move(void) {
     motion_t m = motion_buffer[motion_buffer_head];
     motion_buffer_head = (motion_buffer_head + 1) % MOTION_BUFFER_SIZE;
 

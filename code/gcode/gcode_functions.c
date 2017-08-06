@@ -44,21 +44,25 @@ int N_f(char *s) {
     }
 
     //Get first parameter (Nnnn)
-    gcode_parameter_t gp;
-    if (gcode_get_parameter(&s, &gp) != 2) {
+    char c;
+    int ln;
+    if (sscanf(s, "%c%d", &c, &ln) != 2) {
         debug("No line number!\n");
+        ln = -1;
     }
-
+    
     //Compare line number
-    if (line_number != gp.value) {
-        debug("Line numbers are not equal: %d != %d\n", line_number, gp.value);
+    if (line_number != ln) {
+        debug("Line numbers are not equal: %d != %d\n", line_number, ln);
     }
-    debug("Line number: %d\n", gp.value);
+    debug("Line number: %d\n", ln);
     line_number++;
 
     //Execute G-code command
     //scs points to *
     *scs = '\0';
+    //Move s to command without Nnnn
+    while (*(s++) != ' ') if (*s == '\0') break;
     //Now s should point to the command without Nnnn and *checksum
     return gcode_parse(s);
 }
@@ -74,15 +78,14 @@ int G0_f(char *s) {
 // G1_f(const char *s)
 // G1: Move 
 int G1_f(char *s) {
-    debug("G1_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
-
     //Testing parameter pop
-    gcode_parameter_t gp;
-    while (gcode_get_parameter(&s, &gp) > 0) {
-        debug("Parameter: %c %d\n", gp.type, gp.value);
-    }
-
+    //float a[5] = {0.0}; //x, y, z, e, f;
+    gcode_parameter_t gp[5];
+    gcode_parameter_t *gpp = gp;
+    int n = 0;
+    while (gcode_get_parameter(&s, gpp++) > 0) n++;
+    if (printer_move(n, gp) == -1) uart_printf("Error: G1 out of build volume\n");
+    else uart_printf("ok\n");
     return 1;
 }
 
@@ -337,16 +340,16 @@ int G80_f(char *s) {
 // G90_f(const char *s)
 // G90: Set to Absolute Positioning 
 int G90_f(char *s) {
-    debug("G90_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    printer_set_positioning_absolute();
+    uart_printf("ok\n");
     return 1;
 }
 
 // G91_f(const char *s)
 // G91: Set to Relative Positioning 
 int G91_f(char *s) {
-    debug("G91_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    printer_set_positioning_relative();
+    uart_printf("ok\n");
     return 1;
 }
 
@@ -907,7 +910,7 @@ int M110_f(char *s) {
     //debug("%s\n", s);
     gcode_parameter_t gp;
     while (gcode_get_parameter(&s, &gp) > 0) {
-        if (gp.type == 'N') line_number = gp.value;
+        if (gp.type == 'N') line_number = (int)gp.value + 1;
     }
     uart_printf("ok\n");
     return 1;

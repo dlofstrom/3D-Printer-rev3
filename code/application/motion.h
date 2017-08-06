@@ -16,7 +16,7 @@
 void motion_init(void);
 void motion_schedule(int x, int y, int z, int e, int f);
 int motion_available(void);
-int motion_execute(void);
+int motion_move(void);
 
 
 #endif
