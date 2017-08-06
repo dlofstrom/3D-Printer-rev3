@@ -62,10 +62,10 @@ int gcode_parse(const char *s) {
 // Extract G-code parameter (similar to strtok)
 int gcode_get_parameter(char **s, gcode_parameter_t *gp) {
     //Get first Xnnn
-    int n = sscanf(*s, "%c%d", &(gp->type), &(gp->value));
+    int n = sscanf(*s, "%c%f", &(gp->type), &(gp->value));
     //Move pointer forward;
     while (*((*s)++) != ' ') if (**s == '\0') break;
-    if (n == 1) gp->value = -1;
+    if (n == 1) gp->value = 0.0;
     return n;
 }
 

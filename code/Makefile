@@ -185,14 +185,15 @@ ASMFLAGS += -DSWI_DISABLE0
 ASMFLAGS += -DBOARD_PCA10028
 ASMFLAGS += -DBSP_DEFINES_ONLY
 
-# Linker flags
+# Linker flag
+LDFLAGS += -u _scanf_float
+LDFLAGS += -u _printf_float
 LDFLAGS += -mthumb -mabi=aapcs -L $(TEMPLATE_PATH) -T$(LINKER_SCRIPT)
 LDFLAGS += -mcpu=cortex-m0
 # let linker to dump unused sections
 LDFLAGS += -Wl,--gc-sections
 # use newlib in nano version
 LDFLAGS += --specs=nano.specs -lc -lnosys
-
 
 .PHONY: $(TARGETS) default all clean help flash debug
 

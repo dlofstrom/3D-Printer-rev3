@@ -24,7 +24,7 @@ unsigned int debug(const char *format, ...);
 // Single G-code parameter
 typedef struct {
     char type;
-    int value;
+    float value;
 } gcode_parameter_t;
 
 // Parse G-code command
