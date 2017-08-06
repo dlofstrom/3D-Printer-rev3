@@ -9,7 +9,7 @@ static settings_t s;
 
 settings_t *settings_load(void) {
     debug("Settings load\n");
-    s.a = 123;
+    s = (settings_t){4,4,4,4,100,100,100};
     return &s;
 }
 
