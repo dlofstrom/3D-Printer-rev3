@@ -34,7 +34,7 @@ void printer_init(void) {
 void printer_loop(void) {
     if (axis_available()) {
         toc = millis();
-        if (toc - tic >= 500) {
+        if (toc - tic >= 10) {
             led_toggle();   
             tic = toc;
             axis_move();
@@ -81,28 +81,42 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
     for (i = 0; i < nargs; i++) {
         //debug("%c%f\n", gp[i].type, gp[i].value);
         if (gp[i].type == 'X') {
-            xs = (int)(gp[i].value*(s->spmmx) - axis_get_error(AXIS_X) + 0.5); //Calculate mm to steps
+            if (gp[i].value*(s->spmmx) >= axis_get_error(AXIS_X)) xs = (int)(gp[i].value*(s->spmmx) - axis_get_error(AXIS_X) + 0.5); //Calculate mm to steps
+            else xs = (int)(gp[i].value*(s->spmmx) - axis_get_error(AXIS_X) - 0.5); //Calculate mm to steps
             if (axis_get_positioning(AXIS_X) == ABSOLUTE) xs -= axis_get_position(AXIS_X); //Handle current postion if absolute
-            if (axis_get_position(AXIS_X) + xs < 0 || axis_get_position(AXIS_X) + xs > s->bvx) return -1; //Check boundries
+            if (axis_get_position(AXIS_X) + xs < 0 || axis_get_position(AXIS_X) + xs > (s->bvx)*(s->spmmx)) return -1; //Check boundries
+            if (axis_get_positioning(AXIS_X) == ABSOLUTE) axis_set_error(AXIS_X, xs - (gp[i].value*(s->spmmx) - axis_get_position(AXIS_X) - axis_get_error(AXIS_X))); //Update error
+            else axis_set_error(AXIS_X, xs - (gp[i].value*(s->spmmx) - axis_get_error(AXIS_X))); //Update error
             axis_set_position(AXIS_X, axis_get_position(AXIS_X) + xs); //Update position
-            axis_set_error(AXIS_X, xs - (gp[i].value*(s->spmmx) - axis_get_error(AXIS_X))); //Update error
-        } else if (gp[i].type == 'Y') {
-            ys = (int)(gp[i].value*(s->spmmy) - axis_get_error(AXIS_Y) + 0.5);
+        }
+
+        else if (gp[i].type == 'Y') {
+            if (gp[i].value*(s->spmmy) >= axis_get_error(AXIS_Y)) ys = (int)(gp[i].value*(s->spmmy) - axis_get_error(AXIS_Y) + 0.5);
+            else  ys = (int)(gp[i].value*(s->spmmy) - axis_get_error(AXIS_Y) - 0.5);
             if (axis_get_positioning(AXIS_Y) == ABSOLUTE) ys -= axis_get_position(AXIS_Y);
-            if (axis_get_position(AXIS_Y) + ys < 0 || axis_get_position(AXIS_Y) + ys > s->bvy) return -1;
+            if (axis_get_position(AXIS_Y) + ys < 0 || axis_get_position(AXIS_Y) + ys > (s->bvy)*(s->spmmy)) return -1;
+            if (axis_get_positioning(AXIS_Y) == ABSOLUTE) axis_set_error(AXIS_Y, ys - (gp[i].value*(s->spmmy) - axis_get_position(AXIS_Y) - axis_get_error(AXIS_Y)));
+            else axis_set_error(AXIS_Y, ys - (gp[i].value*(s->spmmy) - axis_get_error(AXIS_Y)));
             axis_set_position(AXIS_Y, axis_get_position(AXIS_Y) + ys);
-            axis_set_error(AXIS_Y, ys - (gp[i].value*(s->spmmy) - axis_get_error(AXIS_Y)));
-        } else if (gp[i].type == 'Z') {
-            zs = (int)(gp[i].value*(s->spmmz) - axis_get_error(AXIS_Z) + 0.5);
+        }
+
+        else if (gp[i].type == 'Z') {
+            if (gp[i].value*(s->spmmz) >= axis_get_error(AXIS_Z)) zs = (int)(gp[i].value*(s->spmmz) - axis_get_error(AXIS_Z) + 0.5);
+            else zs = (int)(gp[i].value*(s->spmmz) - axis_get_error(AXIS_Z) - 0.5);
             if (axis_get_positioning(AXIS_Z) == ABSOLUTE) zs -= axis_get_position(AXIS_Z);
-            if (axis_get_position(AXIS_Z) + zs < 0 || axis_get_position(AXIS_Z) + zs > s->bvz) return -1;
+            if (axis_get_position(AXIS_Z) + zs < 0 || axis_get_position(AXIS_Z) + zs > (s->bvz)*(s->spmmz)) return -1;
+            if (axis_get_positioning(AXIS_Z) == ABSOLUTE) axis_set_error(AXIS_Z, zs - (gp[i].value*(s->spmmz) - axis_get_position(AXIS_Z) - axis_get_error(AXIS_Z)));
+            else axis_set_error(AXIS_Z, zs - (gp[i].value*(s->spmmz) - axis_get_error(AXIS_Z)));
             axis_set_position(AXIS_Z, axis_get_position(AXIS_Z) + zs);
-            axis_set_error(AXIS_Z, zs - (gp[i].value*(s->spmmz) - axis_get_error(AXIS_Z)));
-        } else if (gp[i].type == 'E') {
-            xs = (int)(gp[i].value*(s->spmme) - axis_get_error(AXIS_E) + 0.5);
+        }
+
+        else if (gp[i].type == 'E') {
+            if (gp[i].value*(s->spmme) >= axis_get_error(AXIS_E)) es = (int)(gp[i].value*(s->spmme) - axis_get_error(AXIS_E) + 0.5);
+            else es = (int)(gp[i].value*(s->spmme) - axis_get_error(AXIS_E) - 0.5);
             if (axis_get_positioning(AXIS_E) == ABSOLUTE) es -= axis_get_position(AXIS_E);
+            if (axis_get_positioning(AXIS_E) == ABSOLUTE) axis_set_error(AXIS_E, es - (gp[i].value*(s->spmme) - axis_get_position(AXIS_E) - axis_get_error(AXIS_E)));
+            else axis_set_error(AXIS_E, es - (gp[i].value*(s->spmme) - axis_get_error(AXIS_E)));
             axis_set_position(AXIS_E, axis_get_position(AXIS_E) + es);
-            axis_set_error(AXIS_E, es - (gp[i].value*(s->spmme) - axis_get_error(AXIS_E)));
         } else if (gp[i].type == 'F') {
             fs = (int)gp[i].value;
         }

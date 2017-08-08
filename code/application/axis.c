@@ -61,7 +61,7 @@ void axis_set_error(int a, float e) {
 }
 
 void axis_schedule(int xs, int ys, int zs, int es, int fs) {
-    debug("Axis schedule\n");
+    debug("Axis schedule xs:%d ys:%d zs:%d es:%d fs:%d\n", xs, ys, zs, es, fs);
 
     axis_move_t *am = &move_buffer[move_buffer_head];
     move_buffer_head = (move_buffer_head + 1) % MOVE_BUFFER_SIZE;
@@ -102,14 +102,14 @@ void axis_move(void) {
         
         //Calculate which move to do
         step_t step_to_take = {0,0,0,0};
-        if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x) >= 1) step_to_take.x = 1; //Step x positive
-        else if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x) <= -1) step_to_take.x = -1; //Step x negative
-        if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y) >= 1) step_to_take.y = 1;
-        else if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y) <= -1) step_to_take.y = -1;
-        if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z) >= 1) step_to_take.z = 1;
-        else if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z) <= -1) step_to_take.z = -1;
-        if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e) >= 1) step_to_take.e = 1;
-        else if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e) <= -1) step_to_take.e = -1;
+        if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x + 0.5) >= 1) step_to_take.x = 1; //Step x positive
+        else if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x - 0.5) <= -1) step_to_take.x = -1; //Step x negative
+        if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y + 0.5) >= 1) step_to_take.y = 1;
+        else if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y - 0.5) <= -1) step_to_take.y = -1;
+        if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z + 0.5) >= 1) step_to_take.z = 1;
+        else if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z - 0.5) <= -1) step_to_take.z = -1;
+        if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e + 0.5) >= 1) step_to_take.e = 1;
+        else if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e - 0.5) <= -1) step_to_take.e = -1;
 
         //Check axis endstop, position and move direction
         am->x += step_to_take.x;
