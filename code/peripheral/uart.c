@@ -119,8 +119,9 @@ uint32_t uart_print(const char *data){
     return count;
 }
 
-static char str[UART_TX_BUF_SIZE];
+
 uint32_t uart_printf(const char *format, ...) {
+    static char str[UART_TX_BUF_SIZE];
     va_list argp;
     va_start(argp, format);
 
@@ -128,9 +129,11 @@ uint32_t uart_printf(const char *format, ...) {
     return uart_print(str);
 }
 
-static char dstr[UART_TX_BUF_SIZE];
+
+
 unsigned int debug(const char *format, ...) {
 #ifdef DEBUG
+    static char dstr[UART_TX_BUF_SIZE];
     va_list argp;
     va_start(argp, format);
 
