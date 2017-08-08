@@ -44,7 +44,6 @@ SRC_FILES += \
   $(PROJ_DIR)/gcode/gcode.c \
   $(PROJ_DIR)/gcode/gcode_functions.c \
   $(PROJ_DIR)/application/settings.c \
-  $(PROJ_DIR)/application/motion.c \
   $(PROJ_DIR)/application/heater.c \
   $(PROJ_DIR)/application/settings.c \
   $(PROJ_DIR)/application/axis.c \

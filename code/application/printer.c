@@ -12,7 +12,6 @@
 #include "settings.h"
 #include "heater.h"
 #include "axis.h"
-#include "motion.h"
 #include "uart.h"
 
 static uint32_t tic;
@@ -26,7 +25,6 @@ void printer_init(void) {
     //Application layer
     settings_load();
     axis_init();
-    motion_init();
     heater_init();
 
     tic = millis();
@@ -34,12 +32,12 @@ void printer_init(void) {
 }
 
 void printer_loop(void) {
-    if (motion_available()) {
+    if (axis_available()) {
         toc = millis();
         if (toc - tic >= 500) {
             led_toggle();   
             tic = toc;
-            motion_move();
+            axis_move();
         }
     }
 }
@@ -111,7 +109,7 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
     }
     
     //Schedule motion
-    motion_schedule(xs, ys, zs, es, fs);
+    axis_schedule(xs, ys, zs, es, fs);
     
     return 0;
 }

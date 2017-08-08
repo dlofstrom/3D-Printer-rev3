@@ -31,6 +31,12 @@
 #define STEPPER_E_DIR 27
 #define STEPPER_E_EN 26
 
+typedef struct {
+    int x;
+    int y;
+    int z;
+    int e;
+} step_t;
 
 void stepper_init();
 void stepper_step(uint32_t s, uint32_t dir);
