@@ -19,10 +19,10 @@ static int move_buffer_head;
 static int move_buffer_tail;
 
 void axis_init(void) {
-    x = (axis_t){0, 0, 0.0, STEPPER_X_CHANNEL, SWITCH_X_CHANNEL};
-    y = (axis_t){0, 0, 0.0, STEPPER_Y_CHANNEL, SWITCH_Y_CHANNEL};
-    z = (axis_t){0, 0, 0.0, STEPPER_Z_CHANNEL, SWITCH_Z_CHANNEL};
-    e = (axis_t){0, 0, 0.0, STEPPER_E_CHANNEL, -1};
+    x = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_X_CHANNEL, .switch_channel=SWITCH_X_CHANNEL};
+    y = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_Y_CHANNEL, .switch_channel=SWITCH_Y_CHANNEL};
+    z = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_Z_CHANNEL, .switch_channel=SWITCH_Z_CHANNEL};
+    e = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_E_CHANNEL, .switch_channel=-1};
     feedrate = 10;
     
     move_buffer_head = 0;
