@@ -25,7 +25,6 @@ typedef struct {
     int position;
     float error;
 
-    int stepper_position;
     uint32_t stepper_channel;
     uint32_t switch_channel;
 } axis_t;
@@ -54,6 +53,6 @@ void axis_set_position(int a, int p);
 void axis_set_error(int a, float e);
 void axis_schedule(int xs, int ys, int zs, int es, int fsx);
 int axis_available(void);
-void axis_move(void);
+int axis_move(void);
 
 #endif

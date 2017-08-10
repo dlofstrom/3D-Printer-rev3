@@ -19,10 +19,10 @@ static int move_buffer_head;
 static int move_buffer_tail;
 
 void axis_init(void) {
-    x = (axis_t){0, 0, 0.0, 0, STEPPER_X_CHANNEL, SWITCH_X_CHANNEL};
-    y = (axis_t){0, 0, 0.0, 0, STEPPER_Y_CHANNEL, SWITCH_Y_CHANNEL};
-    z = (axis_t){0, 0, 0.0, 0, STEPPER_Z_CHANNEL, SWITCH_Z_CHANNEL};
-    e = (axis_t){0, 0, 0.0, 0, STEPPER_E_CHANNEL, -1};
+    x = (axis_t){0, 0, 0.0, STEPPER_X_CHANNEL, SWITCH_X_CHANNEL};
+    y = (axis_t){0, 0, 0.0, STEPPER_Y_CHANNEL, SWITCH_Y_CHANNEL};
+    z = (axis_t){0, 0, 0.0, STEPPER_Z_CHANNEL, SWITCH_Z_CHANNEL};
+    e = (axis_t){0, 0, 0.0, STEPPER_E_CHANNEL, -1};
     feedrate = 10;
     
     move_buffer_head = 0;
@@ -93,7 +93,7 @@ int axis_available(void) {
     else return 0;
 }
 
-void axis_move(void) {
+int axis_move(void) {
     //Look att the first item in buffer and do move
     axis_move_t *am = &move_buffer[move_buffer_tail];
     if (am->steps > 0) {
@@ -111,14 +111,32 @@ void axis_move(void) {
         if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e + 0.5) >= 1) step_to_take.e = 1;
         else if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e - 0.5) <= -1) step_to_take.e = -1;
 
-        //Check axis endstop, position and move direction
+        //Set steps
         am->x += step_to_take.x;
         am->y += step_to_take.y;
         am->z += step_to_take.z;
         am->e += step_to_take.e;
         debug("x:%d y:%d z:%d e:%d f:%d\n", step_to_take.x, step_to_take.y, step_to_take.z, step_to_take.e, feedrate);
+
+        //Check axis endstop and move direction
+        if (step_to_take.x != 0 && switch_get(x.switch_channel)) {
+            debug("Switch X is asserted\n");
+            return -1;
+        }
+        if (step_to_take.y != 0 && switch_get(y.switch_channel)) {
+            debug("Switch Y is asserted\n");
+            return -1;
+        }
+        if (step_to_take.z != 0 && switch_get(z.switch_channel)) {
+            debug("Switch Z is asserted\n");
+            return -1;
+        }
+        if (step_to_take.e != 0 && switch_get(e.switch_channel)) {
+            debug("Switch E is asserted\n");
+            return -1;
+        }
         
-        //Increment/Decrement stepper_position
+        stepper_step(&step_to_take);
     } else {
         if (am->f_goal > 0) feedrate = am->f_goal;
     }
@@ -128,4 +146,7 @@ void axis_move(void) {
         move_buffer_tail = (move_buffer_tail + 1) % MOVE_BUFFER_SIZE;
         debug("Move done x:%d y:%d z:%d e:%d\n", am->x, am->y, am->z, am->e);
     }
+
+    //TODO: return feedrate?
+    return 1;
 }

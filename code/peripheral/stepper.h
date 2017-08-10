@@ -32,6 +32,13 @@
 #define STEPPER_E_EN 26
 
 typedef struct {
+    //Pins
+    uint32_t step_pin;
+    uint32_t direction_pin;
+    uint32_t enable_pin;
+} stepper_t;
+
+typedef struct {
     int x;
     int y;
     int z;
@@ -39,7 +46,7 @@ typedef struct {
 } step_t;
 
 void stepper_init();
-void stepper_step(uint32_t s, uint32_t dir);
+void stepper_step(step_t *s);
 void stepper_enable(uint32_t s);
 void stepper_disable(uint32_t s);
 
