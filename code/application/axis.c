@@ -116,7 +116,7 @@ int axis_move(void) {
         am->y += step_to_take.y;
         am->z += step_to_take.z;
         am->e += step_to_take.e;
-        debug("x:%d y:%d z:%d e:%d f:%d\n", step_to_take.x, step_to_take.y, step_to_take.z, step_to_take.e, feedrate);
+        //debug("x:%d y:%d z:%d e:%d f:%d\n", step_to_take.x, step_to_take.y, step_to_take.z, step_to_take.e, feedrate);
 
         //Check axis endstop and move direction
         if (step_to_take.x != 0 && switch_get(x.switch_channel)) {
