@@ -14,8 +14,8 @@
 #include "axis.h"
 #include "uart.h"
 
-static uint32_t tic;
-static uint32_t toc;
+static uint32_t mtic, mtoc;
+static uint32_t rtic, rtoc;
 
 void printer_init(void) {
     //Perippheral layer
@@ -27,18 +27,35 @@ void printer_init(void) {
     axis_init();
     heater_init();
 
-    tic = millis();
-    toc = millis();
+    mtic = millis();
+    mtoc = millis();
+    rtic = millis();
+    rtoc = millis();
 }
 
 void printer_loop(void) {
+    //Movement timing
     if (axis_available()) {
-        toc = millis();
-        if (toc - tic >= 10) {
+        mtoc = millis();
+        if (mtoc - mtic >= 10) {
             led_toggle();   
-            tic = toc;
+            mtic = mtoc;
             axis_move();
         }
+    } else {
+        mtic = millis();
+    }
+
+    //Regulator timing
+    rtoc = millis();
+    if (rtoc - rtic >= 10) {
+        if (heater_enabled(&bed)) {
+            heater_regulate(&bed);
+        }
+        if (heater_enabled(&nozzle)) {
+            heater_regulate(&nozzle);
+        }
+        rtic = rtoc;
     }
 }
 
