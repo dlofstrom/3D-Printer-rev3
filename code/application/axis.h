@@ -53,6 +53,7 @@ void axis_set_position(int a, int p);
 void axis_set_error(int a, float e);
 void axis_schedule(int xs, int ys, int zs, int es, int fsx);
 int axis_available(void);
+int axis_buffer_full(void);
 int axis_move(void);
 
 #endif

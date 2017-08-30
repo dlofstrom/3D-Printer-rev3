@@ -22,9 +22,11 @@ int main(void)
     debug("3D Printer\n");
     while (1)
     {
-        if (uart_read_line(line) != 0) {
-            debug("Got a line: %s", line);
-            gcode_parse(line);
+        if (printer_ready()) {
+            if (uart_read_line(line) != 0) {
+                debug("Got a line: %s", line);
+                gcode_parse(line);
+            }
         }
 
         printer_loop();

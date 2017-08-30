@@ -17,6 +17,15 @@
 static uint32_t mtic, mtoc;
 static uint32_t rtic, rtoc;
 
+//Save printer function until movements are done
+typedef void (*saved_f)();
+typedef struct {
+    int available;
+    saved_f function;
+} sf_t;
+
+static sf_t saved_function;
+
 void printer_init(void) {
     //Perippheral layer
     time_init();
@@ -31,6 +40,18 @@ void printer_init(void) {
     mtoc = millis();
     rtic = millis();
     rtoc = millis();
+
+    //Printer ready
+    saved_function.available = 0;
+}
+
+int printer_ready(void) {
+    //Printer is ready if:
+    //No function is buffered (in saved_f)
+    if (saved_function.available) return 0;
+    //Movement queue is no full
+    if (axis_buffer_full()) return 0;
+    return 1;
 }
 
 void printer_loop(void) {
@@ -42,6 +63,11 @@ void printer_loop(void) {
             mtic = mtoc;
             axis_move();
         }
+    } else if (saved_function.available) {
+        //Run saved function
+        (*(saved_function.function))();
+        saved_function.available = 0;
+        mtic = millis();
     } else {
         mtic = millis();
     }
@@ -72,11 +98,23 @@ int printer_get_temperature(void) {
 }
 
 void printer_set_positioning_absolute(void) {
+    //If movements in buffer, hold on
+    if (axis_available()) {
+        saved_function.available = 1;
+        saved_function.function = &printer_set_positioning_absolute;
+        return;
+    }
     axis_set_positioning(ABSOLUTE);
     uart_printf("ok\n");
 }
 
 void printer_set_positioning_relative(void) {
+    //If movements in buffer, hold on
+    if (axis_available()) {
+        saved_function.available = 1;
+        saved_function.function = &printer_set_positioning_relative;
+        return;
+    }
     axis_set_positioning(RELATIVE);
     uart_printf("ok\n");
 }

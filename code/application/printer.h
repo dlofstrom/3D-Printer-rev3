@@ -14,6 +14,7 @@
 #include "gcode.h"
 
 void printer_init(void);
+int printer_ready(void);
 void printer_loop(void);
 
 int printer_get_temperature(void);

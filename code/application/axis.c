@@ -93,6 +93,11 @@ int axis_available(void) {
     else return 0;
 }
 
+int axis_buffer_full(void) {
+    if (((move_buffer_head + 1) % MOVE_BUFFER_SIZE) == move_buffer_tail) return 1;
+    else return 0;
+}
+
 int axis_move(void) {
     //Look att the first item in buffer and do move
     axis_move_t *am = &move_buffer[move_buffer_tail];
