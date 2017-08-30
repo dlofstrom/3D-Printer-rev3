@@ -16,8 +16,7 @@
 void printer_init(void);
 void printer_loop(void);
 
-int printer_get_temp_nozzle(void);
-int printer_get_temp_bed(void);
+int printer_get_temperature(void);
 
 void printer_set_positioning_absolute(void);
 void printer_set_positioning_relative(void);

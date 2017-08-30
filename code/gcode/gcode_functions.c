@@ -84,8 +84,7 @@ int G1_f(char *s) {
     gcode_parameter_t *gpp = gp;
     int n = 0;
     while (gcode_get_parameter(&s, gpp++) > 0) n++;
-    if (printer_move(n, gp) == -1) uart_printf("Error: G1 out of build volume\n");
-    else uart_printf("ok\n");
+    printer_move(n, gp); 
     return 1;
 }
 
@@ -341,7 +340,6 @@ int G80_f(char *s) {
 // G90: Set to Absolute Positioning 
 int G90_f(char *s) {
     printer_set_positioning_absolute();
-    uart_printf("ok\n");
     return 1;
 }
 
@@ -349,7 +347,6 @@ int G90_f(char *s) {
 // G91: Set to Relative Positioning 
 int G91_f(char *s) {
     printer_set_positioning_relative();
-    uart_printf("ok\n");
     return 1;
 }
 
@@ -867,7 +864,7 @@ int M104_f(char *s) {
 // M105_f(const char *s)
 // M105: Get Extruder Temperature 
 int M105_f(char *s) {
-    uart_printf("ok T:%d B:%d\n", printer_get_temp_nozzle(), printer_get_temp_bed());
+    printer_get_temperature();
     return 1;
 }
 
