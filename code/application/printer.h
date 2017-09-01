@@ -22,6 +22,7 @@ int printer_get_temperature(void);
 void printer_set_positioning_absolute(void);
 void printer_set_positioning_relative(void);
 
+int printer_reset(int nargs, gcode_parameter_t *gp);
 int printer_move(int nargs, gcode_parameter_t *gp);
 
 #endif

@@ -6,6 +6,7 @@
 #include "stepper.h"
 #include "switch.h"
 #include "uart.h"
+#include "time.h"
 
 static axis_t x;
 static axis_t y;
@@ -126,26 +127,55 @@ int axis_move(void) {
         //Check axis endstop and move direction
         if (step_to_take.x != 0 && switch_get(x.switch_channel)) {
             debug("Switch X is asserted\n");
-            return -1;
+            //Force step back from switch
+            step_t ts = {-step_to_take.x,0,0,0};
+            while (switch_get(x.switch_channel)) {
+                stepper_step(&ts);
+                delay_us(100);
+            }
+            stepper_step(&ts);
+            am->x = 0;
+            am->x_steps = 0;
+            step_to_take.x = 0;
+            //Check if reset is done if so force quit
+            if (am->x_steps == 0 && am->y_steps == 0 && am->z_steps == 0) am->steps = 0;
         }
         if (step_to_take.y != 0 && switch_get(y.switch_channel)) {
             debug("Switch Y is asserted\n");
-            return -1;
+            //Force step back from switch
+            step_t ts = {0,-step_to_take.y,0,0};
+            while (switch_get(y.switch_channel)) {
+                stepper_step(&ts);
+                delay_us(100);
+            }
+            stepper_step(&ts);
+            am->y = 0;
+            am->y_steps = 0;
+            step_to_take.y = 0;
+            //Check if reset is done if so force quit
+            if (am->x_steps == 0 && am->y_steps == 0 && am->z_steps == 0) am->steps = 0;
         }
         if (step_to_take.z != 0 && switch_get(z.switch_channel)) {
             debug("Switch Z is asserted\n");
-            return -1;
+            //Force step back from switch
+            step_t ts = {0,0,-step_to_take.z,0};
+            while (switch_get(z.switch_channel)) {
+                stepper_step(&ts);
+                delay_us(100);
+            }
+            stepper_step(&ts);
+            am->z = 0;
+            am->z_steps = 0;
+            step_to_take.z = 0;
+            //Check if reset is done if so force quit
+            if (am->x_steps == 0 && am->y_steps == 0 && am->z_steps == 0) am->steps = 0;
         }
-        if (step_to_take.e != 0 && switch_get(e.switch_channel)) {
-            debug("Switch E is asserted\n");
-            return -1;
-        }
-        
+                
         stepper_step(&step_to_take);
     } else {
         if (am->f_goal > 0) feedrate = am->f_goal;
     }
-    
+
     //Check if item done, then remove it from the buffer
     if (am->t >= am->steps) {
         move_buffer_tail = (move_buffer_tail + 1) % MOVE_BUFFER_SIZE;

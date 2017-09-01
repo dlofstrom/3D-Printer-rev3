@@ -47,6 +47,6 @@ uint32_t millis(void)
 }
 
 //Blocking delay
-void delay_ms(uint32_t ms) {
-    nrf_delay_ms(1);
+void delay_us(uint32_t us) {
+    nrf_delay_us(us);
 }

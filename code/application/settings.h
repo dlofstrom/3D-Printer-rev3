@@ -21,6 +21,15 @@ typedef struct {
     int bvx;
     int bvy;
     int bvz;
+    //Endstop position (-1 beginning, 1 end)
+    int espx;
+    int espy;
+    int espz;
+    //Stepper direction (1,-1)
+    int sdx;
+    int sdy;
+    int sdz;
+    int sde;
 } settings_t;
 
 settings_t *settings_load(void);

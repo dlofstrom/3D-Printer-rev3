@@ -119,6 +119,32 @@ void printer_set_positioning_relative(void) {
     uart_printf("ok\n");
 }
 
+
+int printer_reset(int nargs, gcode_parameter_t *gp) {
+    int xs = 0;
+    int ys = 0;
+    int zs = 0;
+    settings_t *s = settings();
+    int i;
+    for (i = 0; i < nargs; i++) {
+        if (gp[i].type == 'X') {
+            //move lenght of build volume (+20mm) in direction of endtop
+            xs = s->espx * (s->bvx + 20) * s->spmmx;
+            axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position
+        } else if (gp[i].type == 'Y') {
+            ys = s->espy * (s->bvy + 20) * s->spmmy;
+            axis_set_position(AXIS_Y, s->bvy*s->spmmy);
+        } else if (gp[i].type == 'Z') {
+            zs = s->espz * (s->bvz + 20) * s->spmmz;
+            axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+        }
+    }
+    axis_schedule(s->sdx*xs, s->sdz*ys, s->sdz*zs, 0, 0);
+    uart_printf("ok\n");
+    return 0;
+}
+
+
 int printer_move(int nargs, gcode_parameter_t *gp) {
     int xs = 0;
     int ys = 0;
@@ -185,7 +211,7 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
     
     
     //Schedule motion
-    axis_schedule(xs, ys, zs, es, fs);
+    axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
 
     if (ret == -1) uart_printf("Error: G1 out of build volume\n");
     else uart_printf("ok\n");

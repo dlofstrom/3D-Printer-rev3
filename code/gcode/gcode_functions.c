@@ -203,8 +203,11 @@ int G26_f(char *s) {
 // G28_f(const char *s)
 // G28: Move to Origin (Home) 
 int G28_f(char *s) {
-    debug("G28_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp[5];
+    gcode_parameter_t *gpp = gp;
+    int n = 0;
+    while (gcode_get_parameter(&s, gpp++) > 0) n++;
+    printer_reset(n, gp);
     return 1;
 }
 
