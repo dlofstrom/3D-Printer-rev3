@@ -79,7 +79,7 @@ int G0_f(char *s) {
 // G1: Move 
 int G1_f(char *s) {
     //Testing parameter pop
-    //float a[5] = {0.0}; //x, y, z, e, f;
+    //float a[5] = {0.0}; //x, y, z, e, f
     gcode_parameter_t gp[5];
     gcode_parameter_t *gpp = gp;
     int n = 0;
@@ -859,8 +859,10 @@ int M103_f(char *s) {
 // M104_f(const char *s)
 // M104: Set Extruder Temperature 
 int M104_f(char *s) {
-    debug("M104_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'S') printer_set_nozzle_temperature(gp.value, 0);
+    }
     return 1;
 }
 
@@ -898,8 +900,10 @@ int M108_f(char *s) {
 // M109_f(const char *s)
 // M109: Set Extruder Temperature and Wait 
 int M109_f(char *s) {
-    debug("M109_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'S') printer_set_nozzle_temperature(gp.value, 1);
+    }
     return 1;
 }
 
@@ -1062,32 +1066,60 @@ int M129_f(char *s) {
 // M130_f(const char *s)
 // M130: Set PID P value 
 int M130_f(char *s) {
-    debug("M130_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    int heater_n = 0;
+    float value = 0.0;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'P') heater_n = gp.value;
+        else if (gp.type == 'S') value = gp.value;
+    }
+    if (heater_n == 0) printer_set_nozzle_p_value(value);
+    else if (heater_n == 1) printer_set_bed_p_value(value);
     return 1;
 }
 
 // M131_f(const char *s)
 // M131: Set PID I value 
 int M131_f(char *s) {
-    debug("M131_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    int heater_n = 0;
+    float value = 0.0;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'P') heater_n = gp.value;
+        else if (gp.type == 'S') value = gp.value;
+    }
+    if (heater_n == 0) printer_set_nozzle_i_value(value);
+    else if (heater_n == 1) printer_set_bed_i_value(value);
     return 1;
 }
 
 // M132_f(const char *s)
 // M132: Set PID D value 
 int M132_f(char *s) {
-    debug("M132_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    int heater_n = 0;
+    float value = 0.0;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'P') heater_n = gp.value;
+        else if (gp.type == 'S') value = gp.value;
+    }
+    if (heater_n == 0) printer_set_nozzle_d_value(value);
+    else if (heater_n == 1) printer_set_bed_d_value(value);
     return 1;
 }
 
 // M133_f(const char *s)
 // M133: Set PID I limit value 
 int M133_f(char *s) {
-    debug("M133_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    int heater_n = 0;
+    float value = 0.0;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'P') heater_n = gp.value;
+        else if (gp.type == 'S') value = gp.value;
+    }
+    if (heater_n == 0) printer_set_nozzle_ilim_value(value);
+    else if (heater_n == 1) printer_set_bed_ilim_value(value);
     return 1;
 }
 
@@ -1118,8 +1150,10 @@ int M136_f(char *s) {
 // M140_f(const char *s)
 // M140: Set Bed Temperature (Fast) 
 int M140_f(char *s) {
-    debug("M140_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'S') printer_set_bed_temperature(gp.value, 0);
+    }
     return 1;
 }
 
@@ -1222,8 +1256,10 @@ int M165_f(char *s) {
 // M190_f(const char *s)
 // M190: Wait for bed temperature to reach target temp 
 int M190_f(char *s) {
-    debug("M190_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'S') printer_set_bed_temperature(gp.value, 1);
+    }
     return 1;
 }
 

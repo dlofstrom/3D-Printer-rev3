@@ -30,6 +30,15 @@ typedef struct {
     int sdy;
     int sdz;
     int sde;
+    //PID constants
+    float nozzle_kp;
+    float nozzle_ki;
+    float nozzle_kd;
+    float nozzle_ilim;
+    float bed_kp;
+    float bed_ki;
+    float bed_kd;
+    float bed_ilim;
 } settings_t;
 
 settings_t *settings_load(void);

@@ -73,13 +73,16 @@ void printer_loop(void) {
     }
 
     //Regulator timing
+    static int regulator_modulus_count = 0;
     rtoc = millis();
     if (rtoc - rtic >= 10) {
+        //Regulate every 10th
+        regulator_modulus_count = (regulator_modulus_count + 1) % 10;
         if (heater_enabled(&bed)) {
-            heater_regulate(&bed);
+            heater_regulate(&bed, regulator_modulus_count);
         }
         if (heater_enabled(&nozzle)) {
-            heater_regulate(&nozzle);
+            heater_regulate(&nozzle, regulator_modulus_count);
         }
         rtic = rtoc;
     }
@@ -96,6 +99,76 @@ int printer_get_temperature(void) {
     printer_print_temperature();
     return (int)heater_get_temperature(&nozzle);
 }
+
+void printer_set_nozzle_temperature(float temp, int wait) {
+    debug("Nozzle temperature set: %f\n", temp);
+    heater_set_temperature(&nozzle, temp);
+    if (wait == 0) {
+        uart_printf("ok\n");
+    } else {
+        //TODO
+    }
+}
+
+void printer_set_bed_temperature(float temp, int wait) {
+    debug("Bed temperature set: %f\n", temp);
+    heater_set_temperature(&bed, temp);
+    if (wait == 0) {
+        uart_printf("ok\n");
+    } else {
+        //TODO
+    }
+}
+
+void printer_set_nozzle_p_value(float p) {
+    settings_t *s = settings();
+    s->nozzle_kp = p;
+    uart_printf("ok\n");
+}
+
+void printer_set_nozzle_i_value(float i) {
+    settings_t *s = settings();
+    s->nozzle_ki = i;
+    uart_printf("ok\n");
+}
+
+void printer_set_nozzle_d_value(float d) {
+    settings_t *s = settings();
+    s->nozzle_kd = d;
+    uart_printf("ok\n");
+}
+
+void printer_set_nozzle_ilim_value(float ilim) {
+    settings_t *s = settings();
+    s->nozzle_ilim = ilim;
+    uart_printf("ok\n");
+}
+
+void printer_set_bed_p_value(float p) {
+    settings_t *s = settings();
+    s->bed_kp = p;
+    uart_printf("ok\n");
+}
+
+void printer_set_bed_i_value(float i) {
+    settings_t *s = settings();
+    s->bed_ki = i;
+    uart_printf("ok\n");
+}
+
+void printer_set_bed_d_value(float d) {
+    settings_t *s = settings();
+    s->bed_kd = d;
+    uart_printf("ok\n");
+}
+
+void printer_set_bed_ilim_value(float ilim) {
+    settings_t *s = settings();
+    s->bed_ilim = ilim;
+    uart_printf("ok\n");
+}
+
+
 
 void printer_set_positioning_absolute(void) {
     //If movements in buffer, hold on

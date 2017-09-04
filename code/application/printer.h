@@ -18,6 +18,17 @@ int printer_ready(void);
 void printer_loop(void);
 
 int printer_get_temperature(void);
+void printer_set_nozzle_temperature(float temp, int wait);
+void printer_set_bed_temperature(float temp, int wait);
+
+void printer_set_nozzle_p_value(float p);
+void printer_set_nozzle_i_value(float i);
+void printer_set_nozzle_d_value(float d);
+void printer_set_nozzle_ilim_value(float ilim);
+void printer_set_bed_p_value(float p);
+void printer_set_bed_i_value(float i);
+void printer_set_bed_d_value(float d);
+void printer_set_bed_ilim_value(float ilim);
 
 void printer_set_positioning_absolute(void);
 void printer_set_positioning_relative(void);
