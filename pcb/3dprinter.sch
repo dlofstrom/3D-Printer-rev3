@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="no" active="no"/>
@@ -2143,8 +2143,8 @@ Nordic NRF51822&lt;br&gt;
 <part name="COPå1" library="supply" deviceset="GND" device=""/>
 <part name="COPå2" library="supply" deviceset="GND" device=""/>
 <part name="COPå3" library="supply" deviceset="GND" device=""/>
-<part name="R2_M1" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
-<part name="R3_M1" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
+<part name="R2_M1" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
+<part name="R3_M1" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
 <part name="R1_M1" library="3dprinter" deviceset="R-US_" device="R0603" value="20k"/>
 <part name="COPå4" library="supply" deviceset="GND" device=""/>
 <part name="COPå5" library="supply" deviceset="GND" device=""/>
@@ -2188,8 +2188,8 @@ Nordic NRF51822&lt;br&gt;
 <part name="COPå10" library="supply" deviceset="GND" device=""/>
 <part name="COPå11" library="supply" deviceset="GND" device=""/>
 <part name="COPå12" library="supply" deviceset="GND" device=""/>
-<part name="R2_M2" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
-<part name="R3_M2" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
+<part name="R2_M2" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
+<part name="R3_M2" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
 <part name="R1_M2" library="3dprinter" deviceset="R-US_" device="R0603" value="20k"/>
 <part name="COPå13" library="supply" deviceset="GND" device=""/>
 <part name="COPå14" library="supply" deviceset="GND" device=""/>
@@ -2216,8 +2216,8 @@ Nordic NRF51822&lt;br&gt;
 <part name="COPå19" library="supply" deviceset="GND" device=""/>
 <part name="COPå20" library="supply" deviceset="GND" device=""/>
 <part name="COPå21" library="supply" deviceset="GND" device=""/>
-<part name="R2_M3" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
-<part name="R3_M3" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
+<part name="R2_M3" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
+<part name="R3_M3" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
 <part name="R1_M3" library="3dprinter" deviceset="R-US_" device="R0603" value="20k"/>
 <part name="COPå22" library="supply" deviceset="GND" device=""/>
 <part name="COPå23" library="supply" deviceset="GND" device=""/>
@@ -2244,8 +2244,8 @@ Nordic NRF51822&lt;br&gt;
 <part name="COPå28" library="supply" deviceset="GND" device=""/>
 <part name="COPå29" library="supply" deviceset="GND" device=""/>
 <part name="COPå30" library="supply" deviceset="GND" device=""/>
-<part name="R2_M4" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
-<part name="R3_M4" library="3dprinter" deviceset="R-US_" device="R0805" value="TBD"/>
+<part name="R2_M4" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
+<part name="R3_M4" library="3dprinter" deviceset="R-US_" device="R0805" value="0R15"/>
 <part name="R1_M4" library="3dprinter" deviceset="R-US_" device="R0603" value="20k"/>
 <part name="COPå31" library="supply" deviceset="GND" device=""/>
 <part name="COPå32" library="supply" deviceset="GND" device=""/>
@@ -2330,8 +2330,8 @@ Nordic NRF51822&lt;br&gt;
 <part name="TEMP_BED" library="3dprinter" deviceset="MA02-1" device="2.54"/>
 <part name="GND36" library="supply" deviceset="GND" device=""/>
 <part name="GND37" library="supply" deviceset="GND" device=""/>
-<part name="R3_NOZ" library="3dprinter" deviceset="R-US_" device="R0603" value="100k"/>
-<part name="R3_BED" library="3dprinter" deviceset="R-US_" device="R0603" value="100k"/>
+<part name="R3_NOZ" library="3dprinter" deviceset="R-US_" device="R0603" value="4k7"/>
+<part name="R3_BED" library="3dprinter" deviceset="R-US_" device="R0603" value="4k7"/>
 <part name="+3V6" library="supply" deviceset="+3V3" device=""/>
 <part name="+3V7" library="supply" deviceset="+3V3" device=""/>
 <part name="+3V8" library="supply" deviceset="+3V3" device=""/>

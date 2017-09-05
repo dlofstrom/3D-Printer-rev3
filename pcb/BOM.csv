@@ -106,12 +106,12 @@
 "R2_M3";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R2_M4";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R2_NOZ";"100k";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
-"R3_BED";"100k";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
+"R3_BED";"4k7";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R3_M1";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R3_M2";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R3_M3";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R3_M4";"TBD";"R-US_R0805";"R0805";"RESISTOR, American symbol";"";"";"";"";"";"";
-"R3_NOZ";"100k";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
+"R3_NOZ";"4k7";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R4_M1";"2R2 / 3R3";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R4_M2";"2R2 / 3R3";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";
 "R4_M3";"2R2 / 3R3";"R-US_R0603";"R0603";"RESISTOR, American symbol";"";"";"";"";"";"";

@@ -1355,11 +1355,11 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="50.759" y="9.76" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="51.205" y="11.454" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R2_M1" library="3dprinter" package="R0805" value="TBD" x="62.333" y="13.565" smashed="yes" rot="MR90">
+<element name="R2_M1" library="3dprinter" package="R0805" value="0R15" x="62.333" y="13.565" smashed="yes" rot="MR90">
 <attribute name="NAME" x="62.103" y="12.33" size="0.508" layer="48" rot="MR90"/>
 <attribute name="VALUE" x="59.793" y="12.93" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="R3_M1" library="3dprinter" package="R0805" value="TBD" x="49.3" y="18.312" smashed="yes" rot="MR270">
+<element name="R3_M1" library="3dprinter" package="R0805" value="0R15" x="49.3" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="49.676" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="51.84" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
@@ -1454,11 +1454,11 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="35.519" y="9.76" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="35.965" y="11.454" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R2_M2" library="3dprinter" package="R0805" value="TBD" x="45.998" y="18.312" smashed="yes" rot="MR270">
+<element name="R2_M2" library="3dprinter" package="R0805" value="0R15" x="45.998" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="46.12" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="48.538" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="R3_M2" library="3dprinter" package="R0805" value="TBD" x="34.06" y="18.312" smashed="yes" rot="MR270">
+<element name="R3_M2" library="3dprinter" package="R0805" value="0R15" x="34.06" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="34.182" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="36.6" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
@@ -1512,11 +1512,11 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="20.533" y="9.76" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="20.725" y="11.454" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R2_M3" library="3dprinter" package="R0805" value="TBD" x="30.758" y="18.312" smashed="yes" rot="MR270">
+<element name="R2_M3" library="3dprinter" package="R0805" value="0R15" x="30.758" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="31.134" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="33.298" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="R3_M3" library="3dprinter" package="R0805" value="TBD" x="18.82" y="18.312" smashed="yes" rot="MR270">
+<element name="R3_M3" library="3dprinter" package="R0805" value="0R15" x="18.82" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="19.196" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="21.36" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
@@ -1570,11 +1570,11 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="NAME" x="5.039" y="9.76" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="5.485" y="11.454" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R2_M4" library="3dprinter" package="R0805" value="TBD" x="15.518" y="18.312" smashed="yes" rot="MR270">
+<element name="R2_M4" library="3dprinter" package="R0805" value="0R15" x="15.518" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="15.894" y="19.593" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="18.058" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
-<element name="R3_M4" library="3dprinter" package="R0805" value="TBD" x="3.58" y="18.312" smashed="yes" rot="MR270">
+<element name="R3_M4" library="3dprinter" package="R0805" value="0R15" x="3.58" y="18.312" smashed="yes" rot="MR270">
 <attribute name="NAME" x="3.956" y="19.339" size="0.508" layer="48" rot="MR270"/>
 <attribute name="VALUE" x="6.12" y="18.947" size="1.27" layer="28" rot="MR270"/>
 </element>
@@ -1834,11 +1834,11 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="OC_NEWARK" value="unknown" x="49.276" y="25.146" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="VALUE" x="53.086" y="28.067" size="1.27" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="R3_NOZ" library="3dprinter" package="R0603" value="100k" x="43.18" y="27.178" smashed="yes" rot="MR180">
+<element name="R3_NOZ" library="3dprinter" package="R0603" value="4k7" x="43.18" y="27.178" smashed="yes" rot="MR180">
 <attribute name="NAME" x="41.745" y="27.443" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="42.545" y="29.083" size="1.27" layer="28" rot="MR180"/>
 </element>
-<element name="R3_BED" library="3dprinter" package="R0603" value="100k" x="50.292" y="27.178" smashed="yes" rot="MR180">
+<element name="R3_BED" library="3dprinter" package="R0603" value="4k7" x="50.292" y="27.178" smashed="yes" rot="MR180">
 <attribute name="NAME" x="48.857" y="27.443" size="0.508" layer="48" rot="MR180"/>
 <attribute name="VALUE" x="49.657" y="29.083" size="1.27" layer="28" rot="MR180"/>
 </element>
