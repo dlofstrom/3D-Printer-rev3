@@ -15,11 +15,11 @@ void heater_init(void) {
 
     settings_t *s = settings();
     nozzle = (heater_t){.enabled=0, .current_temperature=0.0, .target_temperature=0.0,
-                        .adc_channel=NOZ_ADC_CHANNEL, .pwm_channel=NOZ_PWM_CHANNEL,
+                        .adc_channel=NOZ_ADC_CHANNEL, .pwm_channel=NOZ_PWM_CHANNEL, .fan_channel=FAN1_PWM_CHANNEL,
                         .P=0.0, .I=0.0, .D=0.0,
                         .kp=&(s->nozzle_kp), .ki=&(s->nozzle_ki), .kd=&(s->nozzle_kd), .ilim=&(s->nozzle_ilim)};
     bed = (heater_t){.enabled=0, .current_temperature=0.0, .target_temperature=0.0,
-                     .adc_channel=BED_ADC_CHANNEL, .pwm_channel=BED_PWM_CHANNEL,
+                     .adc_channel=BED_ADC_CHANNEL, .pwm_channel=BED_PWM_CHANNEL, .fan_channel=NO_PWM,
                      .P=0.0, .I=0.0, .D=0.0,
                      .kp=&(s->bed_kp), .ki=&(s->bed_ki), .kd=&(s->bed_kd), .ilim=&(s->bed_ilim)};
 }
@@ -77,11 +77,10 @@ void heater_disable(heater_t *h) {
 
 void heater_set_temperature(heater_t *h, float t) {
     h->target_temperature = t;
-    if (t < 20.0) h->enabled = 0;
-    else h->enabled = 1;
+    if (t < 20.0) heater_disable(h);
+    else heater_enable(h);
 }
 
 float heater_get_temperature(heater_t *h) {
     return temperature_lookup[adc_get(h->adc_channel)];
 }
-

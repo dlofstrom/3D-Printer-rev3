@@ -17,6 +17,7 @@ typedef struct {
     float target_temperature;
     uint8_t adc_channel;
     uint32_t pwm_channel;
+    uint32_t fan_channel;
 
     float *kp;
     float P;

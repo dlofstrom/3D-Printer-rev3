@@ -77,7 +77,7 @@ void printer_loop(void) {
     rtoc = millis();
     if (rtoc - rtic >= 10) {
         //Regulate every 10th
-        regulator_modulus_count = (regulator_modulus_count + 1) % 10;
+        regulator_modulus_count = (regulator_modulus_count + 1) % 20;
         if (heater_enabled(&bed)) {
             heater_regulate(&bed, regulator_modulus_count);
         }
@@ -103,6 +103,8 @@ int printer_get_temperature(void) {
 void printer_set_nozzle_temperature(float temp, int wait) {
     debug("Nozzle temperature set: %f\n", temp);
     heater_set_temperature(&nozzle, temp);
+    if(temp < 20.0) fan_nozzle_enable();
+    else fan_nozzle_disable();
     if (wait == 0) {
         uart_printf("ok\n");
     } else {
