@@ -103,8 +103,6 @@ int printer_get_temperature(void) {
 void printer_set_nozzle_temperature(float temp, int wait) {
     debug("Nozzle temperature set: %f\n", temp);
     heater_set_temperature(&nozzle, temp);
-    if(temp < 20.0) fan_nozzle_enable();
-    else fan_nozzle_disable();
     if (wait == 0) {
         uart_printf("ok\n");
     } else {

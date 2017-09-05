@@ -56,6 +56,8 @@ void heater_regulate(heater_t *h, int regulate) {
             if (pid <= 0.0) pwm_set_duty(h->pwm_channel, 0);
             else if (pid > 1024.0) pwm_set_duty(h->pwm_channel, 1024);
             else pwm_set_duty(h->pwm_channel, (uint32_t)pid);
+        } else {
+            pwm_set_duty(h->pwm_channel, 0);
         }
     }    
 }
@@ -66,12 +68,14 @@ int heater_enabled(heater_t *h) {
 
 void heater_enable(heater_t *h) {
     debug("Heater enable\n");
+    pwm_set_duty(h->fan_channel, 1);
     h->enabled = 1;
 }
 
 void heater_disable(heater_t *h) {
     debug("Heater disable\n");
     pwm_set_duty(h->pwm_channel, 0);
+    pwm_set_duty(h->fan_channel, 0);
     h->enabled = 0;
 }
 

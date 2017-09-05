@@ -5,6 +5,7 @@
 #include "pwm.h"
 #include "nrf.h"
 #include "nrf_gpio.h"
+#include "uart.h"
 
 void TIMER2_IRQHandler(void)
 {
@@ -31,9 +32,12 @@ void TIMER2_IRQHandler(void)
         NRF_TIMER2->EVENTS_COMPARE[3] = 0; //Clear compare register 1 event
 
         //Set pwm pins
-        if (NRF_TIMER2->CC[0] > 20) nrf_gpio_pin_set(NOZ_PIN);
+        if (NRF_TIMER2->CC[0] > 20 ) nrf_gpio_pin_set(NOZ_PIN);
+        else nrf_gpio_pin_clear(NOZ_PIN);
         if (NRF_TIMER2->CC[1] > 20) nrf_gpio_pin_set(BED_PIN);
+        else nrf_gpio_pin_clear(BED_PIN);
         if (NRF_TIMER2->CC[2] > 20) nrf_gpio_pin_set(FAN2_PIN);
+        else nrf_gpio_pin_clear(FAN2_PIN);
         NRF_TIMER2->TASKS_CLEAR = 1; // clear timer
     }
 }
@@ -58,6 +62,7 @@ void pwm_init(void)
     
     nrf_gpio_pin_dir_set(NOZ_PIN, NRF_GPIO_PIN_DIR_OUTPUT);
     nrf_gpio_pin_dir_set(BED_PIN, NRF_GPIO_PIN_DIR_OUTPUT);
+    nrf_gpio_pin_dir_set(FAN1_PIN, NRF_GPIO_PIN_DIR_OUTPUT);
     nrf_gpio_pin_dir_set(FAN2_PIN, NRF_GPIO_PIN_DIR_OUTPUT);
     
     NRF_TIMER2->TASKS_START = 1; // Start TIMER2
@@ -69,7 +74,7 @@ void pwm_set_duty(uint32_t channel, uint32_t value)
     //Only allow CC[0-2] for real pwm
     if (channel <= 2) {
         if (value >= NRF_TIMER2->CC[3]) NRF_TIMER2->CC[channel] = NRF_TIMER2->CC[3];
-        else NRF_TIMER2->CC[channel] = value; 
+        else NRF_TIMER2->CC[channel] = value;
     } else if (channel == 3) {
         if (value == 0) nrf_gpio_pin_clear(FAN1_PIN);
         else nrf_gpio_pin_set(FAN1_PIN);
