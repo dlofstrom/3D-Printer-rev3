@@ -14,5 +14,6 @@
 void time_init(void);
 uint32_t millis(void);
 void delay_us(uint32_t us);
+void system_reset(void);
 
 #endif

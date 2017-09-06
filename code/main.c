@@ -24,7 +24,7 @@ int main(void)
     {
         if (printer_ready()) {
             if (uart_read_line(line) != 0) {
-                debug("Got a line: %s", line);
+                //debug("Got a line: %s", line);
                 gcode_parse(line);
             }
         }

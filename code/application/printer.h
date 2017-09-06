@@ -15,6 +15,7 @@
 
 void printer_init(void);
 int printer_ready(void);
+int printer_waiting(void);
 void printer_loop(void);
 
 int printer_get_temperature(void);

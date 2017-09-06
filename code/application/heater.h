@@ -17,6 +17,7 @@ typedef struct {
     int tune_count;
     float current_temperature;
     float target_temperature;
+    float max_temperature;
     uint8_t adc_channel;
     uint32_t pwm_channel;
     uint32_t fan_channel;

@@ -22,7 +22,7 @@ int gcode_parse(const char *s) {
     //Create a copy of the input that we can modify
     char command[strlen(s)+1];
     strncpy(command, s, strlen(s)+1);
-    debug("Command length after copy: %u (%s)\n", (unsigned int)strlen(command), command);
+    //debug("Command length after copy: %u (%s)\n", (unsigned int)strlen(command), command);
     
     //Filter out comments, newlines and trailing spaces
     unsigned int i = 0;

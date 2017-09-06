@@ -50,3 +50,8 @@ uint32_t millis(void)
 void delay_us(uint32_t us) {
     nrf_delay_us(us);
 }
+
+//Reset nrf51
+void system_reset(void) {
+    NVIC_SystemReset();
+}

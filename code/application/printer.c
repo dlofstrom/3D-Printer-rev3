@@ -24,6 +24,11 @@ typedef struct {
 
 static sf_t saved_function;
 
+//Private
+void printer_print_temperature(void) {
+    uart_printf("T:%d B:%d\n", (int)heater_get_temperature(&nozzle), (int)heater_get_temperature(&bed));
+}
+
 void printer_init(void) {
     //Perippheral layer
     time_init();
@@ -91,18 +96,18 @@ void printer_loop(void) {
     wtoc = millis();
     if (!printer_ready()) {
         if (wtoc - wtic >= 1000) {
-            uart_printf("wait\n");
+            wtic = wtoc;
+            //Also print temperature during heatup
+            if (heater_waiting(&nozzle) || heater_waiting(&bed)) {
+                uart_printf("wait: ");
+                printer_print_temperature();
+            } else {
+                uart_print("wait\n");
+            }
         }
-        wtic = wtoc;
     } else {
         wtic = millis();
     }
-}
-
-
-//Private
-void printer_print_temperature(void) {
-    uart_printf("T:%d B:%d\n", (int)heater_get_temperature(&nozzle), (int)heater_get_temperature(&bed));
 }
 
 int printer_get_temperature(void) {

@@ -55,7 +55,7 @@ int N_f(char *s) {
     if (line_number != ln) {
         debug("Line numbers are not equal: %d != %d\n", line_number, ln);
     }
-    debug("Line number: %d\n", ln);
+    //debug("Line number: %d\n", ln);
     line_number++;
 
     //Execute G-code command

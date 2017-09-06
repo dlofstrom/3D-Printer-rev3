@@ -8,17 +8,20 @@
 #include "pwm.h"
 #include "lut.h"
 #include "settings.h"
+#include "time.h"
 
 void heater_init(void) {
     adc_init();
     pwm_init();
 
     settings_t *s = settings();
-    nozzle = (heater_t){.enabled=0, .waiting=0, .tune_count=0, .current_temperature=0.0, .target_temperature=0.0,
+    nozzle = (heater_t){.enabled=0, .waiting=0, .tune_count=0,
+                        .current_temperature=0.0, .target_temperature=0.0, .max_temperature=255.0,
                         .adc_channel=NOZ_ADC_CHANNEL, .pwm_channel=NOZ_PWM_CHANNEL, .fan_channel=FAN1_PWM_CHANNEL,
                         .P=0.0, .I=0.0, .D=0.0,
                         .kp=&(s->nozzle_kp), .ki=&(s->nozzle_ki), .kd=&(s->nozzle_kd), .ilim=&(s->nozzle_ilim)};
-    bed = (heater_t){.enabled=0, .waiting=0, .tune_count=0, .current_temperature=0.0, .target_temperature=0.0,
+    bed = (heater_t){.enabled=0, .waiting=0, .tune_count=0,
+                     .current_temperature=0.0, .target_temperature=0.0, .max_temperature=110.0,
                      .adc_channel=BED_ADC_CHANNEL, .pwm_channel=BED_PWM_CHANNEL, .fan_channel=NO_PWM,
                      .P=0.0, .I=0.0, .D=0.0,
                      .kp=&(s->bed_kp), .ki=&(s->bed_ki), .kd=&(s->bed_kd), .ilim=&(s->bed_ilim)};
@@ -31,10 +34,16 @@ float fabs(float n) {
 void heater_regulate(heater_t *h, int regulate) {
     //Oversample temperature
     float t = heater_get_temperature(h);
-    if (heater_enabled(h) && t == ERROR) {
-        uart_printf("error: thermistor returned non valid temperature\n");
-        heater_disable(h);
-        return;
+    if (heater_enabled(h)) {
+        if (t == ERROR) {
+            uart_printf("error: thermistor returned non valid temperature\n");
+            heater_disable(h);
+            return;
+        } else if (t > h->max_temperature) {
+            uart_printf("error: heater too hot\n");
+            delay_us(10000);
+            system_reset();
+        }
     }
     h->current_temperature = 9*h->current_temperature/10 + t/10;
 
@@ -62,15 +71,21 @@ void heater_regulate(heater_t *h, int regulate) {
             else pwm_set_duty(h->pwm_channel, (uint32_t)pid);
             
             if (h->waiting) {
-                if (fabs(error) < 1.0) {
-                    if (h->tune_count >= 50) h->waiting = 0;
-                    else h->tune_count++;
+                if (fabs(error) < 2.0) {
+                    if (h->tune_count >= 50) {
+                        debug("Waiting done");
+                        h->waiting = 0;
+                        uart_print("ok\n");
+                    } else {
+                        h->tune_count++;
+                    }
                 } else {
                     h->tune_count = 0;
                 }
             }
         } else {
             pwm_set_duty(h->pwm_channel, 0);
+            if (h->current_temperature < 50) pwm_set_duty(h->fan_channel, 0);
         }
     }
 }
@@ -88,7 +103,7 @@ void heater_enable(heater_t *h) {
 void heater_disable(heater_t *h) {
     debug("Heater disable\n");
     pwm_set_duty(h->pwm_channel, 0);
-    pwm_set_duty(h->fan_channel, 0);
+    //pwm_set_duty(h->fan_channel, 0);
     h->enabled = 0;
     h->waiting = 0;
 }
@@ -105,6 +120,7 @@ float heater_get_temperature(heater_t *h) {
 }
 
 void heater_wait(heater_t *h) {
+    debug("Waiting for heater\n");
     h->waiting = 1;
 }
 
