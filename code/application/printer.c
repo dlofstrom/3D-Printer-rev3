@@ -78,12 +78,8 @@ void printer_loop(void) {
     if (rtoc - rtic >= 10) {
         //Regulate every 10th
         regulator_modulus_count = (regulator_modulus_count + 1) % 20;
-        if (heater_enabled(&bed)) {
-            heater_regulate(&bed, regulator_modulus_count);
-        }
-        if (heater_enabled(&nozzle)) {
-            heater_regulate(&nozzle, regulator_modulus_count);
-        }
+        heater_regulate(&bed, regulator_modulus_count);
+        heater_regulate(&nozzle, regulator_modulus_count);
         rtic = rtoc;
     }
 }
