@@ -12,6 +12,7 @@ code/_build/*
 #Executables
 *.out
 *.exe
+TAGS
 
 #Emacs
 *.*~
