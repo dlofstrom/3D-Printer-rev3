@@ -72,12 +72,20 @@ void pwm_init(void)
 void pwm_set_duty(uint32_t channel, uint32_t value)
 {
     //Only allow CC[0-2] for real pwm
-    if (channel <= 2) {
-        if (value >= NRF_TIMER2->CC[3]) NRF_TIMER2->CC[channel] = NRF_TIMER2->CC[3];
-        else NRF_TIMER2->CC[channel] = value;
+    if (channel == 0) {
+        if (value >= NRF_TIMER2->CC[3]) NRF_TIMER2->CC[0] = NRF_TIMER2->CC[3];
+        else NRF_TIMER2->CC[0] = value;
+        if (value == 0) nrf_gpio_pin_clear(NOZ_PIN);
+    } else if (channel == 1) {
+        if (value >= NRF_TIMER2->CC[3]) NRF_TIMER2->CC[1] = NRF_TIMER2->CC[3];
+        else NRF_TIMER2->CC[1] = value;
+        if (value == 0) nrf_gpio_pin_clear(BED_PIN);
+    } else if (channel == 2) {
+        if (value >= NRF_TIMER2->CC[3]) NRF_TIMER2->CC[1] = NRF_TIMER2->CC[3];
+        else NRF_TIMER2->CC[1] = value;
+        if (value == 0) nrf_gpio_pin_clear(FAN2_PIN);
     } else if (channel == 3) {
         if (value == 0) nrf_gpio_pin_clear(FAN1_PIN);
-        else nrf_gpio_pin_set(FAN1_PIN);
+        else nrf_gpio_pin_set(FAN1_PIN);        
     }
-    
 }

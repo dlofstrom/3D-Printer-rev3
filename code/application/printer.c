@@ -14,8 +14,6 @@
 #include "axis.h"
 #include "uart.h"
 
-static uint32_t mtic, mtoc;
-static uint32_t rtic, rtoc;
 
 //Save printer function until movements are done
 typedef void (*saved_f)();
@@ -36,11 +34,6 @@ void printer_init(void) {
     axis_init();
     heater_init();
 
-    mtic = millis();
-    mtoc = millis();
-    rtic = millis();
-    rtoc = millis();
-
     //Printer ready
     saved_function.available = 0;
 }
@@ -49,38 +42,60 @@ int printer_ready(void) {
     //Printer is ready if:
     //No function is buffered (in saved_f)
     if (saved_function.available) return 0;
-    //Movement queue is no full
+    //Movement queue is full
     if (axis_buffer_full()) return 0;
+    //Waiting for heatup
+    if (heater_waiting(&nozzle)) return 0;
+    if (heater_waiting(&bed)) return 0;
     return 1;
 }
 
 void printer_loop(void) {
+    static uint32_t mtic = 0;
+    static uint32_t rtic = 0;
+    static uint32_t wtic = 0;
+    static uint32_t mtoc, rtoc, wtoc;
+    
     //Movement timing
     if (axis_available()) {
+        //Move axis every 10 ms
+        //TODO: Use feedrate
         mtoc = millis();
         if (mtoc - mtic >= 10) {
             led_toggle();   
             mtic = mtoc;
             axis_move();
         }
-    } else if (saved_function.available) {
-        //Run saved function
-        (*(saved_function.function))();
-        saved_function.available = 0;
-        mtic = millis();
     } else {
+        //Else adjust tic and check if any function is saved
         mtic = millis();
+        if (saved_function.available) {
+            //Run saved function
+            (*(saved_function.function))();
+            saved_function.available = 0;
+        }
     }
 
     //Regulator timing
     static int regulator_modulus_count = 0;
     rtoc = millis();
     if (rtoc - rtic >= 10) {
-        //Regulate every 10th
+        //Regulate every 20th
         regulator_modulus_count = (regulator_modulus_count + 1) % 20;
         heater_regulate(&bed, regulator_modulus_count);
         heater_regulate(&nozzle, regulator_modulus_count);
         rtic = rtoc;
+    }
+
+    //Wait for printer communication
+    wtoc = millis();
+    if (!printer_ready()) {
+        if (wtoc - wtic >= 1000) {
+            uart_printf("wait\n");
+        }
+        wtic = wtoc;
+    } else {
+        wtic = millis();
     }
 }
 
@@ -102,7 +117,7 @@ void printer_set_nozzle_temperature(float temp, int wait) {
     if (wait == 0) {
         uart_printf("ok\n");
     } else {
-        //TODO
+        heater_wait(&nozzle);
     }
 }
 
@@ -112,7 +127,7 @@ void printer_set_bed_temperature(float temp, int wait) {
     if (wait == 0) {
         uart_printf("ok\n");
     } else {
-        //TODO
+        heater_wait(&bed);
     }
 }
 

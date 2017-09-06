@@ -14,14 +14,18 @@ void heater_init(void) {
     pwm_init();
 
     settings_t *s = settings();
-    nozzle = (heater_t){.enabled=0, .current_temperature=0.0, .target_temperature=0.0,
+    nozzle = (heater_t){.enabled=0, .waiting=0, .tune_count=0, .current_temperature=0.0, .target_temperature=0.0,
                         .adc_channel=NOZ_ADC_CHANNEL, .pwm_channel=NOZ_PWM_CHANNEL, .fan_channel=FAN1_PWM_CHANNEL,
                         .P=0.0, .I=0.0, .D=0.0,
                         .kp=&(s->nozzle_kp), .ki=&(s->nozzle_ki), .kd=&(s->nozzle_kd), .ilim=&(s->nozzle_ilim)};
-    bed = (heater_t){.enabled=0, .current_temperature=0.0, .target_temperature=0.0,
+    bed = (heater_t){.enabled=0, .waiting=0, .tune_count=0, .current_temperature=0.0, .target_temperature=0.0,
                      .adc_channel=BED_ADC_CHANNEL, .pwm_channel=BED_PWM_CHANNEL, .fan_channel=NO_PWM,
                      .P=0.0, .I=0.0, .D=0.0,
                      .kp=&(s->bed_kp), .ki=&(s->bed_ki), .kd=&(s->bed_kd), .ilim=&(s->bed_ilim)};
+}
+
+float fabs(float n) {
+    return (n < 0.0) ? -n : n;
 }
 
 void heater_regulate(heater_t *h, int regulate) {
@@ -56,10 +60,19 @@ void heater_regulate(heater_t *h, int regulate) {
             if (pid <= 0.0) pwm_set_duty(h->pwm_channel, 0);
             else if (pid > 1024.0) pwm_set_duty(h->pwm_channel, 1024);
             else pwm_set_duty(h->pwm_channel, (uint32_t)pid);
+            
+            if (h->waiting) {
+                if (fabs(error) < 1.0) {
+                    if (h->tune_count >= 50) h->waiting = 0;
+                    else h->tune_count++;
+                } else {
+                    h->tune_count = 0;
+                }
+            }
         } else {
             pwm_set_duty(h->pwm_channel, 0);
         }
-    }    
+    }
 }
 
 int heater_enabled(heater_t *h) {
@@ -77,14 +90,25 @@ void heater_disable(heater_t *h) {
     pwm_set_duty(h->pwm_channel, 0);
     pwm_set_duty(h->fan_channel, 0);
     h->enabled = 0;
+    h->waiting = 0;
 }
 
 void heater_set_temperature(heater_t *h, float t) {
     h->target_temperature = t;
+    h->tune_count = 0;
     if (t < 20.0) heater_disable(h);
     else heater_enable(h);
 }
 
 float heater_get_temperature(heater_t *h) {
     return temperature_lookup[adc_get(h->adc_channel)];
+}
+
+void heater_wait(heater_t *h) {
+    h->waiting = 1;
+}
+
+int heater_waiting(heater_t *h) {
+    if (h->waiting) return 1;
+    else return 0;
 }

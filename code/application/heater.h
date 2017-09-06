@@ -13,6 +13,8 @@
 
 typedef struct {
     int enabled;
+    int waiting;
+    int tune_count;
     float current_temperature;
     float target_temperature;
     uint8_t adc_channel;
@@ -38,5 +40,7 @@ void heater_enable(heater_t *h);
 void heater_disable(heater_t *h);
 void heater_set_temperature(heater_t *h, float t);
 float heater_get_temperature(heater_t *h);
+void heater_wait(heater_t *h);
+int heater_waiting(heater_t *h);
 
 #endif
