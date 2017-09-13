@@ -215,17 +215,27 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
     int zs = 0;
     settings_t *s = settings();
     int i;
-    for (i = 0; i < nargs; i++) {
-        if (gp[i].type == 'X') {
-            //move lenght of build volume (+20mm) in direction of endtop
-            xs = s->espx * (s->bvx + 20) * s->spmmx;
-            axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position
-        } else if (gp[i].type == 'Y') {
-            ys = s->espy * (s->bvy + 20) * s->spmmy;
-            axis_set_position(AXIS_Y, s->bvy*s->spmmy);
-        } else if (gp[i].type == 'Z') {
-            zs = s->espz * (s->bvz + 20) * s->spmmz;
-            axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+    if (nargs == 0) {
+        //move lenght of build volume (+20mm) in direction of endtop
+        xs = s->espx * (s->bvx + 20) * s->spmmx;
+        axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position
+        ys = s->espy * (s->bvy + 20) * s->spmmy;
+        axis_set_position(AXIS_Y, s->bvy*s->spmmy);
+        zs = s->espz * (s->bvz + 20) * s->spmmz;
+        axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+    } else {
+        for (i = 0; i < nargs; i++) {
+            if (gp[i].type == 'X') {
+                //move lenght of build volume (+20mm) in direction of endtop
+                xs = s->espx * (s->bvx + 20) * s->spmmx;
+                axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position
+            } else if (gp[i].type == 'Y') {
+                ys = s->espy * (s->bvy + 20) * s->spmmy;
+                axis_set_position(AXIS_Y, s->bvy*s->spmmy);
+            } else if (gp[i].type == 'Z') {
+                zs = s->espz * (s->bvz + 20) * s->spmmz;
+                axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+            }
         }
     }
     axis_schedule(s->sdx*xs, s->sdz*ys, s->sdz*zs, 0, 0);
