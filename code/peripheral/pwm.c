@@ -48,11 +48,11 @@ void pwm_init(void)
     NRF_TIMER2->MODE = TIMER_MODE_MODE_Timer; // Set the timer in Timer Mode
     NRF_TIMER2->TASKS_CLEAR = 1; // clear the task first to be usable for later
     NRF_TIMER2->BITMODE = TIMER_BITMODE_BITMODE_16Bit; //Set counter to 16 bit resolution
-    NRF_TIMER2->PRESCALER = 4;
+    NRF_TIMER2->PRESCALER = 7; //125kHz
     NRF_TIMER2->CC[0] = 0x0;
     NRF_TIMER2->CC[1] = 0x0;
     NRF_TIMER2->CC[2] = 0x0;
-    NRF_TIMER2->CC[3] = 1024; //Top value for counter 0x8000 => 16000000/2^4
+    NRF_TIMER2->CC[3] = 1024; //Top value for counter 0x8000 => 16000000/(1024*2^7) = 122 Hz
     // Enable interrupt for CC[0], CC[1], CC[2], CC[3] and overflow
     NRF_TIMER2->INTENSET = (TIMER_INTENSET_COMPARE0_Enabled << TIMER_INTENSET_COMPARE0_Pos) |
         (TIMER_INTENSET_COMPARE1_Enabled << TIMER_INTENSET_COMPARE1_Pos) |
