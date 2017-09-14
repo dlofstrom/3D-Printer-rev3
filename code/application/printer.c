@@ -228,13 +228,16 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
             if (gp[i].type == 'X') {
                 //move lenght of build volume (+20mm) in direction of endtop
                 xs = s->espx * (s->bvx + 20) * s->spmmx;
-                axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position
+                if (s->espx == 1) axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position endstop end
+                else axis_set_position(AXIS_X, 0); //Update position endstop beginning
             } else if (gp[i].type == 'Y') {
                 ys = s->espy * (s->bvy + 20) * s->spmmy;
-                axis_set_position(AXIS_Y, s->bvy*s->spmmy);
+                if (s->espy == 1) axis_set_position(AXIS_Y, s->bvy*s->spmmy);
+                else axis_set_position(AXIS_Y, 0);
             } else if (gp[i].type == 'Z') {
                 zs = s->espz * (s->bvz + 20) * s->spmmz;
-                axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+                if (s->espz == 1) axis_set_position(AXIS_Z, s->bvz*s->spmmz);
+                else axis_set_position(AXIS_Z, 0);
             }
         }
     }

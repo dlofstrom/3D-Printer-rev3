@@ -7,6 +7,7 @@
 #include "switch.h"
 #include "uart.h"
 #include "time.h"
+#include "settings.h"
 
 static axis_t x;
 static axis_t y;
@@ -99,6 +100,37 @@ int axis_buffer_full(void) {
     else return 0;
 }
 
+void axis_move_from_switch(int a) {
+    settings_t *s = settings();
+    uint32_t sc;
+    step_t ts = {0,0,0,0};
+    int spmm;
+    if (a == AXIS_X) {
+        sc = x.switch_channel;
+        ts.x = -1*s->sdx*s->espx;
+        spmm = s->spmmx;
+    } else if (a == AXIS_Y) {
+        sc = y.switch_channel;
+        ts.y = -1*s->sdy*s->espy;
+        spmm = s->spmmy;
+    } else if (a == AXIS_Z) {
+        sc = z.switch_channel;
+        ts.z = -1*s->sdz*s->espz;
+        spmm = s->spmmz;
+    } else return;
+        
+    //Force step back from switch
+    while (switch_get(sc)) {
+        stepper_step(&ts);
+        delay_us(100);
+    }
+    int i;
+    for (i = 0; i < spmm; i++) {
+        stepper_step(&ts);
+        delay_us(100);
+    }
+}
+
 int axis_move(void) {
     //Look att the first item in buffer and do move
     axis_move_t *am = &move_buffer[move_buffer_tail];
@@ -128,12 +160,7 @@ int axis_move(void) {
         if (step_to_take.x != 0 && switch_get(x.switch_channel)) {
             debug("Switch X is asserted\n");
             //Force step back from switch
-            step_t ts = {-step_to_take.x,0,0,0};
-            while (switch_get(x.switch_channel)) {
-                stepper_step(&ts);
-                delay_us(100);
-            }
-            stepper_step(&ts);
+            axis_move_from_switch(AXIS_X);
             am->x = 0;
             am->x_steps = 0;
             step_to_take.x = 0;
@@ -143,12 +170,7 @@ int axis_move(void) {
         if (step_to_take.y != 0 && switch_get(y.switch_channel)) {
             debug("Switch Y is asserted\n");
             //Force step back from switch
-            step_t ts = {0,-step_to_take.y,0,0};
-            while (switch_get(y.switch_channel)) {
-                stepper_step(&ts);
-                delay_us(100);
-            }
-            stepper_step(&ts);
+            axis_move_from_switch(AXIS_Y);
             am->y = 0;
             am->y_steps = 0;
             step_to_take.y = 0;
@@ -158,12 +180,7 @@ int axis_move(void) {
         if (step_to_take.z != 0 && switch_get(z.switch_channel)) {
             debug("Switch Z is asserted\n");
             //Force step back from switch
-            step_t ts = {0,0,-step_to_take.z,0};
-            while (switch_get(z.switch_channel)) {
-                stepper_step(&ts);
-                delay_us(100);
-            }
-            stepper_step(&ts);
+            axis_move_from_switch(AXIS_Z);
             am->z = 0;
             am->z_steps = 0;
             step_to_take.z = 0;
