@@ -13,14 +13,14 @@
 
 typedef struct {
     //Steps per mm
-    int spmmx;
-    int spmmy;
-    int spmmz;
-    int spmme;
+    float spmmx;
+    float spmmy;
+    float spmmz;
+    float spmme;
     //Build volume
-    int bvx;
-    int bvy;
-    int bvz;
+    float bvx;
+    float bvy;
+    float bvz;
     //Endstop position (-1 beginning, 1 end)
     int espx;
     int espy;

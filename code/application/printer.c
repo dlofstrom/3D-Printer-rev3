@@ -23,6 +23,7 @@ typedef struct {
 } sf_t;
 
 static sf_t saved_function;
+static int wait_time_ticks = 100;
 
 //Private
 void printer_print_temperature(void) {
@@ -65,15 +66,16 @@ void printer_loop(void) {
     if (axis_available()) {
         //Move axis every 10 ms
         //TODO: Use feedrate
-        mtoc = millis();
-        if (mtoc - mtic >= 10) {
+        mtoc = ticks();
+        if (mtoc - mtic >= wait_time_ticks) {
             led_toggle();   
             mtic = mtoc;
-            axis_move();
+            wait_time_ticks = axis_move();
+            //debug("Wait time: %d\n", wait_time_ticks);
         }
     } else {
         //Else adjust tic and check if any function is saved
-        mtic = millis();
+        mtic = ticks();
         if (saved_function.available) {
             //Run saved function
             (*(saved_function.function))();
@@ -216,7 +218,7 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
     settings_t *s = settings();
     int i;
     if (nargs == 0) {
-        //move lenght of build volume (+20mm) in direction of endtop
+        //move length of build volume (+20mm) in direction of endtop
         xs = s->espx * (s->bvx + 20) * s->spmmx;
         if (s->espx == 1) axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position endstop end
         else axis_set_position(AXIS_X, 0); //Update position endstop beginning
@@ -229,7 +231,7 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
     } else {
         for (i = 0; i < nargs; i++) {
             if (gp[i].type == 'X') {
-                //move lenght of build volume (+20mm) in direction of endtop
+                //move length of build volume (+20mm) in direction of endtop
                 xs = s->espx * (s->bvx + 20) * s->spmmx;
                 if (s->espx == 1) axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position endstop end
                 else axis_set_position(AXIS_X, 0); //Update position endstop beginning
@@ -313,12 +315,14 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
         }
     }
 
-    
-    
-    //Schedule motion
-    axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
 
-    if (ret == -1) uart_printf("Error: G1 out of build volume\n");
-    else uart_printf("ok\n");
-    return 0;
+    if (ret == -1) {
+        uart_printf("Error: G1 out of build volume\n");
+        return -1;
+    } else {
+        uart_printf("ok\n");
+        //Schedule motion
+        axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
+        return 0;
+    }
 }

@@ -41,6 +41,7 @@ typedef struct {
     int y_steps;
     int z_steps;
     int e_steps;
+    const float *spmm;
     int f_goal;
 } axis_move_t;
 

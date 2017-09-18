@@ -14,7 +14,7 @@ static axis_t y;
 static axis_t z;
 static axis_t e;
 static axis_t *axis_array[4] = {&x, &y, &z, &e};
-static int feedrate;
+static int feedrate = 1000;
 
 static axis_move_t move_buffer[MOVE_BUFFER_SIZE];
 static int move_buffer_head;
@@ -64,7 +64,8 @@ void axis_set_error(int a, float e) {
 
 void axis_schedule(int xs, int ys, int zs, int es, int fs) {
     debug("Axis schedule xs:%d ys:%d zs:%d es:%d fs:%d\n", xs, ys, zs, es, fs);
-
+    settings_t *s = settings();
+    
     axis_move_t *am = &move_buffer[move_buffer_head];
     move_buffer_head = (move_buffer_head + 1) % MOVE_BUFFER_SIZE;
 
@@ -80,14 +81,24 @@ void axis_schedule(int xs, int ys, int zs, int es, int fs) {
     am->e_steps = es;
     am->f_goal = fs;
     
-    int a[4] = {xs, ys, zs, es};
-    int max = 0;
+    int steps[4] = {xs, ys, zs, es};
+    const float *spmms[4] = {&(s->spmmx), &(s->spmmy), &(s->spmmy), &(s->spmmz)};
+    am->steps = 0;
+    am->spmm = spmms[0];
     int i;
     for (i = 0; i < 4; i++) {
-        if (a[i] < 0) max = (-a[i] > max) ? -a[i] : max;
-        else max = (a[i] > max) ? a[i] : max;
+        if (steps[i] < 0) {
+            if (-steps[i] > am->steps) {
+                am->steps = -steps[i];
+                am->spmm = spmms[i];
+            }
+        } else {
+            if (steps[i] > am->steps) {
+                am->steps = steps[i];
+                am->spmm = spmms[i];
+            }
+        }
     }
-    am->steps = max;
 }
 
 int axis_available(void) {
@@ -104,7 +115,7 @@ void axis_move_from_switch(int a) {
     settings_t *s = settings();
     uint32_t sc;
     step_t ts = {0,0,0,0};
-    int spmm;
+    float spmm;
     if (a == AXIS_X) {
         sc = x.switch_channel;
         ts.x = -1*s->sdx*s->espx;
@@ -125,7 +136,7 @@ void axis_move_from_switch(int a) {
         delay_us(100);
     }
     int i;
-    for (i = 0; i < spmm; i++) {
+    for (i = 0; i < 3*spmm; i++) {
         stepper_step(&ts);
         delay_us(100);
     }
@@ -199,6 +210,10 @@ int axis_move(void) {
         debug("Move done x:%d y:%d z:%d e:%d\n", am->x, am->y, am->z, am->e);
     }
 
-    //TODO: return feedrate?
-    return 1;
+
+
+    //Return feedrate converted to delay time
+    float wait_time = (float)(60 * TIME_FREQUENCY)/(*am->spmm * feedrate);
+    if (wait_time < 1.0) return 1;
+    else return (int)(wait_time + 0.5);
 }
