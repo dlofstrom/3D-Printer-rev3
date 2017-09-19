@@ -65,7 +65,7 @@ void heater_regulate(heater_t *h, int regulate) {
 
             //Regulate
             float pid = *(h->kp)*h->P + *(h->ki)*h->I + *(h->kd)*h->D;
-            debug("P:%f I:%f D:%f PID: %f\n", h->P, h->I, h->D, pid);
+            //debug("P:%f I:%f D:%f PID: %f\n", h->P, h->I, h->D, pid);
             if (pid <= 0.0) pwm_set_duty(h->pwm_channel, 0);
             else if (pid > 1024.0) pwm_set_duty(h->pwm_channel, 1024);
             else pwm_set_duty(h->pwm_channel, (uint32_t)pid);
@@ -127,4 +127,8 @@ void heater_wait(heater_t *h) {
 int heater_waiting(heater_t *h) {
     if (h->waiting) return 1;
     else return 0;
+}
+
+void heater_part_fan_speed(int s) {
+    pwm_set_duty(FAN2_PWM_CHANNEL, 4*s);
 }

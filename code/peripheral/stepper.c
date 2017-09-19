@@ -19,7 +19,8 @@ void stepper_init() {
     for (i = 0; i < NUMBER_OF_STEPPERS; i++) {
         nrf_gpio_pin_dir_set(steppers[i]->step_pin, NRF_GPIO_PIN_DIR_OUTPUT);
         nrf_gpio_pin_dir_set(steppers[i]->enable_pin, NRF_GPIO_PIN_DIR_OUTPUT);
-        nrf_gpio_pin_dir_set(steppers[i]->direction_pin, NRF_GPIO_PIN_DIR_OUTPUT);    
+        nrf_gpio_pin_dir_set(steppers[i]->direction_pin, NRF_GPIO_PIN_DIR_OUTPUT);
+        stepper_disable(i);
     }
 }
 

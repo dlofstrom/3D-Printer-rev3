@@ -14,7 +14,7 @@ static axis_t y;
 static axis_t z;
 static axis_t e;
 static axis_t *axis_array[4] = {&x, &y, &z, &e};
-static int feedrate = 1000;
+static int feedrate;
 
 static axis_move_t move_buffer[MOVE_BUFFER_SIZE];
 static int move_buffer_head;
@@ -25,7 +25,7 @@ void axis_init(void) {
     y = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_Y_CHANNEL, .switch_channel=SWITCH_Y_CHANNEL};
     z = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_Z_CHANNEL, .switch_channel=SWITCH_Z_CHANNEL};
     e = (axis_t){.positioning=0, .position=0, .error=0.0, .stepper_channel=STEPPER_E_CHANNEL, .switch_channel=-1};
-    feedrate = 10;
+    feedrate = 1000;
     
     move_buffer_head = 0;
     move_buffer_tail = 0;
@@ -151,14 +151,14 @@ int axis_move(void) {
         
         //Calculate which move to do
         step_t step_to_take = {0,0,0,0};
-        if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x + 0.5) >= 1) step_to_take.x = 1; //Step x positive
-        else if ((int)((float)(am->t*am->x_steps)/(am->steps) - am->x - 0.5) <= -1) step_to_take.x = -1; //Step x negative
-        if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y + 0.5) >= 1) step_to_take.y = 1;
-        else if ((int)((float)(am->t*am->y_steps)/(am->steps) - am->y - 0.5) <= -1) step_to_take.y = -1;
-        if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z + 0.5) >= 1) step_to_take.z = 1;
-        else if ((int)((float)(am->t*am->z_steps)/(am->steps) - am->z - 0.5) <= -1) step_to_take.z = -1;
-        if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e + 0.5) >= 1) step_to_take.e = 1;
-        else if ((int)((float)(am->t*am->e_steps)/(am->steps) - am->e - 0.5) <= -1) step_to_take.e = -1;
+        if ((int)((float)am->t/am->steps*am->x_steps - am->x + 0.5) >= 1) step_to_take.x = 1; //Step x positive
+        else if ((int)((float)am->t/am->steps*am->x_steps - am->x - 0.5) <= -1) step_to_take.x = -1; //Step x negative
+        if ((int)((float)am->t/am->steps*am->y_steps - am->y + 0.5) >= 1) step_to_take.y = 1;
+        else if ((int)((float)am->t/am->steps*am->y_steps - am->y - 0.5) <= -1) step_to_take.y = -1;
+        if ((int)((float)am->t/am->steps*am->z_steps - am->z + 0.5) >= 1) step_to_take.z = 1;
+        else if ((int)((float)am->t/am->steps*am->z_steps - am->z - 0.5) <= -1) step_to_take.z = -1;
+        if ((int)((float)am->t/am->steps*am->e_steps - am->e + 0.5) >= 1) step_to_take.e = 1;
+        else if ((int)((float)am->t/am->steps*am->e_steps - am->e - 0.5) <= -1) step_to_take.e = -1;
 
         //Set steps
         am->x += step_to_take.x;
@@ -216,4 +216,12 @@ int axis_move(void) {
     float wait_time = (float)(60 * TIME_FREQUENCY)/(*am->spmm * feedrate);
     if (wait_time < 1.0) return 1;
     else return (int)(wait_time + 0.5);
+}
+
+
+void axis_disable(void) {
+    stepper_disable(x.stepper_channel);
+    stepper_disable(y.stepper_channel);
+    stepper_disable(z.stepper_channel);
+    stepper_disable(e.stepper_channel);
 }

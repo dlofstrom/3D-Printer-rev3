@@ -46,7 +46,7 @@ uint32_t millis(void)
     return t/50;
 }
 
-//Get ticks in 1/10000 of a second
+//Get ticks in 1/50000 of a second
 uint32_t ticks(void) {
     return t;
 }

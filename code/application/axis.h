@@ -56,5 +56,6 @@ void axis_schedule(int xs, int ys, int zs, int es, int fsx);
 int axis_available(void);
 int axis_buffer_full(void);
 int axis_move(void);
+void axis_disable(void);
 
 #endif

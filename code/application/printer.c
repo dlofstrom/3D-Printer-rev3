@@ -24,6 +24,7 @@ typedef struct {
 
 static sf_t saved_function;
 static int wait_time_ticks = 100;
+static int tickle = 0;
 
 //Private
 void printer_print_temperature(void) {
@@ -60,7 +61,8 @@ void printer_loop(void) {
     static uint32_t mtic = 0;
     static uint32_t rtic = 0;
     static uint32_t wtic = 0;
-    static uint32_t mtoc, rtoc, wtoc;
+    static uint32_t ttic = 0;
+    static uint32_t mtoc, rtoc, wtoc, ttoc;
     
     //Movement timing
     if (axis_available()) {
@@ -110,7 +112,27 @@ void printer_loop(void) {
     } else {
         wtic = millis();
     }
-}
+
+    //Timeout if nothing happens in a while
+    ttoc = millis();
+    //Not doing anything
+    if (printer_ready()) {
+        //If 5 minutes passes
+        if (ttoc - ttic >= 5*60*1000) {
+            axis_disable();
+            heater_set_temperature(&bed, 0.0);
+            heater_set_temperature(&nozzle, 0.0);
+            ttic = ttoc;
+        }
+    } else {
+        ttic = millis();
+    }
+    //If something has happened tickle == 1
+    if (tickle) {
+        ttic = millis();
+        tickle = 0;
+    }
+ }
 
 int printer_get_temperature(void) {
     uart_printf("ok ");
@@ -119,6 +141,7 @@ int printer_get_temperature(void) {
 }
 
 void printer_set_nozzle_temperature(float temp, int wait) {
+    tickle = 1;
     debug("Nozzle temperature set: %f\n", temp);
     heater_set_temperature(&nozzle, temp);
     if (wait == 0) {
@@ -129,6 +152,7 @@ void printer_set_nozzle_temperature(float temp, int wait) {
 }
 
 void printer_set_bed_temperature(float temp, int wait) {
+    tickle = 1;
     debug("Bed temperature set: %f\n", temp);
     heater_set_temperature(&bed, temp);
     if (wait == 0) {
@@ -138,49 +162,63 @@ void printer_set_bed_temperature(float temp, int wait) {
     }
 }
 
+void printer_set_fan_speed(int speed) {
+    tickle = 1;
+    heater_part_fan_speed(speed);
+    uart_printf("ok\n");
+}
+
 void printer_set_nozzle_p_value(float p) {
+    tickle = 1;
     settings_t *s = settings();
     s->nozzle_kp = p;
     uart_printf("ok\n");
 }
 
 void printer_set_nozzle_i_value(float i) {
+    tickle = 1;
     settings_t *s = settings();
     s->nozzle_ki = i;
     uart_printf("ok\n");
 }
 
 void printer_set_nozzle_d_value(float d) {
+    tickle = 1;
     settings_t *s = settings();
     s->nozzle_kd = d;
     uart_printf("ok\n");
 }
 
 void printer_set_nozzle_ilim_value(float ilim) {
+    tickle = 1;
     settings_t *s = settings();
     s->nozzle_ilim = ilim;
     uart_printf("ok\n");
 }
 
 void printer_set_bed_p_value(float p) {
+    tickle = 1;
     settings_t *s = settings();
     s->bed_kp = p;
     uart_printf("ok\n");
 }
 
 void printer_set_bed_i_value(float i) {
+    tickle = 1;
     settings_t *s = settings();
     s->bed_ki = i;
     uart_printf("ok\n");
 }
 
 void printer_set_bed_d_value(float d) {
+    tickle = 1;
     settings_t *s = settings();
     s->bed_kd = d;
     uart_printf("ok\n");
 }
 
 void printer_set_bed_ilim_value(float ilim) {
+    tickle = 1;
     settings_t *s = settings();
     s->bed_ilim = ilim;
     uart_printf("ok\n");
@@ -189,6 +227,7 @@ void printer_set_bed_ilim_value(float ilim) {
 
 
 void printer_set_positioning_absolute(void) {
+    tickle = 1;
     //If movements in buffer, hold on
     if (axis_available()) {
         saved_function.available = 1;
@@ -200,6 +239,7 @@ void printer_set_positioning_absolute(void) {
 }
 
 void printer_set_positioning_relative(void) {
+    tickle = 1;
     //If movements in buffer, hold on
     if (axis_available()) {
         saved_function.available = 1;
@@ -210,14 +250,33 @@ void printer_set_positioning_relative(void) {
     uart_printf("ok\n");
 }
 
+void printer_set_position(int nargs, gcode_parameter_t *gp) {
+    tickle = 1;
+    settings_t *s = settings();
+    int i;
+    for (i = 0; i < nargs; i++) {
+        if (gp[i].type == 'X') {
+            axis_set_position(AXIS_X, gp[i].value*s->spmmx); //Update position
+        } else if (gp[i].type == 'Y') {
+            axis_set_position(AXIS_Y, gp[i].value*s->spmmy);
+        } else if (gp[i].type == 'Z') {
+            axis_set_position(AXIS_Z, gp[i].value*s->spmmz);
+        } else if (gp[i].type == 'E') {
+            axis_set_position(AXIS_E, gp[i].value*s->spmme);
+        }
+    }
+    uart_printf("ok\n");
+}
 
 int printer_reset(int nargs, gcode_parameter_t *gp) {
+    tickle = 1;
     int xs = 0;
     int ys = 0;
     int zs = 0;
     settings_t *s = settings();
     int i;
-    if (nargs == 0) {
+    debug("nargs: %d\n", nargs);
+    if (nargs <= 1) {
         //move length of build volume (+20mm) in direction of endtop
         xs = s->espx * (s->bvx + 20) * s->spmmx;
         if (s->espx == 1) axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position endstop end
@@ -232,15 +291,15 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
         for (i = 0; i < nargs; i++) {
             if (gp[i].type == 'X') {
                 //move length of build volume (+20mm) in direction of endtop
-                xs = s->espx * (s->bvx + 20) * s->spmmx;
+                xs = s->espx * (s->bvx + 10) * s->spmmx;
                 if (s->espx == 1) axis_set_position(AXIS_X, s->bvx*s->spmmx); //Update position endstop end
                 else axis_set_position(AXIS_X, 0); //Update position endstop beginning
             } else if (gp[i].type == 'Y') {
-                ys = s->espy * (s->bvy + 20) * s->spmmy;
+                ys = s->espy * (s->bvy + 10) * s->spmmy;
                 if (s->espy == 1) axis_set_position(AXIS_Y, s->bvy*s->spmmy);
                 else axis_set_position(AXIS_Y, 0);
             } else if (gp[i].type == 'Z') {
-                zs = s->espz * (s->bvz + 20) * s->spmmz;
+                zs = s->espz * (s->bvz + 10) * s->spmmz;
                 if (s->espz == 1) axis_set_position(AXIS_Z, s->bvz*s->spmmz);
                 else axis_set_position(AXIS_Z, 0);
             }
@@ -253,6 +312,7 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
 
 
 int printer_move(int nargs, gcode_parameter_t *gp) {
+    tickle = 1;
     int xs = 0;
     int ys = 0;
     int zs = 0;
@@ -325,4 +385,10 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
         axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
         return 0;
     }
+}
+
+void printer_disable_steppers(void) {
+    tickle = 1;
+    axis_disable();
+    uart_printf("ok\n");
 }

@@ -70,16 +70,17 @@ int N_f(char *s) {
 // G0_f(const char *s)
 // G0: Move 
 int G0_f(char *s) {
-    debug("G0_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp[5];
+    gcode_parameter_t *gpp = gp;
+    int n = 0;
+    while (gcode_get_parameter(&s, gpp++) > 0) n++;
+    printer_move(n, gp); 
     return 1;
 }
 
 // G1_f(const char *s)
 // G1: Move 
 int G1_f(char *s) {
-    //Testing parameter pop
-    //float a[5] = {0.0}; //x, y, z, e, f
     gcode_parameter_t gp[5];
     gcode_parameter_t *gpp = gp;
     int n = 0;
@@ -356,8 +357,11 @@ int G91_f(char *s) {
 // G92_f(const char *s)
 // G92: Set Position 
 int G92_f(char *s) {
-    debug("G92_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp[5];
+    gcode_parameter_t *gpp = gp;
+    int n = 0;
+    while (gcode_get_parameter(&s, gpp++) > 0) n++;
+    printer_set_position(n, gp); 
     return 1;
 }
 
@@ -787,8 +791,7 @@ int M83_f(char *s) {
 // M84_f(const char *s)
 // M84: Stop idle hold 
 int M84_f(char *s) {
-    debug("M84_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    printer_disable_steppers();
     return 1;
 }
 
@@ -876,16 +879,17 @@ int M105_f(char *s) {
 // M106_f(const char *s)
 // M106: Fan On 
 int M106_f(char *s) {
-    debug("M106_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    gcode_parameter_t gp;
+    while (gcode_get_parameter(&s, &gp) > 0) {
+        if (gp.type == 'S') printer_set_fan_speed(gp.value);
+    }
     return 1;
 }
 
 // M107_f(const char *s)
 // M107: Fan Off 
 int M107_f(char *s) {
-    debug("M107_f(const char *s) is not yet implemented!\n");
-    debug("%s\n", s);
+    printer_set_fan_speed(0);
     return 1;
 }
 

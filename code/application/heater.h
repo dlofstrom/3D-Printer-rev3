@@ -43,5 +43,6 @@ void heater_set_temperature(heater_t *h, float t);
 float heater_get_temperature(heater_t *h);
 void heater_wait(heater_t *h);
 int heater_waiting(heater_t *h);
+void heater_part_fan_speed(int s);
 
 #endif

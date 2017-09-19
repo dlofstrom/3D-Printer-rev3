@@ -45,7 +45,7 @@ typedef struct {
     int e;
 } step_t;
 
-void stepper_init();
+void stepper_init(void);
 void stepper_step(step_t *s);
 void stepper_enable(uint32_t s);
 void stepper_disable(uint32_t s);
