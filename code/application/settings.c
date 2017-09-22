@@ -9,7 +9,7 @@ static settings_t s;
 
 settings_t *settings_load(void) {
     debug("Settings load\n");
-    s = (settings_t){.spmmx=160.0, .spmmy=160.0, .spmmz=400.0, .spmme=170.0,
+    s = (settings_t){.spmmx=160.0, .spmmy=160.0, .spmmz=400.0, .spmme=155.0,
                      .bvx=120, .bvy=115, .bvz=112,
                      .espx=-1, .espy=-1, .espz=1,
                      .sdx=-1, .sdy=-1, .sdz=-1, .sde=1,
