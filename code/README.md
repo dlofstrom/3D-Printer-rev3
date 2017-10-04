@@ -1,3 +1,9 @@
+# TODO
+- [ ] Fix command loop bug after g-code complete
+- [ ] Verify feedrate functionality
+- [ ] Increase maximum feedrate speed
+- [ ] Implement save settings functionality and add g-code commands
+
 # Setup
 ## SDK
 - Extract zip files in `sdk/`
