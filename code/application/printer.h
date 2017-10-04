@@ -37,7 +37,7 @@ void printer_set_positioning_relative(void);
 void printer_set_position(int nargs, gcode_parameter_t *gp);
 
 int printer_reset(int nargs, gcode_parameter_t *gp);
-int printer_move(int nargs, gcode_parameter_t *gp);
+int printer_move(int nargs, gcode_parameter_t *gp, int rapid);
 void printer_disable_steppers(void);
 
 #endif

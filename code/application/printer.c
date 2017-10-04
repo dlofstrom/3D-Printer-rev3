@@ -311,7 +311,7 @@ int printer_reset(int nargs, gcode_parameter_t *gp) {
 }
 
 
-int printer_move(int nargs, gcode_parameter_t *gp) {
+int printer_move(int nargs, gcode_parameter_t *gp, int rapid) {
     tickle = 1;
     int xs = 0;
     int ys = 0;
@@ -382,7 +382,8 @@ int printer_move(int nargs, gcode_parameter_t *gp) {
     } else {
         uart_printf("ok\n");
         //Schedule motion
-        axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
+        if (rapid == 1) axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, -1);
+        else axis_schedule(s->sdx*xs, s->sdy*ys, s->sdz*zs, s->sde*es, fs);
         return 0;
     }
 }

@@ -74,7 +74,7 @@ int G0_f(char *s) {
     gcode_parameter_t *gpp = gp;
     int n = 0;
     while (gcode_get_parameter(&s, gpp++) > 0) n++;
-    printer_move(n, gp); 
+    printer_move(n, gp, 1); 
     return 1;
 }
 
@@ -85,7 +85,7 @@ int G1_f(char *s) {
     gcode_parameter_t *gpp = gp;
     int n = 0;
     while (gcode_get_parameter(&s, gpp++) > 0) n++;
-    printer_move(n, gp); 
+    printer_move(n, gp, 0); 
     return 1;
 }
 

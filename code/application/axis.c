@@ -214,6 +214,7 @@ int axis_move(void) {
 
     //Return feedrate converted to delay time
     float wait_time = (float)(60 * TIME_FREQUENCY)/(*am->spmm * feedrate);
+    if (am->f_goal == -1) return 1;
     if (wait_time < 1.0) return 1;
     else return (int)(wait_time + 0.5);
 }
