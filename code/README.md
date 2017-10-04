@@ -2,6 +2,7 @@
 - [ ] Fix command loop bug after g-code complete
 - [ ] Verify feedrate functionality
 - [ ] Increase maximum feedrate speed
+- [ ] Setting for maximum feedrate
 - [ ] Differ between G1 and G0 to discard current feedrate and use maximum speed
 - [ ] Implement save settings functionality and add g-code commands
 
