@@ -1,9 +1,9 @@
 # TODO
-- [ ] Fix command loop bug after g-code complete
+- [x] Fix command loop bug after g-code complete, NOT TESTED
 - [ ] Verify feedrate functionality
-- [ ] Increase maximum feedrate speed
+- [x] Increase maximum feedrate speed, NOT TESTED
 - [ ] Setting for maximum feedrate
-- [ ] Differ between G1 and G0 to discard current feedrate and use maximum speed
+- [x] Differ between G1 and G0 to discard current feedrate and use maximum speed, NOT TESTED
 - [ ] Implement save settings functionality and add g-code commands
 
 # Setup
