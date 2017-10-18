@@ -62,7 +62,7 @@ void stepper_step(step_t *s) {
     }
 
     //Reset all step pins
-    nrf_delay_us(10);
+    nrf_delay_us(5);
     nrf_gpio_pin_clear(STEPPER_X_STEP);
     nrf_gpio_pin_clear(STEPPER_Y_STEP);
     nrf_gpio_pin_clear(STEPPER_Z_STEP);
