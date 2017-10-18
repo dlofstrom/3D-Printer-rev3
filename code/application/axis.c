@@ -206,6 +206,20 @@ int axis_move(void) {
 
     //Check if item done, then remove it from the buffer
     if (am->t >= am->steps) {
+        //Clear buffer item
+        am->t = 0;
+        am->x = 0;
+        am->y = 0;
+        am->z = 0;
+        am->e = 0;
+        am->steps = 0;
+        am->x_steps = 0;
+        am->y_steps = 0;
+        am->z_steps = 0;
+        am->e_steps = 0;
+        am->f_goal = 0;
+        
+        //Move buffer tail to next item
         move_buffer_tail = (move_buffer_tail + 1) % MOVE_BUFFER_SIZE;
         debug("Move done x:%d y:%d z:%d e:%d\n", am->x, am->y, am->z, am->e);
     }
