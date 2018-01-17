@@ -69,10 +69,14 @@ void printer_loop(void) {
         //Move axis every 10 ms
         //TODO: Use feedrate
         mtoc = ticks();
-        if (mtoc - mtic >= wait_time_ticks) {
+        int max_loops = 10;
+        while (mtoc - mtic >= wait_time_ticks) {
             led_toggle();   
-            mtic = mtoc;
+            //mtic = mtoc;
+            mtoc += wait_time_ticks;
             wait_time_ticks = axis_move();
+            max_loops--;
+            if (max_loops <= 0) break;
             //debug("Wait time: %d\n", wait_time_ticks);
         }
     } else {

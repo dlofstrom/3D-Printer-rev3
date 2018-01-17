@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define TIME_FREQUENCY 100000 //If this is changed, fix prescaler settings
+#define TIME_FREQUENCY 50000 //If this is changed, fix prescaler settings
 
 void time_init(void);
 uint32_t millis(void);

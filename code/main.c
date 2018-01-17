@@ -6,9 +6,6 @@
 #include "printer.h"
 
 char line[100];
-
-uint32_t tic;
-uint32_t toc;
 int i;
 
 int main(void)
@@ -18,7 +15,7 @@ int main(void)
 
     //Application
     printer_init();
-    
+
     debug("3D Printer\n");
     while (1)
     {

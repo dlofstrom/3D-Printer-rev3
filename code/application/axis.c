@@ -144,6 +144,7 @@ void axis_move_from_switch(int a) {
 
 int axis_move(void) {
     //Look att the first item in buffer and do move
+    if (!axis_available()) return 1;
     axis_move_t *am = &move_buffer[move_buffer_tail];
     if (am->steps > 0) {
         if (am->f_goal > 0) feedrate += (am->f_goal - feedrate)/(am->steps - am->t);
@@ -228,8 +229,8 @@ int axis_move(void) {
 
     //Return feedrate converted to delay time
     float wait_time = (float)(60 * TIME_FREQUENCY)/(*am->spmm * feedrate);
-    if (am->f_goal == -1) return 1;
-    if (wait_time < 1.0) return 1;
+    if (am->f_goal == -1) return 1; //TODO: Max feedrate..
+    //if (wait_time < 1.0) return 1;
     else return (int)(wait_time + 0.5);
 }
 
